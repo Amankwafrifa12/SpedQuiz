@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Special Education Quiz App</title>
+    <style>
+        /* Mobile-first styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Popup overlay styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .subscribe-btn {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        .start-btn {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .option-btn {
+            width: 100%;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+
+        .wrong {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Larger screens */
+        @media (min-width: 768px) {
+            .container {
+                margin: 40px auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Popup with two buttons and contact info -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup">
+            <h1>SpEDQuiz - GenieDev</h1>
+            <p>Please support us by subscribing to our channel for more of this</p>
+            <div>
+                <button class="subscribe-btn" id="subscribe-btn">Subscribe</button>
+                <button class="start-btn" id="start-btn">Start Quiz</button>
+            </div>
+            <p>Contact us: +233592725542 | Email: genielabgh@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Main quiz container -->
+    <div class="container" id="quiz-container" style="display: none;">
+        <div id="welcome" style="text-align: center;">
+            <h2>SpEDQuiz - GenieDev | User: <span id="user-name"></span></h2>
+        </div>
+        <div id="quiz">
+            <div id="question-container">
+                <h3 id="question-text"></h3>
+                <div id="options-container"></div>
+            </div>
+            <div id="feedback"></div>
+            <div id="score-container" style="margin-top: 20px;">
+                Score: <span id="score">0</span>/<span id="total">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample quiz data extracted from the PDF.
+        // (You can use an external JSON file and fetch it if needed.)
+        const questions = [
+            {
+                "question": "Which of the following sees special education as an individual problem?",
+                "options": ["Social", "Psychological", "Medical", "Education"],
+                "answer": "Medical"
+            },
+            {
+                "question": "Which of the following regards special education as both school and individual problems?",
+                "options": ["Social", "Psychological", "Medical", "Education"],
+                "answer": "Education"
+            },
+            {
+                "question": "Special education refers to teaching",
+                "options": [
+                    "The deaf, the mentally retarded and the blind in a special school",
+                    "Exceptional children in a special school",
+                    "Exceptional children in special and/or regular school",
+                    "The gifted solely"
+                ],
+                "answer": "Exceptional children in special and/or regular school"
+            },
+            {
+                "question": "Regular school can practice special education",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "One of the following practices can distinguish special education from regular education.",
+                "options": ["Individual teaching", "Group teaching", "Class teaching", "Use of sign language"],
+                "answer": "Individual teaching"
+            },
+            {
+                "question": "You are practicing special education when you modify the regular school curriculum to meet the needs of all individuals",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "In what two ways can special education be distinguished from regular education?",
+                "options": [
+                    "Through Special Educators",
+                    "Braille",
+                    "Sign language",
+                    "Special school"
+                ],
+                "answer": "Through Special Educators, Braille, Sign language, Special school"
+            },
+            {
+                "question": "Children considered gifted and talented are eligible for special education",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "The aims of special education cannot be realized",
+                "options": ["True", "False"],
+                "answer": "False"
+            },
+            {
+                "question": "When an exceptional child learns to move part of his body for an activity it is called",
+                "options": ["Fine Motor Skills", "Gross Motor Skills"],
+                "answer": "Fine Motor Skills"
+            },
+            {
+                "question": "When an exceptional child learns to move the whole body for an activity it is called",
+                "options": ["Fine Motor Skills", "Gross Motor Skills"],
+                "answer": "Gross Motor Skills"
+            },
+            {
+                "question": "Which of the following roles can the school play in the development of intellectual abilities?",
+                "options": [
+                    "Making the school environment ‘rich’ with materials and human resources",
+                    "Using punishments to make children learn",
+                    "Repeating children who cannot perform",
+                    "Giving admission to children who are intellectually good"
+                ],
+                "answer": "Making the school environment ‘rich’ with materials and human resources"
+            },
+            {
+                "question": "It is impossible to train a mentally retarded child to acquire self-help skills",
+                "options": ["True", "False"],
+                "answer": "False"
+            },
+            {
+                "question": "Individuals with disabilities do not want to be trained to acquire skills for independent living",
+                "options": ["True", "False"],
+                "answer": "False"
+            },
+            {
+                "question": "The following concepts carry the idea of movement of exceptional children to the mainstream education except",
+                "options": ["mainstreaming", "Inclusion", "Integration", "Institutionalization"],
+                "answer": "Institutionalization"
+            },
+            {
+                "question": "Which of the following best explains exceptional children?",
+                "options": [
+                    "Children who are bright",
+                    "Children with disabilities",
+                    "Children who are gifted and talented and those with disabilities",
+                    "Children who are blind, deaf and mentally retarded"
+                ],
+                "answer": "Children who are gifted and talented and those with disabilities"
+            },
+            {
+                "question": "All individuals with impairment are handicapped",
+                "options": ["True", "False"],
+                "answer": "False"
+            },
+            {
+                "question": "Labels are desirable because",
+                "options": [
+                    "They cause students to acquire negative self-concept",
+                    "Exceptional children are readily accepted by peers",
+                    "Allow professionals to keep learners out of regular programmed",
+                    "They cause teachers to achieve self-fulfilling prophecy"
+                ],
+                "answer": "They cause teachers to achieve self-fulfilling prophecy"
+            },
+            {
+                "question": "Training people with disabilities in their most immediate communities in order to foster their integration is referred to as",
+                "options": ["Community-Based Rehabilitation", "Mainstreaming", "Normalization", "Inclusion"],
+                "answer": "Community-Based Rehabilitation"
+            },
+            {
+                "question": "Which of the following terms means classification into categories?",
+                "options": ["Mainstreaming", "Disability", "Labeling", "Impairment"],
+                "answer": "Labeling"
+            },
+            {
+                "question": "The specialist responsible for measuring the hearing threshold levels of individuals is called",
+                "options": ["Physiotherapists", "Optometrist", "Ophthalmologist", "Audiologists"],
+                "answer": "Audiologists"
+            },
+            {
+                "question": "The following professionals have similar functions: I. Itinerant teacher, II. Special education teacher, III. Peripatetic teacher, IV. Regular education teacher",
+                "options": ["I & II", "II & III", "I & III", "II & IV"],
+                "answer": "II & III"
+            },
+            {
+                "question": "Problems relating to abnormal behaviour are managed by",
+                "options": ["Psychologist", "Psychiatrist", "Special language therapists", "Special education administrator"],
+                "answer": "Psychologist"
+            },
+            {
+                "question": "Who provides and interprets information regarding the medical reports of exceptional children?",
+                "options": ["School Nurse", "School Psychologist", "Special Education teacher", "Regular Education teacher"],
+                "answer": "School Nurse"
+            },
+            {
+                "question": "Team approach to the management of exceptional children is an essential component in special education",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Ophthalmologist is a professional responsible for",
+                "options": [
+                    "Diagnosis and treatment of ear diseases",
+                    "Diagnosis and treatment of eye diseases",
+                    "Diagnosis and treatment of physical impairments",
+                    "Instruction and assessment"
+                ],
+                "answer": "Diagnosis and treatment of eye diseases"
+            },
+            {
+                "question": "Mention four professionals whose work relate to the medical profession",
+                "options": [
+                    "Ophthalmologist, Psychiatrist, Physiotherapist, School nurse"
+                ],
+                "answer": "Ophthalmologist, Psychiatrist, Physiotherapist, School nurse"
+            },
+            {
+                "question": "Mention four professionals whose work relate to the educational profession",
+                "options": [
+                    "Special education administrator, Special education teacher, School psychologist, Regular education teacher"
+                ],
+                "answer": "Special education administrator, Special education teacher, School psychologist, Regular education teacher"
+            },
+            {
+                "question": "The following are delivery models in special education except",
+                "options": ["Regular class", "Special class", "Homebound/Hospital", "Day school"],
+                "answer": "Day school"
+            },
+            {
+                "question": "Which of these options is the least restrictive?",
+                "options": [
+                    "Special class",
+                    "Regular class",
+                    "Regular class with consultation",
+                    "Regular class with itinerant"
+                ],
+                "answer": "Regular class with itinerant"
+            },
+            {
+                "question": "Which of these options is the most restrictive?",
+                "options": [
+                    "Regular class",
+                    "Special class",
+                    "Regular class with resource room",
+                    "Homebound/Hospital"
+                ],
+                "answer": "Homebound/Hospital"
+            },
+            {
+                "question": "Which of the educational environment do professionals monitor and assess the child’s condition closely?",
+                "options": [
+                    "Regular class",
+                    "Special class",
+                    "Hospital",
+                    "Regular class with resource room"
+                ],
+                "answer": "Regular class with resource room"
+            },
+            {
+                "question": "Which of the following best describes the resource room option?",
+                "options": [
+                    "Instruction is given on pull out basis",
+                    "Instruction is given while the child remains in his/her class",
+                    "Special teachers provide for the instructional needs",
+                    "The interaction is between the teacher and the consultant"
+                ],
+                "answer": "Instruction is given on pull out basis"
+            },
+            {
+                "question": "Which of these options will be the most suitable for a severe mentally retarded individual?",
+                "options": [
+                    "Special school",
+                    "Resource room",
+                    "Homebound",
+                    "Hospital"
+                ],
+                "answer": "Special school"
+            },
+            {
+                "question": "In the regular school option, services are provided by",
+                "options": [
+                    "Only itinerant teacher",
+                    "Itinerant teacher and consultant",
+                    "Only regular school teacher",
+                    "Only resource centre specialist"
+                ],
+                "answer": "Itinerant teacher and consultant"
+            },
+            {
+                "question": "The best option for a mild visually-impaired child is regular class with itinerant teacher",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Which instrument is used for measuring hearing threshold levels of an individual?",
+                "options": ["Audiometer"],
+                "answer": "Audiometer"
+            },
+            {
+                "question": "A system of combination of six dots to represent letters is called",
+                "options": ["Braille"],
+                "answer": "Braille"
+            },
+            {
+                "question": "To measure one’s visual acuity we use",
+                "options": ["Snellen Chart"],
+                "answer": "Snellen Chart"
+            },
+            {
+                "question": "The instrument that is used to teach speech to the hearing impaired is called",
+                "options": ["Speech Training Unit"],
+                "answer": "Speech Training Unit"
+            },
+            {
+                "question": "To be able to hear sounds from the environment the hearing impaired individual wears",
+                "options": ["Hearing Aids"],
+                "answer": "Hearing Aids"
+            },
+            {
+                "question": "Otoscope is used for viewing",
+                "options": ["The Ear Drum"],
+                "answer": "The Ear Drum"
+            },
+            {
+                "question": "The types of Braille that are common are",
+                "options": ["Perkins Braillers", "Lavender Brailler"],
+                "answer": "Perkins Braillers"
+            },
+            {
+                "question": "When the readings on the audiometer indicate 70dB, it means the individual is",
+                "options": ["Deaf", "Normal hearing"],
+                "answer": "Deaf"
+            },
+            {
+                "question": "Who are the Gifted and Talented?",
+                "options": [
+                    "Individuals who exhibit high performance capability in intellectual, creative and/or artistic areas"
+                ],
+                "answer": "Individuals who exhibit high performance capability in intellectual, creative and/or artistic areas"
+            },
+            {
+                "question": "What is the different between the gifted and talented?",
+                "options": [
+                    "The gifted are better in visual arts than the talented",
+                    "The talented are better intellectually than the gifted",
+                    "The gifted perform better intellectually than the talented",
+                    "The talented perform better intellectually than the gifted"
+                ],
+                "answer": "The talented perform better intellectually than the gifted"
+            },
+            {
+                "question": "Why do the gifted become rebellious and stubborn?",
+                "options": [
+                    "Because teachers ask them several questions",
+                    "Because they have many things to do in the school",
+                    "Because they think they know too much",
+                    "Because instructions could become monotonous"
+                ],
+                "answer": "Because they think they know too much"
+            },
+            {
+                "question": "The gifted are wonderful readers",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "The three most common elements in identifying the gifted and talented are",
+                "options": [
+                    "Above-average general abilities, A high level of task commitment, Creativity"
+                ],
+                "answer": "Above-average general abilities, A high level of task commitment, Creativity"
+            },
+            {
+                "question": "What are the two main factors responsible for giftedness and talentedness?",
+                "options": [
+                    "Genetic/Heredity and Environment"
+                ],
+                "answer": "Genetic/Heredity and Environment"
+            },
+            {
+                "question": "Give two reasons why the gifted and talented need special education.",
+                "options": [
+                    "To help them realize their vision and To help them develop their potentialities"
+                ],
+                "answer": "To help them realize their vision and To help them develop their potentialities"
+            },
+            {
+                "question": "What can teachers do to whip up school interest in the gifted and talented?",
+                "options": [
+                    "They have to make lessons very interesting and challenging",
+                    "They have to allow them to do what they like",
+                    "They have to send them on errands",
+                    "They have to make instructions less difficult"
+                ],
+                "answer": "They have to make lessons very interesting and challenging"
+            },
+            {
+                "question": "The three main criteria for identifying a mentally retarded child are",
+                "options": [
+                    "Level of intellectual functioning, Competence in self-help skills/social skills, Age of occurrence"
+                ],
+                "answer": "Level of intellectual functioning, Competence in self-help skills/social skills, Age of occurrence"
+            },
+            {
+                "question": "The mentally retarded perform a little above average",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Which categories of the mentally retarded is educable?",
+                "options": [
+                    "The severely retarded",
+                    "The moderately retarded",
+                    "The mildly retarded",
+                    "The profound"
+                ],
+                "answer": "The mildly retarded"
+            },
+            {
+                "question": "Why are mentally retarded unable to do academic work?",
+                "options": [
+                    "Because teachers do not teach them well",
+                    "Because of their subnormal intellectual functioning",
+                    "Because of their level-headedness",
+                    "Because of their inability to associate with others"
+                ],
+                "answer": "Because of their subnormal intellectual functioning"
+            },
+            {
+                "question": "All mentally retarded individuals have difficulties interacting with others",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Which of the following is NOT an emotional problem exhibited by the mentally retarded?",
+                "options": ["Withdrawal", "Restlessness", "Inattentiveness", "Loneliness"],
+                "answer": "Loneliness"
+            },
+            {
+                "question": "One major example of the genetic cause of mental retardation is",
+                "options": ["Drugs", "Diseases", "Lead poison", "Down’s syndrome"],
+                "answer": "Down’s syndrome"
+            },
+            {
+                "question": "Which of these is NOT an example of environmental cause of mental retardation?",
+                "options": [
+                    "Chromosomal abnormality",
+                    "Mental malnutrition",
+                    "Maternal psychological state",
+                    "Drugs"
+                ],
+                "answer": "Chromosomal abnormality"
+            },
+            {
+                "question": "Which of these is NOT a traditional explanation of the cause of mental retardation?",
+                "options": [
+                    "Witchcraft",
+                    "Diseases",
+                    "Punishment from gods",
+                    "Violation of tradition"
+                ],
+                "answer": "Witchcraft"
+            },
+            {
+                "question": "Learning disabilities is as old as geography",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Which of the following is NOT an aspect of learning disability?",
+                "options": ["inability to read", "inability to listen", "inability to walk", "inability to write"],
+                "answer": "inability to walk"
+            },
+            {
+                "question": "One major description of learning disability is:",
+                "options": [
+                    "It is a heterogeneous group of disorders",
+                    "It is a disability that affects every child",
+                    "It is a condition that cannot be cured",
+                    "It is basically a psychological process"
+                ],
+                "answer": "It is a heterogeneous group of disorders"
+            },
+            {
+                "question": "Learning disability is a school-related problem",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "What do you understand by developmental imbalances?",
+                "options": [
+                    "The child’s development is well balanced",
+                    "The child does well in some discipline but fails in others",
+                    "The child’s performance matches with his/her level of development",
+                    "The child’s progress is stable"
+                ],
+                "answer": "The child’s performance matches with his/her level of development"
+            },
+            {
+                "question": "What is meant by dyslexia?",
+                "options": [
+                    "Inability to write letters",
+                    "Inability to do mathematics",
+                    "Inability to remember what is heard",
+                    "Inability to read"
+                ],
+                "answer": "Inability to read"
+            },
+            {
+                "question": "Explain why children with learning disabilities do not exhibit the same characteristics.",
+                "options": [
+                    "Because the disorders are different"
+                ],
+                "answer": "Because the disorders are different"
+            },
+            {
+                "question": "Which of the following is not a characteristic of the learning disabled?",
+                "options": [
+                    "Difficulty in retrieving what is learned",
+                    "Difficulty in sharing items with peers",
+                    "Difficulty in selecting what to eat",
+                    "Difficulty in copying what is on chalkboard."
+                ],
+                "answer": "Difficulty in selecting what to eat"
+            },
+            {
+                "question": "The main cause of learning disabilities is central nervous system dysfunction",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "What is meant by sensory impairment?",
+                "options": [
+                    "It is the loss of hearing and taste organs",
+                    "It is losses found in hearing and vision",
+                    "It is the excess use of the sense organ",
+                    "It is hearing and speech losses"
+                ],
+                "answer": "It is losses found in hearing and vision"
+            },
+            {
+                "question": "Which of the following is not part of sensory impairment?",
+                "options": ["Low vision", "Hard-of-hearing", "Blindness", "High vision"],
+                "answer": "High vision"
+            },
+            {
+                "question": "Hearing losses that occur after birth are called",
+                "options": [
+                    "Hard-of-hearing",
+                    "Congenital hearing losses",
+                    "Adventitious hearing losses",
+                    "Conductive hearing losses"
+                ],
+                "answer": "Hard-of-hearing"
+            },
+            {
+                "question": "Sensorineural hearing losses occur mainly in the",
+                "options": ["Outer ear", "Middle ear", "Inner ear", "Outer and middle ear"],
+                "answer": "Inner ear"
+            },
+            {
+                "question": "What role does the tympanic membrane play in human hearing?",
+                "options": [
+                    "It vibrates sound",
+                    "It amplifies sound",
+                    "It decongests",
+                    "It decays sound"
+                ],
+                "answer": "It amplifies sound"
+            },
+            {
+                "question": "Which of the following is not a characteristic of the hearing impaired?",
+                "options": [
+                    "Shouting when speaking to someone",
+                    "Experiencing dizziness after hard work",
+                    "Asking for instructions to be repeated",
+                    "Appearing reluctant to speak freely"
+                ],
+                "answer": "Appearing reluctant to speak freely"
+            },
+            {
+                "question": "The two main types of visual impairment are:",
+                "options": [
+                    "High and low vision",
+                    "Blindness and partially sighted",
+                    "High vision and blindness",
+                    "Partially sighted and high vision"
+                ],
+                "answer": "Blindness and partially sighted"
+            },
+            {
+                "question": "Which of the structures of the eyes is responsible for refraction?",
+                "options": ["Lens", "Retina", "Cornea", "Vitreous humor"],
+                "answer": "Cornea"
+            },
+            {
+                "question": "Children with low vision can learn best by the use of Braille",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Which of the following is not a cause of hearing impairment?",
+                "options": [
+                    "Loud sounds from machines",
+                    "Traumatic experience",
+                    "Refractive errors",
+                    "Diseases"
+                ],
+                "answer": "Refractive errors"
+            },
+            {
+                "question": "Which of the following is not a cause of visual impairment?",
+                "options": [
+                    "Nystagmus",
+                    "Refractive errors",
+                    "Glaucoma",
+                    "Noise pollution"
+                ],
+                "answer": "Noise pollution"
+            },
+            {
+                "question": "Physical disabilities /disorders can best be explained as…..",
+                "options": [
+                    "The inability to use body effectively",
+                    "The inability to perform fine motor skills",
+                    "The inability to perform gross motor skills",
+                    "The inability to cut and write"
+                ],
+                "answer": "The inability to use body effectively"
+            },
+            {
+                "question": "The two main physical disorders are ……….",
+                "options": [
+                    "orthopaedic and neurological disorders",
+                    "neurological and musculoskeletal disorders",
+                    "musculoskeletal and cerebral palsy",
+                    "cerebral palsy and epilepsy"
+                ],
+                "answer": "neurological and musculoskeletal disorders"
+            },
+            {
+                "question": "Neurological disorders includes………",
+                "options": [
+                    "polio, cleft lip and cleft palate",
+                    "cerebral palsy, epilepsy arthritis",
+                    "epilepsy spinal cord injury and polio",
+                    "cerebral palsy, and epilepsy and spinal cord injury"
+                ],
+                "answer": "epilepsy spinal cord injury and polio"
+            },
+            {
+                "question": "Which of the disorders stems from disorders in the cerebral nervous system?",
+                "options": [
+                    "musculoskeletal only",
+                    "neurological only",
+                    "both musculoskeletal and neurological",
+                    "neurological and muscular dystrophy"
+                ],
+                "answer": "both musculoskeletal and neurological"
+            },
+            {
+                "question": "Physical disorders make the person experience problems in fine and gross motor skills",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "One major characteristic of epileptic during major crisis is",
+                "options": [
+                    "sudden jerking motion during crisis delays in gross motor skills",
+                    "delays in gross motor skills",
+                    "delays in fine motor skills",
+                    "voluntary seizure during routine activities"
+                ],
+                "answer": "sudden jerking motion during crisis delays in gross motor skills"
+            },
+            {
+                "question": "Which of the following is not a cause of physical disorders?",
+                "options": [
+                    "Poliomyelitis",
+                    "accidents",
+                    "onchocerciasis",
+                    "genetic influences"
+                ],
+                "answer": "onchocerciasis"
+            },
+            {
+                "question": "Which of the following is not an adaptation strategy for physical disorders?",
+                "options": [
+                    "the use of wheel chairs braces",
+                    "the use of elastic rubber bands and hand splints",
+                    "the use of crutches walkers",
+                    "the use of swivel chairs and leg splints"
+                ],
+                "answer": "the use of swivel chairs and leg splints"
+            },
+            {
+                "question": "Individuals with health disorders can best be described as",
+                "options": [
+                    "those with mental illness",
+                    "those with problems related to medication",
+                    "those with serious metabolic disorders",
+                    "those with respiratory disorders"
+                ],
+                "answer": "those with respiratory disorders"
+            },
+            {
+                "question": "Which of the following is not a health disorder?",
+                "options": [
+                    "metabolic disorders",
+                    "cardiopulmonary conditions",
+                    "cystic fibrosis",
+                    "mental retardation"
+                ],
+                "answer": "mental retardation"
+            },
+            {
+                "question": "Why is it difficult to define behavioural disorders?",
+                "options": [
+                    "Because they affect all people",
+                    "Because what is appropriate or inappropriate is relative",
+                    "Because teachers have difficulties instructing them",
+                    "Because children manifest complex behaviours"
+                ],
+                "answer": "Because what is appropriate or inappropriate is relative"
+            },
+            {
+                "question": "The criteria for defining behavioural disorders include all except",
+                "options": [
+                    "extension",
+                    "duration",
+                    "frequency",
+                    "topography"
+                ],
+                "answer": "extension"
+            },
+            {
+                "question": "Which of the following is not an example of behavioural disorder?",
+                "options": [
+                    "conduct disorder",
+                    "socialized aggression",
+                    "temperament",
+                    "immaturity"
+                ],
+                "answer": "temperament"
+            },
+            {
+                "question": "Two examples of conduct disorders are",
+                "options": [
+                    "Bossy and disrespect",
+                    "rule violation and statement of worry",
+                    "substance abuse and distractive",
+                    "unhappiness and shyness"
+                ],
+                "answer": "rule violation and statement of worry"
+            },
+            {
+                "question": "Twins study has been used to confirm the influence of genetic/biological factors on behavioural disorders",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Which of these is not a mode for managing behavioral disorders?",
+                "options": [
+                    "Psychobiology",
+                    "Humanistic",
+                    "Psychodynamic",
+                    "Behavioral"
+                ],
+                "answer": "Humanistic"
+            },
+            {
+                "question": "Communication disorders can best be explained as:",
+                "options": [
+                    "Defects in speech and language",
+                    "defects in speech and voice disorders",
+                    "Defects in voice disorders and articulation",
+                    "defects in phonology and syntax"
+                ],
+                "answer": "Defects in speech and language"
+            },
+            {
+                "question": "The two main types of communication disorders are:",
+                "options": [
+                    "Speech and fluency disorders",
+                    "speech and phonology disorders",
+                    "speech and morphology disorders",
+                    "speech and language disorders"
+                ],
+                "answer": "speech and language disorders"
+            },
+            {
+                "question": "Language disorders are classified as",
+                "options": [
+                    "Expressive and impressive",
+                    "expressive and repressive",
+                    "expressive and receptive",
+                    "Expressive and dynamism"
+                ],
+                "answer": "expressive and receptive"
+            },
+            {
+                "question": "Individuals with communication disorders tend to mix up more with peers",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Only teachers do assessment",
+                "options": ["True", "False"],
+                "answer": "False"
+            },
+            {
+                "question": "There is only one comprehensive definition for assessment",
+                "options": ["True", "False"],
+                "answer": "False"
+            },
+            {
+                "question": "Any good definition of assessment should include “process” and “product”",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Assessment is concerned with the collection of educationally relevant information",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Special education can be effective if there is assessment",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Assessment can be efficient if it is done once",
+                "options": ["True", "False"],
+                "answer": "False"
+            },
+            {
+                "question": "A team of experts should do assessment",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Assessment should be done using one tool (technique)",
+                "options": ["True", "False"],
+                "answer": "False"
+            },
+            {
+                "question": "Information needed for decision on eligibility should include the nature of the child’s needs",
+                "options": ["True", "False"],
+                "answer": "True"
+            },
+            {
+                "question": "Assessment should end with the termination of problem",
+                "options": ["True", "False"],
+                "answer": "False"
+            },
+            {
+                "question": "What is screening?",
+                "options": [
+                    "The process of assisting children to learn",
+                    "The process of finding out if a child has a problem",
+                    "The process of asking for thorough evaluation",
+                    "The process of referring children to professionals"
+                ],
+                "answer": "The process of finding out if a child has a problem"
+            },
+            {
+                "question": "The most effective way of screening is involving",
+                "options": [
+                    "A large number of children",
+                    "A large number of parents",
+                    "A large number of medical professionals",
+                    "A large number of teachers"
+                ],
+                "answer": "A large number of medical professionals"
+            },
+            {
+                "question": "Screening can be done by all except",
+                "options": [
+                    "Teachers",
+                    "Parents",
+                    "Nurses",
+                    "Accountants"
+                ],
+                "answer": "Accountants"
+            },
+            {
+                "question": "Which of the following is not an instrument for screening?",
+                "options": ["Monitoring", "testing", "interviewing", "observation"],
+                "answer": "Monitoring"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        const totalQuestions = questions.length;
+
+        // DOM Elements
+        const popupOverlay = document.getElementById("popup-overlay");
+        const subscribeBtn = document.getElementById("subscribe-btn");
+        const startBtn = document.getElementById("start-btn");
+        const quizContainer = document.getElementById("quiz-container");
+        const questionText = document.getElementById("question-text");
+        const optionsContainer = document.getElementById("options-container");
+        const feedbackDiv = document.getElementById("feedback");
+        const scoreSpan = document.getElementById("score");
+        const totalSpan = document.getElementById("total");
+        const userNameSpan = document.getElementById("user-name");
+
+        // When the subscribe button is clicked, open the YouTube channel in a new tab.
+        subscribeBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            window.open("https://youtube.com/@genielabgh", "_blank");
+        });
+
+        // When the start quiz button is clicked, ask for the user's name and start the quiz.
+        startBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            let name = prompt("Please enter your name:");
+            userNameSpan.textContent = name && name.trim() !== "" ? name : "User";
+            popupOverlay.style.display = "none";
+            quizContainer.style.display = "block";
+            totalSpan.textContent = totalQuestions;
+            showQuestion();
+        });
+
+        // Display the current question and its options.
+        function showQuestion() {
+            feedbackDiv.textContent = "";
+            if (currentQuestionIndex < totalQuestions) {
+                const currentQuestion = questions[currentQuestionIndex];
+                questionText.textContent = currentQuestion.question;
+                optionsContainer.innerHTML = "";
+                currentQuestion.options.forEach(option => {
+                    const button = document.createElement("button");
+                    button.textContent = option;
+                    button.classList.add("option-btn");
+                    button.addEventListener("click", function (e) {
+                        checkAnswer(option, e.target);
+                    });
+                    optionsContainer.appendChild(button);
+                });
+            } else {
+                showResult();
+            }
+        }
+
+        // Check the selected answer, update the score, and provide color feedback.
+        function checkAnswer(selected, selectedButton) {
+            const currentQuestion = questions[currentQuestionIndex];
+            const buttons = document.querySelectorAll(".option-btn");
+            // Disable all buttons
+            buttons.forEach(btn => { btn.disabled = true; });
+            // Mark correct answer green and selected wrong answer red
+            buttons.forEach(btn => {
+                if (btn.textContent === currentQuestion.answer) {
+                    btn.style.backgroundColor = "green";
+                }
+                if (btn === selectedButton && selected !== currentQuestion.answer) {
+                    btn.style.backgroundColor = "red";
+                }
+            });
+            if (selected === currentQuestion.answer) {
+                score++;
+                feedbackDiv.innerHTML = "<p class='correct'>Correct!</p>";
+            } else {
+                feedbackDiv.innerHTML = "<p class='wrong'>Wrong!</p>";
+            }
+            scoreSpan.textContent = score;
+            currentQuestionIndex++;
+            setTimeout(showQuestion, 1500);
+        }
+
+        // Display the final result.
+        function showResult() {
+            optionsContainer.innerHTML = "";
+            questionText.textContent = "Quiz Completed!";
+            feedbackDiv.innerHTML = `<p>Your score: ${score} out of ${totalQuestions}</p>`;
+            let percentage = (score / totalQuestions) * 100;
+            if (percentage >= 50) {
+                feedbackDiv.innerHTML += "<p style='color: green; font-size: 24px;'>&#10004; Passed</p>";
+            } else {
+                feedbackDiv.innerHTML += "<p style='color: red; font-size: 24px;'>&#10006; Failed</p>";
+            }
+        }
+    </script>
+</body>
+
+</html>
