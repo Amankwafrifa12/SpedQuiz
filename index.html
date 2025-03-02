@@ -94,6 +94,26 @@
             color: #fff;
         }
 
+        #next-btn {
+            display: none;
+            /* Initially hidden */
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #28a745;
+            /* Green background */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        #next-btn:hover {
+            background-color: #218838;
+            /* Darker green on hover */
+        }
+
         .option-btn {
             width: 100%;
             margin: 10px 0;
@@ -145,9 +165,12 @@
         </div>
         <div id="quiz">
             <div id="question-container">
+                <h4 id="question-number"></h4>
                 <h3 id="question-text"></h3>
                 <div id="options-container"></div>
+                <button id="next-btn" style="display: none;">Next</button>
             </div>
+
             <div id="feedback"></div>
             <div id="score-container" style="margin-top: 20px;">
                 Score: <span id="score">0</span>/<span id="total">0</span>
@@ -1038,7 +1061,13 @@
         // Display the current question and its options.
         function showQuestion() {
             feedbackDiv.textContent = "";
+            // Check if there are questions remaining
             if (currentQuestionIndex < totalQuestions) {
+                // Update question number display
+                const questionNumberEl = document.getElementById("question-number");
+                questionNumberEl.textContent = "Question: " + (currentQuestionIndex + 1);
+
+                // Display current question text and options
                 const currentQuestion = questions[currentQuestionIndex];
                 questionText.textContent = currentQuestion.question;
                 optionsContainer.innerHTML = "";
@@ -1056,15 +1085,19 @@
             }
         }
 
+
+        // Updated checkAnswer function: Do not increment currentQuestionIndex here.
         function checkAnswer(selected, selectedButton) {
             const currentQuestion = questions[currentQuestionIndex];
             const buttons = document.querySelectorAll(".option-btn");
+            const nextBtn = document.getElementById("next-btn");
 
-            // Disable all buttons to prevent multiple clicks
+            // Disable all buttons to prevent further clicks
             buttons.forEach(btn => btn.disabled = true);
 
-            // If the selected answer is wrong, mark it red
+            // Check if the selected answer is correct or wrong
             if (selected !== currentQuestion.answer) {
+                // Mark the selected wrong answer in red
                 selectedButton.style.backgroundColor = "red";
                 feedbackDiv.innerHTML = "<p class='wrong'>Wrong!</p>";
             } else {
@@ -1072,17 +1105,30 @@
                 score++;
             }
 
-            // Mark the correct answer green
+            // Highlight the correct answer in green regardless
             buttons.forEach(btn => {
                 if (btn.textContent === currentQuestion.answer) {
                     btn.style.backgroundColor = "green";
                 }
             });
 
+            // Update the score display and persist progress
             scoreSpan.textContent = score;
-            currentQuestionIndex++;
-            setTimeout(showQuestion, 2000);
+            localStorage.setItem("score", score);
+            localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
+
+            // Show the Next button for manual progression
+            nextBtn.style.display = "block";
         }
+
+
+        document.getElementById("next-btn").addEventListener("click", function () {
+            // Increment the question index only here
+            currentQuestionIndex++;
+            localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
+            showQuestion();
+            this.style.display = "none"; // Hide Next button until needed again
+        });
 
 
         // Display the final result.
