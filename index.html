@@ -165,17 +165,24 @@
         </div>
         <div id="quiz">
             <div id="question-container">
-                <h4 id="question-number"></h4>
+                <div class="button" style="display: flex; justify-content: space-between;">
+                    <h4 id="question-number"></h4>
+                    <button id="restart-btn" style="background-color: #333; color: #f2f2f2;">Restart</button>
+                </div>
+
                 <h3 id="question-text"></h3>
                 <div id="options-container"></div>
-                <button id="next-btn" style="display: none;">Next</button>
-            </div>
 
-            <div id="feedback"></div>
-            <div id="score-container" style="margin-top: 20px;">
-                Score: <span id="score">0</span>/<span id="total">0</span>
+                <button id="next-btn" style="margin-right: 10px;">Next</button>
+
             </div>
         </div>
+
+        <div id="feedback"></div>
+        <div id="score-container" style="margin-top: 20px;">
+            Score: <span id="score">0</span>/<span id="total">0</span>
+        </div>
+    </div>
     </div>
 
     <script>
@@ -1090,17 +1097,65 @@
 
 
         // Updated checkAnswer function: Do not increment currentQuestionIndex here.
+        function showQuestion() {
+            feedbackDiv.textContent = "";
+            if (currentQuestionIndex < totalQuestions) {
+                // Update question number display
+                questionNumberEl.textContent = "Question: " + (currentQuestionIndex + 1);
+                const currentQuestion = questions[currentQuestionIndex];
+                questionText.textContent = currentQuestion.question;
+                optionsContainer.innerHTML = "";
+
+                // Check if this question was already answered
+                const savedAnswer = localStorage.getItem("answered_" + currentQuestionIndex);
+
+                currentQuestion.options.forEach(option => {
+                    const button = document.createElement("button");
+                    button.textContent = option;
+                    button.classList.add("option-btn");
+
+                    // If the question is already answered, disable the button and apply coloring.
+                    if (savedAnswer !== null) {
+                        button.disabled = true;
+                        if (option === currentQuestion.answer) {
+                            button.style.backgroundColor = "green";
+                        }
+                        if (option === savedAnswer && savedAnswer !== currentQuestion.answer) {
+                            button.style.backgroundColor = "red";
+                        }
+                    } else {
+                        // Otherwise, attach the click event to allow answering.
+                        button.addEventListener("click", function (e) {
+                            checkAnswer(option, e.target);
+                        });
+                    }
+                    optionsContainer.appendChild(button);
+                });
+
+                // If the question was answered, display appropriate feedback and show the Next button.
+                if (savedAnswer !== null) {
+                    if (savedAnswer === currentQuestion.answer) {
+                        feedbackDiv.innerHTML = "<p class='correct'>Correct!</p>";
+                    } else {
+                        feedbackDiv.innerHTML = "<p class='wrong'>Wrong!</p>";
+                    }
+                    nextBtn.style.display = "block";
+                }
+            } else {
+                showResult();
+            }
+        }
+
+        // Check the selected answer, update the score, and provide immediate feedback.
+        // Save the user's answer so that if the page is refreshed the question remains answered.
         function checkAnswer(selected, selectedButton) {
             const currentQuestion = questions[currentQuestionIndex];
             const buttons = document.querySelectorAll(".option-btn");
-            const nextBtn = document.getElementById("next-btn");
 
-            // Disable all buttons to prevent further clicks
+            // Disable all option buttons
             buttons.forEach(btn => btn.disabled = true);
 
-            // Check if the selected answer is correct or wrong
             if (selected !== currentQuestion.answer) {
-                // Mark the selected wrong answer in red
                 selectedButton.style.backgroundColor = "red";
                 feedbackDiv.innerHTML = "<p class='wrong'>Wrong!</p>";
             } else {
@@ -1108,24 +1163,22 @@
                 score++;
             }
 
-            // Highlight the correct answer in green regardless
+            // Highlight the correct answer green
             buttons.forEach(btn => {
                 if (btn.textContent === currentQuestion.answer) {
                     btn.style.backgroundColor = "green";
                 }
             });
 
-            // Update the score display and persist progress
             scoreSpan.textContent = score;
             localStorage.setItem("score", score);
-            localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
+            localStorage.setItem("answered_" + currentQuestionIndex, selected);
 
-            // Show the Next button for manual progression
             nextBtn.style.display = "block";
         }
 
 
-        // Next button handler: Increment index, save progress, and show the next question.
+        // Next button handler: increment index, save progress, and show the next question.
         nextBtn.addEventListener("click", function () {
             currentQuestionIndex++;
             localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
@@ -1133,22 +1186,6 @@
             nextBtn.style.display = "none";
         });
 
-
-        // Display the final result.
-        function showResult() {
-            optionsContainer.innerHTML = "";
-            questionText.textContent = "Quiz Completed!";
-            feedbackDiv.innerHTML = `<p>Your score: ${score} out of ${totalQuestions}</p>`;
-            let percentage = (score / totalQuestions) * 100;
-            if (percentage >= 50) {
-                feedbackDiv.innerHTML += "<p style='color: green; font-size: 24px;'>&#10004; Passed</p>";
-            } else {
-                feedbackDiv.innerHTML += "<p style='color: red; font-size: 24px;'>&#10006; Failed</p>";
-            }
-            // Optionally, clear saved progress
-            localStorage.removeItem("currentQuestionIndex");
-            localStorage.removeItem("score");
-        }
 
         // On page load, check if there's saved progress in localStorage.
         document.addEventListener("DOMContentLoaded", function () {
@@ -1169,6 +1206,12 @@
                 totalSpan.textContent = totalQuestions;
                 showQuestion();
             }
+        });
+
+        // Restart button: Clear localStorage and reload the page.
+        document.getElementById("restart-btn").addEventListener("click", function () {
+            localStorage.clear();
+            location.reload();
         });
     </script>
 </body>
