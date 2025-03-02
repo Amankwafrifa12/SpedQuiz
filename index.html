@@ -1030,16 +1030,19 @@
         const totalQuestions = questions.length;
 
         // DOM Elements
+        // DOM Elements
         const popupOverlay = document.getElementById("popup-overlay");
         const subscribeBtn = document.getElementById("subscribe-btn");
         const startBtn = document.getElementById("start-btn");
         const quizContainer = document.getElementById("quiz-container");
         const questionText = document.getElementById("question-text");
+        const questionNumberEl = document.getElementById("question-number");
         const optionsContainer = document.getElementById("options-container");
         const feedbackDiv = document.getElementById("feedback");
         const scoreSpan = document.getElementById("score");
         const totalSpan = document.getElementById("total");
         const userNameSpan = document.getElementById("user-name");
+        const nextBtn = document.getElementById("next-btn");
 
         // When the subscribe button is clicked, open the YouTube channel in a new tab.
         subscribeBtn.addEventListener("click", function (event) {
@@ -1122,12 +1125,12 @@
         }
 
 
-        document.getElementById("next-btn").addEventListener("click", function () {
-            // Increment the question index only here
+        // Next button handler: Increment index, save progress, and show the next question.
+        nextBtn.addEventListener("click", function () {
             currentQuestionIndex++;
             localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
             showQuestion();
-            this.style.display = "none"; // Hide Next button until needed again
+            nextBtn.style.display = "none";
         });
 
 
@@ -1142,7 +1145,31 @@
             } else {
                 feedbackDiv.innerHTML += "<p style='color: red; font-size: 24px;'>&#10006; Failed</p>";
             }
+            // Optionally, clear saved progress
+            localStorage.removeItem("currentQuestionIndex");
+            localStorage.removeItem("score");
         }
+
+        // On page load, check if there's saved progress in localStorage.
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedIndex = localStorage.getItem("currentQuestionIndex");
+            const savedScore = localStorage.getItem("score");
+            const savedName = localStorage.getItem("userName");
+
+            if (savedIndex !== null) {
+                currentQuestionIndex = parseInt(savedIndex, 10);
+                score = savedScore ? parseInt(savedScore, 10) : 0;
+                // Update the score display on page load
+                scoreSpan.textContent = score;
+                if (savedName) {
+                    userNameSpan.textContent = savedName;
+                }
+                popupOverlay.style.display = "none";
+                quizContainer.style.display = "block";
+                totalSpan.textContent = totalQuestions;
+                showQuestion();
+            }
+        });
     </script>
 </body>
 
