@@ -1056,31 +1056,34 @@
             }
         }
 
-        // Check the selected answer, update the score, and provide color feedback.
         function checkAnswer(selected, selectedButton) {
             const currentQuestion = questions[currentQuestionIndex];
             const buttons = document.querySelectorAll(".option-btn");
-            // Disable all buttons
-            buttons.forEach(btn => { btn.disabled = true; });
-            // Mark correct answer green and selected wrong answer red
+
+            // Disable all buttons to prevent multiple clicks
+            buttons.forEach(btn => btn.disabled = true);
+
+            // If the selected answer is wrong, mark it red
+            if (selected !== currentQuestion.answer) {
+                selectedButton.style.backgroundColor = "red";
+                feedbackDiv.innerHTML = "<p class='wrong'>Wrong!</p>";
+            } else {
+                feedbackDiv.innerHTML = "<p class='correct'>Correct!</p>";
+                score++;
+            }
+
+            // Mark the correct answer green
             buttons.forEach(btn => {
                 if (btn.textContent === currentQuestion.answer) {
                     btn.style.backgroundColor = "green";
                 }
-                if (btn === selectedButton && selected !== currentQuestion.answer) {
-                    btn.style.backgroundColor = "red";
-                }
             });
-            if (selected === currentQuestion.answer) {
-                score++;
-                feedbackDiv.innerHTML = "<p class='correct'>Correct!</p>";
-            } else {
-                feedbackDiv.innerHTML = "<p class='wrong'>Wrong!</p>";
-            }
+
             scoreSpan.textContent = score;
             currentQuestionIndex++;
             setTimeout(showQuestion, 1500);
         }
+
 
         // Display the final result.
         function showResult() {
