@@ -1158,7 +1158,7 @@
             questionNumberEl.textContent = "";
             questionText.textContent = "Quiz Completed!";
             // Display final score and percentage.
-            feedbackDiv.innerHTML = `<p><strong>Your final score:</strong> ${score} out of ${totalQuestions}</p>`;
+            feedbackDiv.innerHTML = `<p><strong>Your final score is:</strong> ${score} out of ${totalQuestions}</p>`;
             let percentage = (score / totalQuestions) * 100;
             if (percentage >= 50) {
                 feedbackDiv.innerHTML += "<p style='color: green; font-size: 24px;'>&#10004; Passed</p>";
