@@ -1057,11 +1057,19 @@
             window.open("https://youtube.com/@genielabgh", "_blank");
         });
 
-        // When the start quiz button is clicked, ask for the user's name and start the quiz.
+        // When the Start Quiz button is clicked, prompt for the user's name (if not already saved) and start the quiz.
         startBtn.addEventListener("click", function (event) {
             event.preventDefault();
-            let name = prompt("Please enter your name:");
-            userNameSpan.textContent = name && name.trim() !== "" ? name : "User";
+            // If no userName is already saved, ask for it.
+            if (!localStorage.getItem("userName")) {
+                let name = prompt("Please enter your name:");
+                userNameSpan.textContent = name && name.trim() !== "" ? name : "User";
+                localStorage.setItem("userName", userNameSpan.textContent);
+            } else {
+                // If already saved, display it.
+                userNameSpan.textContent = localStorage.getItem("userName");
+            }
+            // Hide popup and show quiz container
             popupOverlay.style.display = "none";
             quizContainer.style.display = "block";
             totalSpan.textContent = totalQuestions;
@@ -1198,6 +1206,7 @@
                 score = savedScore ? parseInt(savedScore, 10) : 0;
                 // Update the score display on page load
                 scoreSpan.textContent = score;
+
                 if (savedName) {
                     userNameSpan.textContent = savedName;
                 }
