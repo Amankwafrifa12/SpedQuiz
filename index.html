@@ -1037,93 +1037,71 @@
         const totalQuestions = questions.length;
 
         // DOM Elements
-        // DOM Elements
         const popupOverlay = document.getElementById("popup-overlay");
         const subscribeBtn = document.getElementById("subscribe-btn");
         const startBtn = document.getElementById("start-btn");
         const quizContainer = document.getElementById("quiz-container");
-        const questionText = document.getElementById("question-text");
         const questionNumberEl = document.getElementById("question-number");
+        const questionText = document.getElementById("question-text");
         const optionsContainer = document.getElementById("options-container");
         const feedbackDiv = document.getElementById("feedback");
         const scoreSpan = document.getElementById("score");
         const totalSpan = document.getElementById("total");
         const userNameSpan = document.getElementById("user-name");
         const nextBtn = document.getElementById("next-btn");
+        const restartBtn = document.getElementById("restart-btn");
 
-        // When the subscribe button is clicked, open the YouTube channel in a new tab.
+        // Subscribe button: open YouTube channel in new tab.
         subscribeBtn.addEventListener("click", function (event) {
             event.preventDefault();
             window.open("https://youtube.com/@genielabgh", "_blank");
         });
 
-        // When the Start Quiz button is clicked, prompt for the user's name (if not already saved) and start the quiz.
+        // Start Quiz button: prompt for user name (if not saved), then start quiz.
         startBtn.addEventListener("click", function (event) {
             event.preventDefault();
-            // If no userName is already saved, ask for it.
             if (!localStorage.getItem("userName")) {
                 let name = prompt("Please enter your name:");
                 userNameSpan.textContent = name && name.trim() !== "" ? name : "User";
                 localStorage.setItem("userName", userNameSpan.textContent);
             } else {
-                // If already saved, display it.
                 userNameSpan.textContent = localStorage.getItem("userName");
             }
-            // Hide popup and show quiz container
             popupOverlay.style.display = "none";
             quizContainer.style.display = "block";
             totalSpan.textContent = totalQuestions;
             showQuestion();
         });
 
-        // Display the current question and its options.
-        function showQuestion() {
-            feedbackDiv.textContent = "";
-            // Check if there are questions remaining
-            if (currentQuestionIndex < totalQuestions) {
-                // Update question number display
-                const questionNumberEl = document.getElementById("question-number");
-                questionNumberEl.textContent = "Question: " + (currentQuestionIndex + 1);
+        // Next button: increment question index and show next question.
+        nextBtn.addEventListener("click", function () {
+            currentQuestionIndex++;
+            localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
+            showQuestion();
+            nextBtn.style.display = "none";
+        });
 
-                // Display current question text and options
-                const currentQuestion = questions[currentQuestionIndex];
-                questionText.textContent = currentQuestion.question;
-                optionsContainer.innerHTML = "";
-                currentQuestion.options.forEach(option => {
-                    const button = document.createElement("button");
-                    button.textContent = option;
-                    button.classList.add("option-btn");
-                    button.addEventListener("click", function (e) {
-                        checkAnswer(option, e.target);
-                    });
-                    optionsContainer.appendChild(button);
-                });
-            } else {
-                showResult();
-            }
-        }
+        // Restart button: clear progress and reload the page.
+        restartBtn.addEventListener("click", function () {
+            localStorage.clear();
+            location.reload();
+        });
 
-
-        // Updated checkAnswer function: Do not increment currentQuestionIndex here.
+        // Show the current question and options.
         function showQuestion() {
             feedbackDiv.textContent = "";
             if (currentQuestionIndex < totalQuestions) {
-                // Update question number display
                 questionNumberEl.textContent = "Question: " + (currentQuestionIndex + 1);
                 const currentQuestion = questions[currentQuestionIndex];
                 questionText.textContent = currentQuestion.question;
                 optionsContainer.innerHTML = "";
-
-                // Check if this question was already answered
                 const savedAnswer = localStorage.getItem("answered_" + currentQuestionIndex);
-
                 currentQuestion.options.forEach(option => {
                     const button = document.createElement("button");
                     button.textContent = option;
                     button.classList.add("option-btn");
-
-                    // If the question is already answered, disable the button and apply coloring.
                     if (savedAnswer !== null) {
+                        // If already answered, disable the button and mark coloring.
                         button.disabled = true;
                         if (option === currentQuestion.answer) {
                             button.style.backgroundColor = "green";
@@ -1132,15 +1110,12 @@
                             button.style.backgroundColor = "red";
                         }
                     } else {
-                        // Otherwise, attach the click event to allow answering.
                         button.addEventListener("click", function (e) {
                             checkAnswer(option, e.target);
                         });
                     }
                     optionsContainer.appendChild(button);
                 });
-
-                // If the question was answered, display appropriate feedback and show the Next button.
                 if (savedAnswer !== null) {
                     if (savedAnswer === currentQuestion.answer) {
                         feedbackDiv.innerHTML = "<p class='correct'>Correct!</p>";
@@ -1154,15 +1129,11 @@
             }
         }
 
-        // Check the selected answer, update the score, and provide immediate feedback.
-        // Save the user's answer so that if the page is refreshed the question remains answered.
+        // Check the selected answer, update the score, and provide feedback.
         function checkAnswer(selected, selectedButton) {
             const currentQuestion = questions[currentQuestionIndex];
             const buttons = document.querySelectorAll(".option-btn");
-
-            // Disable all option buttons
             buttons.forEach(btn => btn.disabled = true);
-
             if (selected !== currentQuestion.answer) {
                 selectedButton.style.backgroundColor = "red";
                 feedbackDiv.innerHTML = "<p class='wrong'>Wrong!</p>";
@@ -1170,43 +1141,42 @@
                 feedbackDiv.innerHTML = "<p class='correct'>Correct!</p>";
                 score++;
             }
-
-            // Highlight the correct answer green
             buttons.forEach(btn => {
                 if (btn.textContent === currentQuestion.answer) {
                     btn.style.backgroundColor = "green";
                 }
             });
-
             scoreSpan.textContent = score;
             localStorage.setItem("score", score);
             localStorage.setItem("answered_" + currentQuestionIndex, selected);
-
             nextBtn.style.display = "block";
         }
 
-
-        // Next button handler: increment index, save progress, and show the next question.
-        nextBtn.addEventListener("click", function () {
-            currentQuestionIndex++;
-            localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
-            showQuestion();
+        // Show final result after all questions are answered.
+        function showResult() {
+            optionsContainer.innerHTML = "";
+            questionNumberEl.textContent = "";
+            questionText.textContent = "Quiz Completed!";
+            // Display final score and percentage.
+            feedbackDiv.innerHTML = `<p><strong>Your final score:</strong> ${score} out of ${totalQuestions}</p>`;
+            let percentage = (score / totalQuestions) * 100;
+            if (percentage >= 50) {
+                feedbackDiv.innerHTML += "<p style='color: green; font-size: 24px;'>&#10004; Passed</p>";
+            } else {
+                feedbackDiv.innerHTML += "<p style='color: red; font-size: 24px;'>&#10006; Failed</p>";
+            }
             nextBtn.style.display = "none";
-        });
+        }
 
-
-        // On page load, check if there's saved progress in localStorage.
+        // On page load, resume progress if available.
         document.addEventListener("DOMContentLoaded", function () {
             const savedIndex = localStorage.getItem("currentQuestionIndex");
             const savedScore = localStorage.getItem("score");
             const savedName = localStorage.getItem("userName");
-
             if (savedIndex !== null) {
                 currentQuestionIndex = parseInt(savedIndex, 10);
                 score = savedScore ? parseInt(savedScore, 10) : 0;
-                // Update the score display on page load
                 scoreSpan.textContent = score;
-
                 if (savedName) {
                     userNameSpan.textContent = savedName;
                 }
@@ -1215,12 +1185,6 @@
                 totalSpan.textContent = totalQuestions;
                 showQuestion();
             }
-        });
-
-        // Restart button: Clear localStorage and reload the page.
-        document.getElementById("restart-btn").addEventListener("click", function () {
-            localStorage.clear();
-            location.reload();
         });
     </script>
 </body>
