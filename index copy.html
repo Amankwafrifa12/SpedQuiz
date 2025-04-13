@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- Responsive Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>IntroSPED Quiz | GenieDev</title>
+    <meta name="title" content="IntroSPED Quiz App | GenieDev">
+    <meta name="description"
+        content="Take the IntroSPED Quiz App by GenieDev and test your knowledge on IntroSPED topics. Learn, challenge yourself, and have fun with interactive questions.">
+    <meta name="keywords" content="IntroSPED, Quiz, GenieLab, Education, IntroSPED Quiz, interactive quiz">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://genielab.rf.gd">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://genielab.rf.gd">
+    <meta property="og:title" content="IntroSPED Quiz App | GenieLab">
+    <meta property="og:description"
+        content="Take the IntroSPED Quiz App by GenieDev and test your knowledge on IntroSPED topics.">
+    <meta property="og:image" content="https://genielab.rf.gd/images/assets/4.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://genielab.rf.gd">
+    <meta property="twitter:title" content="IntroSPED Quiz App | GenieLab">
+    <meta property="twitter:description"
+        content="Take the IntroSPED Quiz App by GenieDev and test your knowledge on IntroSPED topics.">
+    <meta property="twitter:image" content="https://genielab.rf.gd/images/assets/4.jpg">
+
+    <style>
+        /* Mobile-first styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Popup overlay styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .subscribe-btn {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        .start-btn {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        #next-btn {
+            display: none;
+            /* Initially hidden */
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #28a745;
+            /* Green background */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        #prev-btn {
+            display: none;
+            /* Initially hidden */
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #4f4f4f;
+            /* Green background */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        #next-btn:hover {
+            background-color: #218838;
+            /* Darker green on hover */
+        }
+
+        .option-btn {
+            width: 100%;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+
+        .wrong {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Larger screens */
+        @media (min-width: 768px) {
+            .container {
+                margin: 40px auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Popup with two buttons and contact info -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup">
+            <h1>IntroSPEDQuiz - GenieDev</h1>
+            <p>Please support us by subscribing to our channel for more of this</p>
+            <div>
+                <button class="subscribe-btn" id="subscribe-btn">Subscribe</button>
+                <button class="start-btn" id="start-btn">Start Quiz</button>
+            </div>
+            <p>Contact us: +233592725542 | Email: genielabgh@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Main quiz container -->
+    <div class="container" id="quiz-container" style="display: none;">
+        <div id="welcome" style="text-align: center;">
+            <h2>IntroSPEDQuiz - GenieDev</h2>
+        </div>
+        <div id="quiz">
+            <div id="question-container">
+                <div class="button" style="display: flex; justify-content: space-between;">
+                    <h4 id="question-number"></h4>
+                    <button id="restart-btn" style="background-color: #333; color: #f2f2f2;">Restart</button>
+                </div>
+
+                <h3 id="question-text"></h3>
+                <div id="options-container"></div>
+
+                <!-- Replace the original two button declarations with this container -->
+                <div id="nav-buttons"
+                    style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 20px;">
+                    <button id="prev-btn" style="display: none;">Previous</button>
+                    <button id="next-btn">Next</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="feedback"></div>
+        <div id="score-container" style="margin-top: 20px;">
+            Score: <span id="score">0</span>/<span id="total">0</span>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        // Sample quiz data extracted from the PDF.
+        // (You can use an external JSON file and fetch it if needed.)
+        const questions = [
+
+            {
+                "question": "What is the IQ range for a child classified as having a mild intellectual disability?",
+                "options": ["20–35", "35–50", "50–70", "Above 70"],
+                "answer": "50–70"
+            },
+            {
+                "question": "Which of the following is not a component of adaptive behaviour?",
+                "options": ["Conceptual skills", "Practical skills", "Social skills", "Athletic skills"],
+                "answer": "Athletic skills"
+            },
+            {
+                "question": "What does ID stand for in special education?",
+                "options": ["Internal Disorder", "Intellectual Disability", "Individual Deficiency", "Intellect Development"],
+                "answer": "Intellectual Disability"
+            },
+            {
+                "question": "What is the IQ formula used in assessing intellectual disability?",
+                "options": ["(Chronological Age / Mental Age) × 100", "(Mental Age / Chronological Age) × 100", "(Mental Age × Chronological Age) × 100", "(Mental Age − Chronological Age) × 100"],
+                "answer": "(Mental Age / Chronological Age) × 100"
+            },
+            {
+                "question": "Which condition is associated with an accumulation of cerebrospinal fluid in the brain?",
+                "options": ["Microcephalus", "Hydrocephalus", "Down syndrome", "Fragile X syndrome"],
+                "answer": "Hydrocephalus"
+            },
+            {
+                "question": "Children with ID usually score around or below what number on an IQ test?",
+                "options": ["80", "70", "90", "75"],
+                "answer": "70"
+            },
+            {
+                "question": "Which of the following is a peri-natal cause of intellectual disability?",
+                "options": ["Fragile X syndrome", "Marasmus", "Birth asphyxia", "Lead poisoning"],
+                "answer": "Birth asphyxia"
+            },
+            {
+                "question": "Which of the following is not part of conceptual skills in adaptive behaviour?",
+                "options": ["Money concepts", "Brushing teeth", "Use of language", "Literacy"],
+                "answer": "Brushing teeth"
+            },
+            {
+                "question": "What does the term ‘developmental period’ refer to in the context of ID?",
+                "options": ["Period after birth", "Occurrence before the age of 18", "When learning stops", "After age 21"],
+                "answer": "Occurrence before the age of 18"
+            },
+            {
+                "question": "Which term refers to gaining knowledge without being directly taught?",
+                "options": ["Incidental learning", "Conceptualisation", "Instructional learning", "Social imitation"],
+                "answer": "Incidental learning"
+            },
+            {
+                "question": "Which of these is a strategy for improving motivation in children with ID?",
+                "options": ["Assign complex tasks", "Ignore mistakes", "Provide immediate feedback", "Use abstract materials"],
+                "answer": "Provide immediate feedback"
+            },
+            {
+                "question": "Which condition is due to a deficiency of thyroxin during the pre-natal period?",
+                "options": ["Fragile X syndrome", "Achondroplasia", "Down syndrome", "Gonorrhoea"],
+                "answer": "Achondroplasia"
+            },
+            {
+                "question": "Which type of support involves daily, regular involvement and is not time-limited?",
+                "options": ["Intermittent", "Limited", "Extensive", "Pervasive"],
+                "answer": "Extensive"
+            },
+            {
+                "question": "Which cognitive function involves forming mental images of things?",
+                "options": ["Evaluation", "Perception", "Reasoning", "Attention"],
+                "answer": "Perception"
+            },
+            {
+                "question": "Which of these is a social skill in adaptive behaviour?",
+                "options": ["Money management", "Brushing teeth", "Self-esteem", "Scheduling"],
+                "answer": "Self-esteem"
+            },
+            {
+                "question": "Which teaching strategy helps children with attention problems?",
+                "options": ["Use abstract concepts", "Use long lessons", "Remove distracters", "Skip questioning"],
+                "answer": "Remove distracters"
+            },
+            {
+                "question": "Which is a post-natal cause of intellectual disability?",
+                "options": ["Down syndrome", "Toxoplasmosis", "Kwashiorkor", "Breech delivery"],
+                "answer": "Kwashiorkor"
+            },
+            {
+                "question": "Children with ID often show delays in which of the following?",
+                "options": ["Language", "Habit training", "Walking", "All of the above"],
+                "answer": "All of the above"
+            },
+            {
+                "question": "Which strategy is effective for poor memory in children with ID?",
+                "options": ["Use abstract tasks", "Use rhymes and mnemonics", "Avoid feedback", "Limit practice"],
+                "answer": "Use rhymes and mnemonics"
+            },
+            {
+                "question": "Which classification of support is characterised by high intensity across all environments?",
+                "options": ["Limited", "Extensive", "Intermittent", "Pervasive"],
+                "answer": "Pervasive"
+            },
+
+            {
+                "question": "Which definition focuses on how well a person can use their vision for learning tasks?",
+                "options": ["Legal definition", "Medical definition", "Educational definition", "Psychological definition"],
+                "answer": "Educational definition"
+            },
+            {
+                "question": "What does a visual acuity of 20/200 imply?",
+                "options": ["Normal vision", "Severe vision loss", "Can see at 20 feet what others see at 200", "Blindness"],
+                "answer": "Can see at 20 feet what others see at 200"
+            },
+            {
+                "question": "What is the term for blurred vision caused by irregular curvature of the cornea?",
+                "options": ["Myopia", "Hyperopia", "Astigmatism", "Cataract"],
+                "answer": "Astigmatism"
+            },
+            {
+                "question": "What is referred to as 'tunnel vision'?",
+                "options": ["Peripheral blindness", "Central vision loss", "Field of vision limited to 20 degrees", "Low vision"],
+                "answer": "Field of vision limited to 20 degrees"
+            },
+            {
+                "question": "What causes vision loss due to damaged parts of the brain that interpret visual information?",
+                "options": ["Cataract", "Cortical Visual Impairment", "Nystagmus", "Retinitis pigmentosa"],
+                "answer": "Cortical Visual Impairment"
+            },
+            {
+                "question": "Which condition results in photo-sensitivity due to lack of melanin production?",
+                "options": ["Myopia", "Albinism", "Cataracts", "Strabismus"],
+                "answer": "Albinism"
+            },
+            {
+                "question": "What term refers to involuntary, rapid movement of the eyes?",
+                "options": ["Strabismus", "Lazy eye", "Nystagmus", "Presbyopia"],
+                "answer": "Nystagmus"
+            },
+            {
+                "question": "Which of these is a muscle dysfunction causing misalignment of the eyes?",
+                "options": ["Astigmatism", "Strabismus", "Cataract", "Achromia"],
+                "answer": "Strabismus"
+            },
+            {
+                "question": "Which hereditary disease causes night blindness and poor peripheral vision?",
+                "options": ["Lazy eye", "Glaucoma", "Retinitis pigmentosa", "Cortical visual impairment"],
+                "answer": "Retinitis pigmentosa"
+            },
+            {
+                "question": "Which visual issue is common in old age and causes difficulty focusing on nearby objects?",
+                "options": ["Myopia", "Presbyopia", "Hyperopia", "Albinism"],
+                "answer": "Presbyopia"
+            },
+            {
+                "question": "Which classification includes cataracts and glaucoma?",
+                "options": ["Refractive errors", "Muscle dysfunctions", "Structural impairments", "Cortical disorders"],
+                "answer": "Structural impairments"
+            },
+            {
+                "question": "What is the purpose of demarcating the chalkboard for visually impaired students?",
+                "options": ["To help teachers write better", "To ensure contrast", "To reduce noise", "To organise the classroom"],
+                "answer": "To ensure contrast"
+            },
+            {
+                "question": "What behaviour might indicate a visual problem in a child?",
+                "options": ["Frequent blinking", "Rubbing eyes excessively", "Daydreaming", "Yawning often"],
+                "answer": "Rubbing eyes excessively"
+            },
+            {
+                "question": "Which of these is NOT a characteristic of children with visual impairment?",
+                "options": ["Rocking movements", "Finger flicking", "Strong light preference", "Less extensive social networks"],
+                "answer": "Strong light preference"
+            },
+            {
+                "question": "Which method is used for identifying visual impairment in children?",
+                "options": ["XYZ method", "CBC method", "ABC method", "123 test"],
+                "answer": "ABC method"
+            },
+            {
+                "question": "What is the correct recommendation regarding light source placement in the classroom?",
+                "options": ["In front of the child", "Behind the child", "Above the teacher", "Near the board"],
+                "answer": "Behind the child"
+            },
+            {
+                "question": "What should teachers avoid doing when assigning work to visually impaired children?",
+                "options": ["Encouraging independence", "Leaving doors open", "Providing frequent eye rests", "Giving short close-up tasks"],
+                "answer": "Leaving doors open"
+            },
+            {
+                "question": "Which term describes reduced ability to see distant objects clearly?",
+                "options": ["Hyperopia", "Myopia", "Astigmatism", "Nystagmus"],
+                "answer": "Myopia"
+            },
+            {
+                "question": "Why might children with visual impairments have limited social networks?",
+                "options": ["Inability to speak", "Overprotection by teachers", "Victimisation and teasing", "Lack of hearing"],
+                "answer": "Victimisation and teasing"
+            },
+            {
+                "question": "What educational term describes children who must use Braille or other senses to learn?",
+                "options": ["Low vision", "Blind", "Partially sighted", "Sight impaired"],
+                "answer": "Blind"
+            },
+
+            {
+                "question": "What is the primary sense affected in individuals with hearing impairment?",
+                "options": [
+                    "Vision",
+                    "Audition",
+                    "Touch",
+                    "Smell"
+                ],
+                "answer": "Audition"
+            },
+            {
+                "question": "Which term describes a person who cannot use hearing to understand spoken language?",
+                "options": [
+                    "Hard of hearing",
+                    "Deaf",
+                    "Mute",
+                    "Blind"
+                ],
+                "answer": "Deaf"
+            },
+            {
+                "question": "Hearing loss that occurs before speech and language development is called:",
+                "options": [
+                    "Post-lingual loss",
+                    "Congenital loss",
+                    "Pre-lingual loss",
+                    "Acquired loss"
+                ],
+                "answer": "Pre-lingual loss"
+            },
+            {
+                "question": "What type of hearing loss results from issues in both the outer/middle and inner ear?",
+                "options": [
+                    "Conductive",
+                    "Sensorineural",
+                    "Mixed",
+                    "Central"
+                ],
+                "answer": "Mixed"
+            },
+            {
+                "question": "Auditory Processing Disorder is an example of which type of problem?",
+                "options": [
+                    "Peripheral",
+                    "Sensorineural",
+                    "Conductive",
+                    "Central"
+                ],
+                "answer": "Central"
+            },
+            {
+                "question": "What is the normal hearing range measured in decibels (dBHL)?",
+                "options": [
+                    "10–25 dBHL",
+                    "-10–25 dBHL",
+                    "0–40 dBHL",
+                    "-20–10 dBHL"
+                ],
+                "answer": "-10–25 dBHL"
+            },
+            {
+                "question": "Which prenatal factor is a possible cause of hearing loss?",
+                "options": [
+                    "Measles",
+                    "Ototoxicity",
+                    "Heredity",
+                    "High blood pressure"
+                ],
+                "answer": "Heredity"
+            },
+            {
+                "question": "What is a behavioural cue that may indicate hearing impairment in children?",
+                "options": [
+                    "Excessive blinking",
+                    "Frequent crying",
+                    "Restlessness in class",
+                    "Staring at lights"
+                ],
+                "answer": "Restlessness in class"
+            },
+            {
+                "question": "Which of the following is an assistive device for hearing impairment?",
+                "options": [
+                    "White cane",
+                    "Hearing aid",
+                    "Braille slate",
+                    "Wheelchair"
+                ],
+                "answer": "Hearing aid"
+            },
+            {
+                "question": "One physiological effect of noise-induced hearing loss is:",
+                "options": [
+                    "Improved sleep",
+                    "Tinnitus",
+                    "High morale",
+                    "Clearer speech"
+                ],
+                "answer": "Tinnitus"
+            },
+            {
+                "question": "Which professional typically helps with speech therapy for hearing-impaired children?",
+                "options": [
+                    "Audiologist",
+                    "Speech-language pathologist",
+                    "Occupational therapist",
+                    "Neurologist"
+                ],
+                "answer": "Speech-language pathologist"
+            },
+            {
+                "question": "What is the recommended distance between teacher and hearing-impaired child during conversation?",
+                "options": [
+                    "2 feet",
+                    "4 feet",
+                    "6 feet",
+                    "10 feet"
+                ],
+                "answer": "6 feet"
+            },
+            {
+                "question": "What might a child do to compensate for hearing loss when listening?",
+                "options": [
+                    "Turn away from the speaker",
+                    "Cup their ear",
+                    "Close their eyes",
+                    "Hum softly"
+                ],
+                "answer": "Cup their ear"
+            },
+            {
+                "question": "Which is NOT a typical symptom of hearing loss?",
+                "options": [
+                    "Difficulty following conversations",
+                    "Excessive talking",
+                    "Poor memory of spoken instructions",
+                    "Difficulty localizing sounds"
+                ],
+                "answer": "Excessive talking"
+            },
+            {
+                "question": "What should a teacher avoid when speaking to a hearing-impaired child?",
+                "options": [
+                    "Facing the child",
+                    "Writing on the board while talking",
+                    "Using gestures",
+                    "Speaking clearly"
+                ],
+                "answer": "Writing on the board while talking"
+            },
+            {
+                "question": "Which of these is a postnatal cause of hearing loss?",
+                "options": [
+                    "Rubella",
+                    "Prematurity",
+                    "Sickle cell",
+                    "Rh incompatibility"
+                ],
+                "answer": "Sickle cell"
+            },
+            {
+                "question": "A communication cue that may signal hearing loss is:",
+                "options": [
+                    "Looking down while speaking",
+                    "Lip-reading the speaker",
+                    "Shaking hands often",
+                    "Clapping continuously"
+                ],
+                "answer": "Lip-reading the speaker"
+            },
+            {
+                "question": "Which method is recommended to identify hearing impairment?",
+                "options": [
+                    "ABC Method",
+                    "XYZ Analysis",
+                    "Communication Model",
+                    "Hearing Grid"
+                ],
+                "answer": "ABC Method"
+            },
+            {
+                "question": "Which of the following is a social need consideration for children with hearing loss?",
+                "options": [
+                    "Allowing total independence",
+                    "Screaming to get attention",
+                    "Avoiding explanations to peers",
+                    "Preventing ridicule"
+                ],
+                "answer": "Preventing ridicule"
+            },
+            {
+                "question": "What device is surgically implanted to help severe hearing loss?",
+                "options": [
+                    "Spectacles",
+                    "Cochlear implant",
+                    "Hearing loop",
+                    "FM radio"
+                ],
+                "answer": "Cochlear implant"
+            },
+            {
+                "question": "What does the term 'physical disability' refer to?",
+                "options": [
+                    "Mental and emotional disorders",
+                    "Hearing and speech disorders",
+                    "Conditions affecting mobility and motor functions",
+                    "Learning and attention disabilities"
+                ],
+                "answer": "Conditions affecting mobility and motor functions"
+            },
+            {
+                "question": "Which of the following is NOT listed as a condition under physical disabilities?",
+                "options": [
+                    "Poliomyelitis",
+                    "Cerebral palsy",
+                    "Down syndrome",
+                    "Spinal cord injuries"
+                ],
+                "answer": "Down syndrome"
+            },
+            {
+                "question": "What does 'orthopedic impairment' affect?",
+                "options": [
+                    "Hearing and vision",
+                    "Skin and hair",
+                    "Skeletal system and associated muscles",
+                    "Respiratory and digestive systems"
+                ],
+                "answer": "Skeletal system and associated muscles"
+            },
+            {
+                "question": "What does 'quadriplegia' involve?",
+                "options": [
+                    "One arm and one leg",
+                    "Only the legs",
+                    "Only one side of the body",
+                    "All four limbs"
+                ],
+                "answer": "All four limbs"
+            },
+            {
+                "question": "Which condition involves motor impairments in the lower body or legs?",
+                "options": [
+                    "Quadriplegia",
+                    "Paraplegia",
+                    "Triplegia",
+                    "Monoplegia"
+                ],
+                "answer": "Paraplegia"
+            },
+            {
+                "question": "What is the meaning of 'hemiplegia'?",
+                "options": [
+                    "Damage to one limb",
+                    "Damage to all limbs",
+                    "Damage to one side of the body",
+                    "Damage to the lower limbs"
+                ],
+                "answer": "Damage to one side of the body"
+            },
+            {
+                "question": "Which form of cerebral palsy is described by a mix of types like spasticity and athetosis?",
+                "options": [
+                    "Mixed",
+                    "Ataxia",
+                    "Atonia",
+                    "Tremor"
+                ],
+                "answer": "Mixed"
+            },
+            {
+                "question": "Which of the following is true about cerebral palsy?",
+                "options": [
+                    "It is contagious",
+                    "It is progressive",
+                    "It is a disease",
+                    "It is not curable"
+                ],
+                "answer": "It is not curable"
+            },
+            {
+                "question": "Cerebral palsy is caused by which of the following?",
+                "options": [
+                    "Injury after age 10",
+                    "Injury before or during birth",
+                    "Lack of exercise",
+                    "Poor nutrition"
+                ],
+                "answer": "Injury before or during birth"
+            },
+            {
+                "question": "Which of the following is NOT commonly associated with cerebral palsy?",
+                "options": [
+                    "Speech problems",
+                    "Hearing impairments",
+                    "Digestive disorders",
+                    "Visual impairments"
+                ],
+                "answer": "Digestive disorders"
+            },
+            {
+                "question": "What type of CP causes involuntary movements?",
+                "options": [
+                    "Spasticity",
+                    "Tremor",
+                    "Athetosis",
+                    "Atonia"
+                ],
+                "answer": "Athetosis"
+            },
+            {
+                "question": "Which of these classroom practices helps prevent injury to children with disabilities?",
+                "options": [
+                    "Using competition to motivate",
+                    "Changing desks often",
+                    "Providing suitable writing materials",
+                    "Letting them sit wherever they want"
+                ],
+                "answer": "Providing suitable writing materials"
+            },
+            {
+                "question": "Which of the following specialists helps with self-help and recreation activities?",
+                "options": [
+                    "Prosthetist",
+                    "Orthotist",
+                    "Physical therapist",
+                    "Occupational therapist"
+                ],
+                "answer": "Occupational therapist"
+            },
+            {
+                "question": "Who is responsible for fitting braces and assistive devices?",
+                "options": [
+                    "Physician",
+                    "Prosthetist",
+                    "Orthotist",
+                    "Physiotherapist"
+                ],
+                "answer": "Orthotist"
+            },
+            {
+                "question": "Triplegia affects which limbs?",
+                "options": [
+                    "One arm and one leg",
+                    "Two legs and one arm",
+                    "All four limbs",
+                    "Only the trunk"
+                ],
+                "answer": "Two legs and one arm"
+            },
+            {
+                "question": "Which type of CP is marked by lack of coordination?",
+                "options": [
+                    "Spasticity",
+                    "Ataxia",
+                    "Rigidity",
+                    "Atonia"
+                ],
+                "answer": "Ataxia"
+            },
+            {
+                "question": "Which of the following is a visible characteristic in some children with cerebral palsy?",
+                "options": [
+                    "Drooling",
+                    "Rapid blinking",
+                    "Hair loss",
+                    "Trembling voice"
+                ],
+                "answer": "Drooling"
+            },
+            {
+                "question": "Which term refers to damage in only one limb?",
+                "options": [
+                    "Monoplegia",
+                    "Triplegia",
+                    "Paraplegia",
+                    "Hemiplegia"
+                ],
+                "answer": "Monoplegia"
+            },
+            {
+                "question": "Why should competition be discouraged in physical activities for children with disabilities?",
+                "options": [
+                    "It lowers their self-esteem",
+                    "They may become aggressive",
+                    "It may lead to accidents",
+                    "It can cause stress and injury"
+                ],
+                "answer": "It can cause stress and injury"
+            },
+            {
+                "question": "What does the term 'diplegia' imply?",
+                "options": [
+                    "Legs more affected than arms",
+                    "Arms more affected than legs",
+                    "Only one side is paralyzed",
+                    "All limbs equally affected"
+                ],
+                "answer": "Legs more affected than arms"
+            },
+            {
+                "question": "What does Autism Spectrum Disorder (ASD) primarily affect?",
+                "options": [
+                    "Digestive system",
+                    "Social skills and communication",
+                    "Motor coordination",
+                    "Visual processing"
+                ],
+                "answer": "Social skills and communication"
+            },
+            {
+                "question": "Which term describes the repetition of words or phrases over time in children with autism?",
+                "options": [
+                    "Verbal scripting",
+                    "Echolalia",
+                    "Hyperlexia",
+                    "Palilalia"
+                ],
+                "answer": "Echolalia"
+            },
+            {
+                "question": "What is a common sensory characteristic of children with autism?",
+                "options": [
+                    "Perfect pitch",
+                    "Increased taste sensitivity",
+                    "Hyper or hypo sensitivity to sensory input",
+                    "Increased pain threshold"
+                ],
+                "answer": "Hyper or hypo sensitivity to sensory input"
+            },
+            {
+                "question": "What is NOT a typical characteristic of communication impairment in autism?",
+                "options": [
+                    "Speech delays",
+                    "Rich vocabulary",
+                    "Limited speech use",
+                    "Repetitive language"
+                ],
+                "answer": "Rich vocabulary"
+            },
+            {
+                "question": "What type of disorder is autism?",
+                "options": [
+                    "Psychological disorder",
+                    "Emotional disturbance",
+                    "Developmental disability",
+                    "Physical impairment"
+                ],
+                "answer": "Developmental disability"
+            },
+            {
+                "question": "At what age does autism typically become evident?",
+                "options": [
+                    "Before age 3",
+                    "During adolescence",
+                    "At birth",
+                    "After age 10"
+                ],
+                "answer": "Before age 3"
+            },
+            {
+                "question": "Which of the following is a repetitive behaviour seen in autism?",
+                "options": [
+                    "Writing poems",
+                    "Drawing landscapes",
+                    "Hand flapping",
+                    "Excessive sleeping"
+                ],
+                "answer": "Hand flapping"
+            },
+            {
+                "question": "What is a potential cause or risk factor for autism?",
+                "options": [
+                    "Vaccinations",
+                    "Older parental age",
+                    "Low sugar intake",
+                    "Excessive screen time"
+                ],
+                "answer": "Older parental age"
+            },
+            {
+                "question": "Which of these is a professional who may diagnose autism?",
+                "options": [
+                    "Dermatologist",
+                    "Cardiologist",
+                    "Child neurologist",
+                    "Radiologist"
+                ],
+                "answer": "Child neurologist"
+            },
+            {
+                "question": "How is autism diagnosed?",
+                "options": [
+                    "Through a blood test",
+                    "Using an X-ray",
+                    "By observing behavior and development",
+                    "Via a genetic scan"
+                ],
+                "answer": "By observing behavior and development"
+            },
+            {
+                "question": "Which of the following best describes the learning style of many autistic children?",
+                "options": [
+                    "They are naturally social learners",
+                    "They enjoy group discussions",
+                    "They depend heavily on routines",
+                    "They prefer fast-paced instruction"
+                ],
+                "answer": "They depend heavily on routines"
+            },
+            {
+                "question": "What is a key classroom strategy for teaching children with ASD?",
+                "options": [
+                    "Punish rule-breaking",
+                    "Use sarcasm for humor",
+                    "Avoid routines",
+                    "Use clear visual aids"
+                ],
+                "answer": "Use clear visual aids"
+            },
+            {
+                "question": "Which of the following is NOT a sign of social impairment in autism?",
+                "options": [
+                    "Desire for solitude",
+                    "Frequent emotional outbursts",
+                    "Difficulty making friends",
+                    "Unusual eye contact"
+                ],
+                "answer": "Frequent emotional outbursts"
+            },
+            {
+                "question": "Which type of professional helps autistic children with classroom learning?",
+                "options": [
+                    "Special educator",
+                    "Nutritionist",
+                    "Pharmacist",
+                    "Physical therapist"
+                ],
+                "answer": "Special educator"
+            },
+            {
+                "question": "What can repetitive attachment to objects indicate in autistic children?",
+                "options": [
+                    "Hyperactivity",
+                    "Learning disability",
+                    "Social delay",
+                    "Autistic behavior pattern"
+                ],
+                "answer": "Autistic behavior pattern"
+            },
+            {
+                "question": "Which of these behaviours may be self-injurious in children with autism?",
+                "options": [
+                    "Singing loudly",
+                    "Biting self",
+                    "Whispering",
+                    "Spinning toys"
+                ],
+                "answer": "Biting self"
+            },
+            {
+                "question": "What is the significance of 'perseveration' in autistic learning?",
+                "options": [
+                    "Fast learning of new topics",
+                    "Focus on many topics at once",
+                    "Repetitive focus on one subject",
+                    "Consistent memory recall"
+                ],
+                "answer": "Repetitive focus on one subject"
+            },
+            {
+                "question": "What kind of teaching language should be avoided when working with children with ASD?",
+                "options": [
+                    "Simple instructions",
+                    "Slang and idioms",
+                    "Positive reinforcement",
+                    "Visual cues"
+                ],
+                "answer": "Slang and idioms"
+            },
+            {
+                "question": "Which behavior might suggest difficulty with processing sensory input in autism?",
+                "options": [
+                    "Rapid reading",
+                    "Refusal to wear certain clothes",
+                    "Frequent laughter",
+                    "Enjoyment of noisy places"
+                ],
+                "answer": "Refusal to wear certain clothes"
+            },
+            {
+                "question": "Which of these children may have a higher risk of ASD?",
+                "options": [
+                    "Children exposed to TV before age 2",
+                    "Children born to teenage parents",
+                    "Children with genetic conditions like fragile X",
+                    "Children born during summer"
+                ],
+                "answer": "Children with genetic conditions like fragile X"
+            },
+            {
+                "question": "What is the highest expression of giftedness?",
+                "options": [
+                    "Athletic skill",
+                    "Creative thinking",
+                    "Artistic talent",
+                    "Mathematical ability"
+                ],
+                "answer": "Creative thinking"
+            },
+            {
+                "question": "Which of the following is NOT a domain of giftedness?",
+                "options": [
+                    "General intellectual ability",
+                    "Specific academic aptitude",
+                    "Muscle reflexes",
+                    "Visual or performing arts"
+                ],
+                "answer": "Muscle reflexes"
+            },
+            {
+                "question": "Which characteristic is commonly associated with creativity?",
+                "options": [
+                    "Fluency",
+                    "Inflexibility",
+                    "Apathy",
+                    "Routine thinking"
+                ],
+                "answer": "Fluency"
+            },
+            {
+                "question": "What does 'giftedness' typically refer to?",
+                "options": [
+                    "Physical superiority",
+                    "Cognitive superiority",
+                    "Economic advantage",
+                    "Political leadership"
+                ],
+                "answer": "Cognitive superiority"
+            },
+            {
+                "question": "Which trait is commonly seen in gifted children with emotional sensitivity?",
+                "options": [
+                    "Disinterest in others",
+                    "Sense of guilt and responsibility",
+                    "Recklessness",
+                    "Low memory for feelings"
+                ],
+                "answer": "Sense of guilt and responsibility"
+            },
+            {
+                "question": "Which trait is associated with imaginational overexcitability?",
+                "options": [
+                    "Strong physical endurance",
+                    "Magical thinking",
+                    "Sensory overload",
+                    "Repetitive speech"
+                ],
+                "answer": "Magical thinking"
+            },
+            {
+                "question": "Which of the following is an educational approach for gifted students?",
+                "options": [
+                    "Delaying grade progression",
+                    "Acceleration",
+                    "Repetition of content",
+                    "Slower-paced instruction"
+                ],
+                "answer": "Acceleration"
+            },
+            {
+                "question": "What is one way to enrich a gifted child's learning experience?",
+                "options": [
+                    "Remove them from group work",
+                    "Limit their curriculum",
+                    "Use extended reading and field trips",
+                    "Make them repeat basic lessons"
+                ],
+                "answer": "Use extended reading and field trips"
+            },
+            {
+                "question": "Which of the following traits indicates leadership in a gifted child?",
+                "options": [
+                    "Avoids responsibility",
+                    "Persuasive and takes initiative",
+                    "Dislikes group work",
+                    "Rarely expresses opinions"
+                ],
+                "answer": "Persuasive and takes initiative"
+            },
+            {
+                "question": "What emotional trait might be seen in gifted children?",
+                "options": [
+                    "Lack of empathy",
+                    "Concern for others",
+                    "Short attention span",
+                    "Dislike of learning"
+                ],
+                "answer": "Concern for others"
+            },
+            {
+                "question": "What kind of trait is 'visualization' in the context of creativity?",
+                "options": [
+                    "Intellectual trait",
+                    "Sensual trait",
+                    "Creative trait",
+                    "Leadership trait"
+                ],
+                "answer": "Creative trait"
+            },
+            {
+                "question": "What could cause gifted underachievement?",
+                "options": [
+                    "Strong motivation",
+                    "Encouraging environment",
+                    "Boring or unchallenging schoolwork",
+                    "Effective teaching methods"
+                ],
+                "answer": "Boring or unchallenging schoolwork"
+            },
+            {
+                "question": "Which of these is a characteristic of gifted academic learners?",
+                "options": [
+                    "Avoid academic challenges",
+                    "Need external motivation",
+                    "Succeed with little effort",
+                    "Dislike subject variety"
+                ],
+                "answer": "Succeed with little effort"
+            },
+            {
+                "question": "Which classroom strategy supports gifted learners?",
+                "options": [
+                    "Open-ended assignments",
+                    "Strict memorization tasks",
+                    "Factual recall only",
+                    "Group punishment"
+                ],
+                "answer": "Open-ended assignments"
+            },
+            {
+                "question": "What is a goal of mentorship for gifted students?",
+                "options": [
+                    "Provide discipline",
+                    "Assign basic classroom duties",
+                    "Expose students to professional role models",
+                    "Limit extracurricular activity"
+                ],
+                "answer": "Expose students to professional role models"
+            },
+            {
+                "question": "Which is a sign of a gifted child’s early intellectual ability?",
+                "options": [
+                    "Slow vocabulary growth",
+                    "Excellent memory and reasoning skills",
+                    "Avoids problem solving",
+                    "Dislikes reading"
+                ],
+                "answer": "Excellent memory and reasoning skills"
+            },
+            {
+                "question": "Why is identification of gifted children complex?",
+                "options": [
+                    "Only teachers can identify giftedness",
+                    "Giftedness has one universal test",
+                    "Multiple methods are required for proper identification",
+                    "Giftedness does not need identification"
+                ],
+                "answer": "Multiple methods are required for proper identification"
+            },
+            {
+                "question": "What sensual trait is common among gifted children?",
+                "options": [
+                    "Desire for silence",
+                    "Craving for sensory pleasure",
+                    "Disregard for beauty",
+                    "Unawareness of taste or smell"
+                ],
+                "answer": "Craving for sensory pleasure"
+            },
+            {
+                "question": "Which of these is a form of acceleration?",
+                "options": [
+                    "Repeating grades",
+                    "Concurrent enrollment in high school and college",
+                    "Skipping homework",
+                    "Rewriting tests"
+                ],
+                "answer": "Concurrent enrollment in high school and college"
+            },
+            {
+                "question": "What could prevent a gifted child from achieving their potential?",
+                "options": [
+                    "Early schooling",
+                    "Intrinsic motivation",
+                    "Supportive teachers",
+                    "Emotional conflicts or neglect"
+                ],
+                "answer": "Emotional conflicts or neglect"
+            },
+            {
+                "question": "What is the key difference between emotions and behaviours?",
+                "options": [
+                    "Emotions are outward expressions, behaviours are inner feelings",
+                    "Emotions are inner feelings, behaviours are outward expressions",
+                    "Emotions and behaviours are both outward expressions",
+                    "Emotions and behaviours are the same"
+                ],
+                "answer": "Emotions are inner feelings, behaviours are outward expressions"
+            },
+            {
+                "question": "Which of the following is NOT a characteristic of Conduct Disorder (CD)?",
+                "options": [
+                    "Easily angered, annoyed or irritated",
+                    "Frequent temper tantrums",
+                    "Excessive sleeping",
+                    "Being aggressive to animals and other people"
+                ],
+                "answer": "Excessive sleeping"
+            },
+            {
+                "question": "In Attention Deficit Hyperactivity Disorder (ADHD), which of the following is a symptom of inattention?",
+                "options": [
+                    "Moving from one task to another without completing anything",
+                    "Always staying on task",
+                    "Extreme shyness",
+                    "Refusal to follow rules"
+                ],
+                "answer": "Moving from one task to another without completing anything"
+            },
+            {
+                "question": "Which disorder is characterized by extreme irritability, anger, and outbursts?",
+                "options": [
+                    "Disruptive Mood Dysregulation Disorder (DMDD)",
+                    "Obsessive-Compulsive Disorder (OCD)",
+                    "Anorexia Nervosa",
+                    "Separation Anxiety Disorder (SAD)"
+                ],
+                "answer": "Disruptive Mood Dysregulation Disorder (DMDD)"
+            },
+            {
+                "question": "What are delusions?",
+                "options": [
+                    "True beliefs based on strong evidence",
+                    "False beliefs not based in reality",
+                    "Logical conclusions drawn from facts",
+                    "Unrelated answers to questions"
+                ],
+                "answer": "False beliefs not based in reality"
+            },
+            {
+                "question": "Which of the following is an example of internalizing behaviour?",
+                "options": [
+                    "Aggressiveness",
+                    "Vandalizing property",
+                    "Withdrawal and sadness",
+                    "Arguing frequently with adults"
+                ],
+                "answer": "Withdrawal and sadness"
+            },
+            {
+                "question": "Which of the following is a sign of immaturity in children?",
+                "options": [
+                    "Daydreaming",
+                    "Frequent lying",
+                    "Stealing",
+                    "Bullying"
+                ],
+                "answer": "Daydreaming"
+            },
+            {
+                "question": "Which eating disorder involves the craving of non-food substances like clay or soil?",
+                "options": [
+                    "Anorexia Nervosa",
+                    "Bulimia",
+                    "Pica",
+                    "Avoidant/Restrictive Food Intake Disorder"
+                ],
+                "answer": "Pica"
+            },
+            {
+                "question": "What characterizes Obsessive-Compulsive Disorder (OCD) in children?",
+                "options": [
+                    "Extreme laziness",
+                    "Unwanted thoughts and repetitive behaviors",
+                    "Refusal to eat",
+                    "Continuous crying"
+                ],
+                "answer": "Unwanted thoughts and repetitive behaviors"
+            },
+            {
+                "question": "Which disorder is marked by hallucinations, delusions, and disordered thinking?",
+                "options": [
+                    "Bipolar Disorder",
+                    "Tourette Syndrome",
+                    "Childhood Schizophrenia",
+                    "ADHD"
+                ],
+                "answer": "Childhood Schizophrenia"
+            },
+            {
+                "question": "Tourette Syndrome primarily involves which of the following symptoms?",
+                "options": [
+                    "Memory loss",
+                    "Tics and repetitive movements or sounds",
+                    "Weight gain",
+                    "Complete silence"
+                ],
+                "answer": "Tics and repetitive movements or sounds"
+            },
+            {
+                "question": "Which of the following is a warning sign of emotional or behavioural disorders?",
+                "options": [
+                    "Excessive attachments",
+                    "Excellent academic performance",
+                    "Eagerness to socialize",
+                    "Frequent laughter"
+                ],
+                "answer": "Excessive attachments"
+            },
+            {
+                "question": "Which of the following is considered a biological cause of emotional and behavioural disorders?",
+                "options": [
+                    "Broken homes",
+                    "Negative media influences",
+                    "Neurological/Brain disorders",
+                    "Undesirable school conditions"
+                ],
+                "answer": "Neurological/Brain disorders"
+            },
+            {
+                "question": "What does 'A' stand for in the ABC model of behaviour analysis?",
+                "options": [
+                    "Action",
+                    "Antecedent",
+                    "Analysis",
+                    "Activity"
+                ],
+                "answer": "Antecedent"
+            },
+            {
+                "question": "Which management strategy involves promoting a desired behaviour through positive or negative encouragement?",
+                "options": [
+                    "Reinforcement",
+                    "Punishment",
+                    "Tactical Ignoring",
+                    "Time-out"
+                ],
+                "answer": "Reinforcement"
+            },
+            {
+                "question": "Which strategy is best described as engaging a child in a boring task until they calm down?",
+                "options": [
+                    "Punishment",
+                    "Time-out",
+                    "Tactical Ignoring",
+                    "Reinforcement"
+                ],
+                "answer": "Time-out"
+            },
+            {
+                "question": "Which anxiety disorder makes children extremely afraid to talk in public but comfortable at home?",
+                "options": [
+                    "Generalized Anxiety Disorder (GAD)",
+                    "Separation Anxiety Disorder (SAD)",
+                    "Selective Mutism (SM)",
+                    "Social Anxiety Disorder"
+                ],
+                "answer": "Selective Mutism (SM)"
+            },
+            {
+                "question": "Which mood disorder involves alternating periods of depression and elevated mood?",
+                "options": [
+                    "Bipolar Disorder",
+                    "Pica",
+                    "ADHD",
+                    "Tourette Syndrome"
+                ],
+                "answer": "Bipolar Disorder"
+            },
+            {
+                "question": "Which of the following is NOT a pathological family relationship that can cause emotional and behavioural disorders?",
+                "options": [
+                    "Broken homes",
+                    "Divorce",
+                    "Chaotic relationships",
+                    "High academic performance"
+                ],
+                "answer": "High academic performance"
+            },
+            {
+                "question": "What is the aim of using non-verbal signals in managing classroom behaviour?",
+                "options": [
+                    "To punish the child",
+                    "To indicate inappropriate behaviour silently",
+                    "To scare the child",
+                    "To praise the child"
+                ],
+                "answer": "To indicate inappropriate behaviour silently"
+            },
+            {
+                "question": "What does the Normalization Principle emphasize for persons with disabilities?",
+                "options": [
+                    "They should live in isolation for safety",
+                    "They should be provided the same needs as 'normal' people",
+                    "They must be homeschooled exclusively",
+                    "They should avoid social interaction"
+                ],
+                "answer": "They should be provided the same needs as 'normal' people"
+            },
+            {
+                "question": "Integration in education is best described as:",
+                "options": [
+                    "Physical placement of students with extensive needs on general school campuses",
+                    "Total isolation of students with disabilities",
+                    "Special schools only for disabled students",
+                    "Online learning only"
+                ],
+                "answer": "Physical placement of students with extensive needs on general school campuses"
+            },
+            {
+                "question": "Mainstreaming allows children with disabilities to:",
+                "options": [
+                    "Be fully removed from general classes",
+                    "Remain in general education for part of the day and receive special education when needed",
+                    "Study only at home",
+                    "Skip education entirely"
+                ],
+                "answer": "Remain in general education for part of the day and receive special education when needed"
+            },
+            {
+                "question": "The Least Restrictive Environment (LRE) refers to:",
+                "options": [
+                    "Placing all children in separate schools",
+                    "A continuum of placement options from general classrooms to separate settings",
+                    "Enforcing rigid teaching methods",
+                    "Keeping students with disabilities out of regular classrooms"
+                ],
+                "answer": "A continuum of placement options from general classrooms to separate settings"
+            },
+            {
+                "question": "According to the Salamanca Statement, special education now includes:",
+                "options": [
+                    "Only children with physical disabilities",
+                    "Only children with sensory disabilities",
+                    "All children who fail to benefit from school for any reason",
+                    "Only children with intellectual disabilities"
+                ],
+                "answer": "All children who fail to benefit from school for any reason"
+            },
+            {
+                "question": "Inclusive education is based on the idea that:",
+                "options": [
+                    "Only children without disabilities should attend school",
+                    "Children with disabilities need special schools only",
+                    "All children, especially the marginalized, must have their learning needs addressed",
+                    "Separate education systems are best"
+                ],
+                "answer": "All children, especially the marginalized, must have their learning needs addressed"
+            },
+            {
+                "question": "A child's moral right in inclusive education implies:",
+                "options": [
+                    "They should be separated for better results",
+                    "They deserve the same experiences and opportunities as all children",
+                    "They should only learn from home",
+                    "They should avoid mainstream schools"
+                ],
+                "answer": "They deserve the same experiences and opportunities as all children"
+            },
+            {
+                "question": "What is a parental right regarding inclusive education?",
+                "options": [
+                    "Parents have no say in the child's educational setting",
+                    "Parents can choose the least restrictive environment with proper support",
+                    "Parents must accept any school placement",
+                    "Parents should avoid participating in school decisions"
+                ],
+                "answer": "Parents can choose the least restrictive environment with proper support"
+            },
+            {
+                "question": "An ethical right for children with disabilities ensures:",
+                "options": [
+                    "A sense of belonging, value, and worth",
+                    "Separation from their peers",
+                    "Infrequent attendance",
+                    "Limited academic resources"
+                ],
+                "answer": "A sense of belonging, value, and worth"
+            },
+            {
+                "question": "Which of the following is a legal right for children with disabilities in education?",
+                "options": [
+                    "To be educated to the maximum extent with peers without disabilities",
+                    "To study only with other disabled children",
+                    "To avoid standardized assessments",
+                    "To skip education entirely"
+                ],
+                "answer": "To be educated to the maximum extent with peers without disabilities"
+            },
+            {
+                "question": "A major obstacle to inclusion globally is:",
+                "options": [
+                    "Abundant special education teachers",
+                    "Plenty of resources for schools",
+                    "Lack of teacher training",
+                    "Perfect classroom conditions"
+                ],
+                "answer": "Lack of teacher training"
+            },
+            {
+                "question": "In Ghana, which factor is a barrier to inclusive education?",
+                "options": [
+                    "Strict adherence to academic knowledge",
+                    "Unlimited classroom space",
+                    "Excessive community participation",
+                    "Surplus of trained special educators"
+                ],
+                "answer": "Strict adherence to academic knowledge"
+            },
+            {
+                "question": "A key demand for successful inclusion is:",
+                "options": [
+                    "Teacher motivation and training",
+                    "Segregation of students",
+                    "Focus only on academic scores",
+                    "Limiting parental involvement"
+                ],
+                "answer": "Teacher motivation and training"
+            },
+            {
+                "question": "Inclusive education benefits children with special needs by:",
+                "options": [
+                    "Providing a sense of belonging and self-respect",
+                    "Keeping them isolated from peers",
+                    "Excluding them from classroom activities",
+                    "Limiting social interaction"
+                ],
+                "answer": "Providing a sense of belonging and self-respect"
+            },
+            {
+                "question": "Which of the following is a societal benefit of inclusive education?",
+                "options": [
+                    "Promotes civil rights and social equality",
+                    "Increases social exclusion",
+                    "Discourages collaborative skills",
+                    "Encourages competition only"
+                ],
+                "answer": "Promotes civil rights and social equality"
+            },
+            {
+                "question": "For regular classroom teachers, inclusive education creates:",
+                "options": [
+                    "A need for individualized teaching methods",
+                    "Fewer teaching challenges",
+                    "No need to adapt methods",
+                    "Less student diversity"
+                ],
+                "answer": "A need for individualized teaching methods"
+            },
+            {
+                "question": "One challenge of inclusive education for teachers is:",
+                "options": [
+                    "Overlooking differential learning needs",
+                    "Having too many resources",
+                    "Fewer students in class",
+                    "Automatic student success"
+                ],
+                "answer": "Overlooking differential learning needs"
+            },
+            {
+                "question": "Inflexible curriculum and rigid examination demands can:",
+                "options": [
+                    "Help all students succeed",
+                    "Make it hard for children with disabilities to cope academically",
+                    "Encourage special needs participation",
+                    "Reduce the workload of teachers"
+                ],
+                "answer": "Make it hard for children with disabilities to cope academically"
+            },
+            {
+                "question": "One expected change for teachers in inclusive classrooms is:",
+                "options": [
+                    "Use of multi-level instruction",
+                    "Teaching only one standard method",
+                    "Ignoring individual needs",
+                    "Avoiding feedback from students"
+                ],
+                "answer": "Use of multi-level instruction"
+            },
+            {
+                "question": "A key feature of inclusive education is:",
+                "options": [
+                    "Responding to the needs of all learners, including those with disabilities",
+                    "Focusing only on high achievers",
+                    "Separating children by ability",
+                    "Reducing social interactions"
+                ],
+                "answer": "Responding to the needs of all learners, including those with disabilities"
+            }
+        ]
+
+
+
+
+
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        const totalQuestions = questions.length;
+
+        // DOM Elements
+        const popupOverlay = document.getElementById("popup-overlay");
+        const subscribeBtn = document.getElementById("subscribe-btn");
+        const startBtn = document.getElementById("start-btn");
+        const quizContainer = document.getElementById("quiz-container");
+        const questionNumberEl = document.getElementById("question-number");
+        const questionText = document.getElementById("question-text");
+        const optionsContainer = document.getElementById("options-container");
+        const feedbackDiv = document.getElementById("feedback");
+        const scoreSpan = document.getElementById("score");
+        const totalSpan = document.getElementById("total");
+        const userNameSpan = document.getElementById("user-name");
+        const nextBtn = document.getElementById("next-btn");
+        const prevBtn = document.getElementById("prev-btn");
+        const restartBtn = document.getElementById("restart-btn");
+
+        // Utility: Shuffle an array using Fisher–Yates algorithm.
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Subscribe button: open YouTube channel in new tab.
+        subscribeBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            window.open("https://youtube.com/@genielabgh", "_blank");
+        });
+
+        // Start Quiz button: prompt for user name (if not saved), then start quiz.
+        startBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            popupOverlay.style.display = "none";
+            quizContainer.style.display = "block";
+            totalSpan.textContent = totalQuestions;
+            showQuestion();
+        });
+
+        // Next button: increment question index and show next question.
+        nextBtn.addEventListener("click", function () {
+            if (currentQuestionIndex < totalQuestions - 1) {
+                currentQuestionIndex++;
+                localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
+                showQuestion();
+            }
+        });
+
+        // Previous button: decrement question index and show previous question.
+        prevBtn.addEventListener("click", function () {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                localStorage.setItem("currentQuestionIndex", currentQuestionIndex);
+                showQuestion();
+            }
+        });
+
+        // Restart button: clear progress and reload the page.
+        restartBtn.addEventListener("click", function () {
+            localStorage.clear();
+            location.reload();
+        });
+        // Show the current question and options.
+        function showQuestion() {
+            feedbackDiv.textContent = "";
+            // Always show the Next button.
+            nextBtn.style.display = "block";
+            // Hide the Previous button on the first question.
+            if (currentQuestionIndex === 0) {
+                prevBtn.style.display = "none";
+            } else {
+                prevBtn.style.display = "block";
+            }
+
+            if (currentQuestionIndex < totalQuestions) {
+                questionNumberEl.textContent = "Question: " + (currentQuestionIndex + 1);
+                const currentQuestion = questions[currentQuestionIndex];
+                questionText.textContent = currentQuestion.question;
+                optionsContainer.innerHTML = "";
+                // Shuffle options on every page refresh / question display.
+                const shuffledOptions = shuffleArray(currentQuestion.options.slice());
+                const savedAnswer = localStorage.getItem("answered_" + currentQuestionIndex);
+                shuffledOptions.forEach(option => {
+                    const button = document.createElement("button");
+                    button.textContent = option;
+                    button.classList.add("option-btn");
+                    if (savedAnswer !== null) {
+                        // If already answered, disable the button and mark coloring.
+                        button.disabled = true;
+                        if (option === currentQuestion.answer) {
+                            button.style.backgroundColor = "green";
+                        }
+                        if (option === savedAnswer && savedAnswer !== currentQuestion.answer) {
+                            button.style.backgroundColor = "red";
+                        }
+                    } else {
+                        button.addEventListener("click", function (e) {
+                            checkAnswer(option, e.target);
+                        });
+                    }
+                    optionsContainer.appendChild(button);
+                });
+                if (savedAnswer !== null) {
+                    if (savedAnswer === currentQuestion.answer) {
+                        feedbackDiv.innerHTML = "<p class='correct'>Correct!</p>";
+                    } else {
+                        feedbackDiv.innerHTML = "<p class='wrong'>Wrong!</p>";
+                    }
+                }
+            } else {
+                showResult();
+            }
+        }
+
+
+
+        // Check the selected answer, update the score, and provide feedback.
+        function checkAnswer(selected, selectedButton) {
+            const currentQuestion = questions[currentQuestionIndex];
+            const buttons = document.querySelectorAll(".option-btn");
+            buttons.forEach(btn => btn.disabled = true);
+            if (selected !== currentQuestion.answer) {
+                selectedButton.style.backgroundColor = "red";
+                feedbackDiv.innerHTML = "<p class='wrong'>Wrong!</p>";
+            } else {
+                feedbackDiv.innerHTML = "<p class='correct'>Correct!</p>";
+                score++;
+            }
+            buttons.forEach(btn => {
+                if (btn.textContent === currentQuestion.answer) {
+                    btn.style.backgroundColor = "green";
+                }
+            });
+            scoreSpan.textContent = score;
+            localStorage.setItem("score", score);
+            localStorage.setItem("answered_" + currentQuestionIndex, selected);
+
+            // If the last question is answered, show final results; otherwise, show Next button.
+            if (currentQuestionIndex === totalQuestions - 1) {
+                showResult();
+            } else {
+                nextBtn.style.display = "block";
+            }
+        }
+
+        // Show final result after all questions are answered.
+        function showResult() {
+            optionsContainer.innerHTML = "";
+            questionNumberEl.textContent = "";
+            questionText.textContent = "Quiz Completed!";
+            // Display final score and percentage.
+            feedbackDiv.innerHTML = `<p><strong>Your final score is:</strong> ${score} out of ${totalQuestions}</p>`;
+            let percentage = (score / totalQuestions) * 100;
+            if (percentage >= 50) {
+                feedbackDiv.innerHTML += "<p style='color: green; font-size: 24px;'>&#10004; Passed</p>";
+            } else {
+                feedbackDiv.innerHTML += "<p style='color: red; font-size: 24px;'>&#10006; Failed</p>";
+            }
+            nextBtn.style.display = "none";
+            document.getElementById("score-container").style.display = "none";
+        }
+
+
+        // On page load, resume progress if available.
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedIndex = localStorage.getItem("currentQuestionIndex");
+            const savedScore = localStorage.getItem("score");
+            const savedName = localStorage.getItem("userName");
+            if (savedIndex !== null) {
+                currentQuestionIndex = parseInt(savedIndex, 10);
+                score = savedScore ? parseInt(savedScore, 10) : 0;
+                scoreSpan.textContent = score;
+                if (savedName) {
+                    userNameSpan.textContent = savedName;
+                }
+                popupOverlay.style.display = "none";
+                quizContainer.style.display = "block";
+                totalSpan.textContent = totalQuestions;
+                showQuestion();
+            }
+        });
+    </script>
+</body>
+
+</html>

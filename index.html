@@ -207,1008 +207,1415 @@
         // Sample quiz data extracted from the PDF.
         // (You can use an external JSON file and fetch it if needed.)
         const questions = [
+
             {
-                "question": "Which of the following is an example of an environmental barrier to learning?",
-                "options": [
-                    "Hearing loss",
-                    "Lack of wheelchair access",
-                    "Memory difficulty",
-                    "Poor vision"
-                ],
-                "answer": "Lack of wheelchair access"
+                "question": "What is the IQ range for a child classified as having a mild intellectual disability?",
+                "options": ["20–35", "35–50", "50–70", "Above 70"],
+                "answer": "50–70"
             },
             {
-                "question": "What is the primary focus of inclusive education?",
-                "options": [
-                    "Providing separate schools for disabled students",
-                    "Allowing only high-achieving students in mainstream classrooms",
-                    "Ensuring all learners have access to quality education within regular schools",
-                    "Promoting home-schooling for all children with disabilities"
-                ],
-                "answer": "Ensuring all learners have access to quality education within regular schools"
+                "question": "Which of the following is not a component of adaptive behaviour?",
+                "options": ["Conceptual skills", "Practical skills", "Social skills", "Athletic skills"],
+                "answer": "Athletic skills"
             },
             {
-                "question": "What does the term 'Special Educational Needs' (SEN) refer to?",
-                "options": [
-                    "Educational requirements for teachers",
-                    "Challenges faced by school administrators",
-                    "Learning difficulties or disabilities that make it harder for children to learn",
-                    "Government reforms in mainstream schools"
-                ],
-                "answer": "Learning difficulties or disabilities that make it harder for children to learn"
+                "question": "What does ID stand for in special education?",
+                "options": ["Internal Disorder", "Intellectual Disability", "Individual Deficiency", "Intellect Development"],
+                "answer": "Intellectual Disability"
             },
             {
-                "question": "Which of these is NOT a principle of inclusive education?",
-                "options": [
-                    "All children can learn",
-                    "Education should accommodate all children regardless of their physical condition",
-                    "Segregation provides better outcomes",
-                    "Learning needs are best addressed within the regular school system"
-                ],
-                "answer": "Segregation provides better outcomes"
+                "question": "What is the IQ formula used in assessing intellectual disability?",
+                "options": ["(Chronological Age / Mental Age) × 100", "(Mental Age / Chronological Age) × 100", "(Mental Age × Chronological Age) × 100", "(Mental Age − Chronological Age) × 100"],
+                "answer": "(Mental Age / Chronological Age) × 100"
             },
             {
-                "question": "The Salamanca Statement (1994) advocates for:",
-                "options": [
-                    "Home-schooling of children with disabilities",
-                    "Education in specialised institutions only",
-                    "Inclusive education within mainstream schools",
-                    "Elimination of compulsory education"
-                ],
-                "answer": "Inclusive education within mainstream schools"
+                "question": "Which condition is associated with an accumulation of cerebrospinal fluid in the brain?",
+                "options": ["Microcephalus", "Hydrocephalus", "Down syndrome", "Fragile X syndrome"],
+                "answer": "Hydrocephalus"
             },
             {
-                "question": "Which law in Ghana supports inclusive education?",
-                "options": [
-                    "Labour Act",
-                    "Children\u2019s Act 1998 (Act 560)",
-                    "Electoral Commission Act",
-                    "Immigration Act"
-                ],
-                "answer": "Children\u2019s Act 1998 (Act 560)"
+                "question": "Children with ID usually score around or below what number on an IQ test?",
+                "options": ["80", "70", "90", "75"],
+                "answer": "70"
             },
             {
-                "question": "Which of the following is a behavioural characteristic of learners with learning disabilities?",
-                "options": [
-                    "Increased attention span",
-                    "Hyperactivity",
-                    "Advanced problem-solving skills",
-                    "Excellent handwriting"
-                ],
-                "answer": "Hyperactivity"
+                "question": "Which of the following is a peri-natal cause of intellectual disability?",
+                "options": ["Fragile X syndrome", "Marasmus", "Birth asphyxia", "Lead poisoning"],
+                "answer": "Birth asphyxia"
             },
             {
-                "question": "One common challenge faced by learners with physical disabilities is:",
-                "options": [
-                    "Lack of interest in learning",
-                    "Difficulty accessing school facilities",
-                    "Difficulty understanding abstract concepts",
-                    "Inability to speak"
-                ],
-                "answer": "Difficulty accessing school facilities"
+                "question": "Which of the following is not part of conceptual skills in adaptive behaviour?",
+                "options": ["Money concepts", "Brushing teeth", "Use of language", "Literacy"],
+                "answer": "Brushing teeth"
             },
             {
-                "question": "Which of these is considered a developmental disability?",
-                "options": [
-                    "Asthma",
-                    "Cerebral Palsy",
-                    "Tuberculosis",
-                    "Malaria"
-                ],
-                "answer": "Cerebral Palsy"
+                "question": "What does the term ‘developmental period’ refer to in the context of ID?",
+                "options": ["Period after birth", "Occurrence before the age of 18", "When learning stops", "After age 21"],
+                "answer": "Occurrence before the age of 18"
             },
             {
-                "question": "Inclusive education helps reduce:",
-                "options": [
-                    "Peer collaboration",
-                    "Social exclusion",
-                    "Diversity in schools",
-                    "Educational opportunities"
-                ],
-                "answer": "Social exclusion"
+                "question": "Which term refers to gaining knowledge without being directly taught?",
+                "options": ["Incidental learning", "Conceptualisation", "Instructional learning", "Social imitation"],
+                "answer": "Incidental learning"
             },
             {
-                "question": "Learners with speech and language disorders may struggle most with:",
-                "options": [
-                    "Completing physical exercises",
-                    "Following and giving verbal instructions",
-                    "Reading road signs",
-                    "Counting numbers"
-                ],
-                "answer": "Following and giving verbal instructions"
+                "question": "Which of these is a strategy for improving motivation in children with ID?",
+                "options": ["Assign complex tasks", "Ignore mistakes", "Provide immediate feedback", "Use abstract materials"],
+                "answer": "Provide immediate feedback"
             },
             {
-                "question": "Which of the following is an intellectual disability characterised by below-average cognitive ability?",
-                "options": [
-                    "Autism",
-                    "Dyslexia",
-                    "Down Syndrome",
-                    "ADHD"
-                ],
-                "answer": "Down Syndrome"
+                "question": "Which condition is due to a deficiency of thyroxin during the pre-natal period?",
+                "options": ["Fragile X syndrome", "Achondroplasia", "Down syndrome", "Gonorrhoea"],
+                "answer": "Achondroplasia"
             },
             {
-                "question": "What is a common cause of visual impairment in children?",
-                "options": [
-                    "Poor handwriting",
-                    "Cataracts",
-                    "Hyperactivity",
-                    "Stammering"
-                ],
-                "answer": "Cataracts"
+                "question": "Which type of support involves daily, regular involvement and is not time-limited?",
+                "options": ["Intermittent", "Limited", "Extensive", "Pervasive"],
+                "answer": "Extensive"
             },
             {
-                "question": "Which of these conditions primarily affects social interaction and communication?",
-                "options": [
-                    "Deafness",
-                    "Autism Spectrum Disorder",
-                    "Blindness",
-                    "Epilepsy"
-                ],
-                "answer": "Autism Spectrum Disorder"
+                "question": "Which cognitive function involves forming mental images of things?",
+                "options": ["Evaluation", "Perception", "Reasoning", "Attention"],
+                "answer": "Perception"
             },
             {
-                "question": "What type of disability is characterised by challenges in motor function due to brain damage before or during birth?",
-                "options": [
-                    "Autism",
-                    "Cerebral Palsy",
-                    "ADHD",
-                    "Dyscalculia"
-                ],
-                "answer": "Cerebral Palsy"
+                "question": "Which of these is a social skill in adaptive behaviour?",
+                "options": ["Money management", "Brushing teeth", "Self-esteem", "Scheduling"],
+                "answer": "Self-esteem"
             },
             {
-                "question": "Which of the following is a strategy for teaching learners with hearing impairment?",
-                "options": [
-                    "Speaking very fast",
-                    "Using sign language or visual aids",
-                    "Assigning more homework",
-                    "Making phone calls frequently"
-                ],
-                "answer": "Using sign language or visual aids"
+                "question": "Which teaching strategy helps children with attention problems?",
+                "options": ["Use abstract concepts", "Use long lessons", "Remove distracters", "Skip questioning"],
+                "answer": "Remove distracters"
             },
             {
-                "question": "What is the main focus of special education?",
-                "options": [
-                    "To isolate learners with disabilities",
-                    "To provide unique teaching approaches suited to diverse needs",
-                    "To build more specialised schools",
-                    "To improve school infrastructure"
-                ],
-                "answer": "To provide unique teaching approaches suited to diverse needs"
+                "question": "Which is a post-natal cause of intellectual disability?",
+                "options": ["Down syndrome", "Toxoplasmosis", "Kwashiorkor", "Breech delivery"],
+                "answer": "Kwashiorkor"
             },
             {
-                "question": "What is an example of an instructional barrier to learning?",
-                "options": [
-                    "Poor ventilation in classrooms",
-                    "Use of complex language not suited to learner\u2019s level",
-                    "Noise pollution",
-                    "Inadequate furniture"
-                ],
-                "answer": "Use of complex language not suited to learner\u2019s level"
+                "question": "Children with ID often show delays in which of the following?",
+                "options": ["Language", "Habit training", "Walking", "All of the above"],
+                "answer": "All of the above"
             },
             {
-                "question": "Inclusive education is based on which key principle?",
-                "options": [
-                    "Segregation is necessary for progress",
-                    "Only children without disabilities should attend public schools",
-                    "All children, regardless of differences, should learn together",
-                    "Learners with disabilities require minimal supervision"
-                ],
-                "answer": "All children, regardless of differences, should learn together"
+                "question": "Which strategy is effective for poor memory in children with ID?",
+                "options": ["Use abstract tasks", "Use rhymes and mnemonics", "Avoid feedback", "Limit practice"],
+                "answer": "Use rhymes and mnemonics"
             },
             {
-                "question": "Which of these learning difficulties is associated with reading and language processing?",
-                "options": [
-                    "Dysgraphia",
-                    "Dyscalculia",
-                    "Dyslexia",
-                    "Hyperlexia"
-                ],
-                "answer": "Dyslexia"
+                "question": "Which classification of support is characterised by high intensity across all environments?",
+                "options": ["Limited", "Extensive", "Intermittent", "Pervasive"],
+                "answer": "Pervasive"
+            },
+
+            {
+                "question": "Which definition focuses on how well a person can use their vision for learning tasks?",
+                "options": ["Legal definition", "Medical definition", "Educational definition", "Psychological definition"],
+                "answer": "Educational definition"
             },
             {
-                "question": "What is the most appropriate teaching strategy for learners with intellectual disabilities?",
-                "options": [
-                    "Fast-paced instruction",
-                    "Use of abstract materials",
-                    "Step-by-step guidance and repetition",
-                    "Lengthy theoretical discussions"
-                ],
-                "answer": "Step-by-step guidance and repetition"
+                "question": "What does a visual acuity of 20/200 imply?",
+                "options": ["Normal vision", "Severe vision loss", "Can see at 20 feet what others see at 200", "Blindness"],
+                "answer": "Can see at 20 feet what others see at 200"
             },
             {
-                "question": "Which of the following may be a cause of hearing impairment?",
-                "options": [
-                    "Excessive talking",
-                    "Brain tumour",
-                    "Prenatal infections such as rubella",
-                    "Too much sunlight"
-                ],
-                "answer": "Prenatal infections such as rubella"
+                "question": "What is the term for blurred vision caused by irregular curvature of the cornea?",
+                "options": ["Myopia", "Hyperopia", "Astigmatism", "Cataract"],
+                "answer": "Astigmatism"
             },
             {
-                "question": "The Individuals with Disabilities Education Act (IDEA) emphasises:",
-                "options": [
-                    "Medical treatment for children with disabilities",
-                    "Inclusion of learners with disabilities in mainstream education",
-                    "Funding for special schools only",
-                    "Creating more diagnostic centres"
-                ],
-                "answer": "Inclusion of learners with disabilities in mainstream education"
+                "question": "What is referred to as 'tunnel vision'?",
+                "options": ["Peripheral blindness", "Central vision loss", "Field of vision limited to 20 degrees", "Low vision"],
+                "answer": "Field of vision limited to 20 degrees"
             },
             {
-                "question": "Which of these is a sign of emotional and behavioural disorders?",
-                "options": [
-                    "Consistent positive behaviour",
-                    "Difficulty expressing emotions appropriately",
-                    "Sharp memory",
-                    "Good coordination"
-                ],
-                "answer": "Difficulty expressing emotions appropriately"
+                "question": "What causes vision loss due to damaged parts of the brain that interpret visual information?",
+                "options": ["Cataract", "Cortical Visual Impairment", "Nystagmus", "Retinitis pigmentosa"],
+                "answer": "Cortical Visual Impairment"
             },
             {
-                "question": "One of the key goals of inclusive education is to:",
-                "options": [
-                    "Separate learners based on ability",
-                    "Create competition among learners",
-                    "Promote equity and acceptance",
-                    "Establish strict discipline policies"
-                ],
-                "answer": "Promote equity and acceptance"
+                "question": "Which condition results in photo-sensitivity due to lack of melanin production?",
+                "options": ["Myopia", "Albinism", "Cataracts", "Strabismus"],
+                "answer": "Albinism"
             },
             {
-                "question": "What is an appropriate adaptation for a visually impaired learner?",
-                "options": [
-                    "Written instructions only",
-                    "Use of diagrams",
-                    "Braille or audio materials",
-                    "Video demonstrations without sound"
-                ],
-                "answer": "Braille or audio materials"
+                "question": "What term refers to involuntary, rapid movement of the eyes?",
+                "options": ["Strabismus", "Lazy eye", "Nystagmus", "Presbyopia"],
+                "answer": "Nystagmus"
             },
             {
-                "question": "Which type of disability is characterised by difficulties in mathematics?",
-                "options": [
-                    "Dyslexia",
-                    "Dyscalculia",
-                    "Dysgraphia",
-                    "Autism"
-                ],
-                "answer": "Dyscalculia"
+                "question": "Which of these is a muscle dysfunction causing misalignment of the eyes?",
+                "options": ["Astigmatism", "Strabismus", "Cataract", "Achromia"],
+                "answer": "Strabismus"
             },
             {
-                "question": "What is the most common barrier to inclusive education?",
-                "options": [
-                    "Lack of learners",
-                    "Lack of government laws",
-                    "Negative attitudes and lack of awareness",
-                    "Too many resources"
-                ],
-                "answer": "Negative attitudes and lack of awareness"
+                "question": "Which hereditary disease causes night blindness and poor peripheral vision?",
+                "options": ["Lazy eye", "Glaucoma", "Retinitis pigmentosa", "Cortical visual impairment"],
+                "answer": "Retinitis pigmentosa"
             },
             {
-                "question": "A learner who finds it difficult to hold a pencil likely has:",
-                "options": [
-                    "A hearing impairment",
-                    "A speech delay",
-                    "A fine motor difficulty",
-                    "A behavioural disorder"
-                ],
-                "answer": "A fine motor difficulty"
+                "question": "Which visual issue is common in old age and causes difficulty focusing on nearby objects?",
+                "options": ["Myopia", "Presbyopia", "Hyperopia", "Albinism"],
+                "answer": "Presbyopia"
             },
             {
-                "question": "Which of these professionals supports inclusive education the most in schools?",
-                "options": [
-                    "Security guards",
-                    "Special education teachers",
-                    "Cafeteria workers",
-                    "Construction workers"
-                ],
-                "answer": "Special education teachers"
+                "question": "Which classification includes cataracts and glaucoma?",
+                "options": ["Refractive errors", "Muscle dysfunctions", "Structural impairments", "Cortical disorders"],
+                "answer": "Structural impairments"
             },
             {
-                "question": "Which of the following is a common characteristic of learners with autism?",
-                "options": [
-                    "Consistent eye contact",
-                    "Strong interest in socialising",
-                    "Repetitive behaviours",
-                    "Clear verbal communication"
-                ],
-                "answer": "Repetitive behaviours"
+                "question": "What is the purpose of demarcating the chalkboard for visually impaired students?",
+                "options": ["To help teachers write better", "To ensure contrast", "To reduce noise", "To organise the classroom"],
+                "answer": "To ensure contrast"
             },
             {
-                "question": "The use of ramps and lifts in school buildings is to support learners with:",
-                "options": [
-                    "Speech impairment",
-                    "Hearing impairment",
-                    "Physical disabilities",
-                    "Visual impairment"
-                ],
-                "answer": "Physical disabilities"
+                "question": "What behaviour might indicate a visual problem in a child?",
+                "options": ["Frequent blinking", "Rubbing eyes excessively", "Daydreaming", "Yawning often"],
+                "answer": "Rubbing eyes excessively"
             },
             {
-                "question": "Which type of learner might benefit most from enlarged text materials?",
-                "options": [
-                    "Learners with speech delay",
-                    "Learners with hearing impairment",
-                    "Learners with visual impairment",
-                    "Learners with autism"
-                ],
-                "answer": "Learners with visual impairment"
+                "question": "Which of these is NOT a characteristic of children with visual impairment?",
+                "options": ["Rocking movements", "Finger flicking", "Strong light preference", "Less extensive social networks"],
+                "answer": "Strong light preference"
             },
             {
-                "question": "Which of the following best describes the philosophy of inclusive education?",
-                "options": [
-                    "Educating all learners in the same classroom regardless of abilities",
-                    "Creating separate schools for learners with disabilities",
-                    "Training only special education teachers",
-                    "Using identical methods for all learners"
-                ],
-                "answer": "Educating all learners in the same classroom regardless of abilities"
+                "question": "Which method is used for identifying visual impairment in children?",
+                "options": ["XYZ method", "CBC method", "ABC method", "123 test"],
+                "answer": "ABC method"
             },
             {
-                "question": "Which of these is an appropriate assessment method for learners with special needs?",
-                "options": [
-                    "One-size-fits-all testing",
-                    "Observation and practical tasks",
-                    "Ignoring their performance",
-                    "Group punishment"
-                ],
-                "answer": "Observation and practical tasks"
+                "question": "What is the correct recommendation regarding light source placement in the classroom?",
+                "options": ["In front of the child", "Behind the child", "Above the teacher", "Near the board"],
+                "answer": "Behind the child"
             },
             {
-                "question": "What is the major purpose of assistive technology in education?",
-                "options": [
-                    "To distract learners",
-                    "To replace teachers",
-                    "To support learners with disabilities to access the curriculum",
-                    "To reduce teacher workload"
-                ],
-                "answer": "To support learners with disabilities to access the curriculum"
+                "question": "What should teachers avoid doing when assigning work to visually impaired children?",
+                "options": ["Encouraging independence", "Leaving doors open", "Providing frequent eye rests", "Giving short close-up tasks"],
+                "answer": "Leaving doors open"
             },
             {
-                "question": "Braille is primarily used by individuals with:",
-                "options": [
-                    "Speech disorders",
-                    "Hearing impairment",
-                    "Visual impairment",
-                    "Physical disabilities"
-                ],
-                "answer": "Visual impairment"
+                "question": "Which term describes reduced ability to see distant objects clearly?",
+                "options": ["Hyperopia", "Myopia", "Astigmatism", "Nystagmus"],
+                "answer": "Myopia"
             },
             {
-                "question": "One common cause of intellectual disability is:",
+                "question": "Why might children with visual impairments have limited social networks?",
+                "options": ["Inability to speak", "Overprotection by teachers", "Victimisation and teasing", "Lack of hearing"],
+                "answer": "Victimisation and teasing"
+            },
+            {
+                "question": "What educational term describes children who must use Braille or other senses to learn?",
+                "options": ["Low vision", "Blind", "Partially sighted", "Sight impaired"],
+                "answer": "Blind"
+            },
+
+            {
+                "question": "What is the primary sense affected in individuals with hearing impairment?",
                 "options": [
+                    "Vision",
+                    "Audition",
+                    "Touch",
+                    "Smell"
+                ],
+                "answer": "Audition"
+            },
+            {
+                "question": "Which term describes a person who cannot use hearing to understand spoken language?",
+                "options": [
+                    "Hard of hearing",
+                    "Deaf",
+                    "Mute",
+                    "Blind"
+                ],
+                "answer": "Deaf"
+            },
+            {
+                "question": "Hearing loss that occurs before speech and language development is called:",
+                "options": [
+                    "Post-lingual loss",
+                    "Congenital loss",
+                    "Pre-lingual loss",
+                    "Acquired loss"
+                ],
+                "answer": "Pre-lingual loss"
+            },
+            {
+                "question": "What type of hearing loss results from issues in both the outer/middle and inner ear?",
+                "options": [
+                    "Conductive",
+                    "Sensorineural",
+                    "Mixed",
+                    "Central"
+                ],
+                "answer": "Mixed"
+            },
+            {
+                "question": "Auditory Processing Disorder is an example of which type of problem?",
+                "options": [
+                    "Peripheral",
+                    "Sensorineural",
+                    "Conductive",
+                    "Central"
+                ],
+                "answer": "Central"
+            },
+            {
+                "question": "What is the normal hearing range measured in decibels (dBHL)?",
+                "options": [
+                    "10–25 dBHL",
+                    "-10–25 dBHL",
+                    "0–40 dBHL",
+                    "-20–10 dBHL"
+                ],
+                "answer": "-10–25 dBHL"
+            },
+            {
+                "question": "Which prenatal factor is a possible cause of hearing loss?",
+                "options": [
+                    "Measles",
+                    "Ototoxicity",
+                    "Heredity",
+                    "High blood pressure"
+                ],
+                "answer": "Heredity"
+            },
+            {
+                "question": "What is a behavioural cue that may indicate hearing impairment in children?",
+                "options": [
+                    "Excessive blinking",
                     "Frequent crying",
-                    "Genetic conditions such as Down syndrome",
-                    "Late language development",
-                    "Increased appetite"
+                    "Restlessness in class",
+                    "Staring at lights"
                 ],
-                "answer": "Genetic conditions such as Down syndrome"
+                "answer": "Restlessness in class"
             },
             {
-                "question": "An inclusive classroom should provide which of the following?",
+                "question": "Which of the following is an assistive device for hearing impairment?",
                 "options": [
-                    "Fixed seating arrangement",
-                    "Uniform teaching methods",
-                    "Equal opportunities and modified resources",
-                    "Only visual learning aids"
+                    "White cane",
+                    "Hearing aid",
+                    "Braille slate",
+                    "Wheelchair"
                 ],
-                "answer": "Equal opportunities and modified resources"
+                "answer": "Hearing aid"
             },
             {
-                "question": "Which of the following is considered a behavioural disorder?",
+                "question": "One physiological effect of noise-induced hearing loss is:",
                 "options": [
-                    "Asthma",
-                    "Hyperactivity and aggression",
-                    "Cataract",
-                    "Stammering"
+                    "Improved sleep",
+                    "Tinnitus",
+                    "High morale",
+                    "Clearer speech"
                 ],
-                "answer": "Hyperactivity and aggression"
+                "answer": "Tinnitus"
             },
             {
-                "question": "What is the purpose of using sign language in inclusive education?",
+                "question": "Which professional typically helps with speech therapy for hearing-impaired children?",
                 "options": [
-                    "To entertain learners",
-                    "To replace reading and writing",
-                    "To aid communication for learners with hearing impairment",
-                    "To help learners with visual impairment"
-                ],
-                "answer": "To aid communication for learners with hearing impairment"
-            },
-            {
-                "question": "Which approach best supports learners with learning disabilities?",
-                "options": [
-                    "Ignoring their difficulties",
-                    "Punishing slow learners",
-                    "Providing individualised instruction",
-                    "Giving extra homework"
-                ],
-                "answer": "Providing individualised instruction"
-            },
-            {
-                "question": "What is the most appropriate seating position for a learner with a hearing impairment?",
-                "options": [
-                    "Back row of the classroom",
-                    "Next to the window",
-                    "Front row facing the teacher",
-                    "Near the classroom door"
-                ],
-                "answer": "Front row facing the teacher"
-            },
-            {
-                "question": "Which of the following is a cognitive impairment?",
-                "options": [
-                    "Visual impairment",
-                    "Dyslexia",
-                    "Deafness",
-                    "Paralysis"
-                ],
-                "answer": "Dyslexia"
-            },
-            {
-                "question": "The term 'special education' refers to:",
-                "options": [
-                    "An exclusive school system for the gifted",
-                    "Education tailored to meet individual needs of learners with disabilities",
-                    "Extracurricular activities",
-                    "Only therapy-based learning"
-                ],
-                "answer": "Education tailored to meet individual needs of learners with disabilities"
-            },
-            {
-                "question": "Which of these is a method for assessing a learner with speech difficulties?",
-                "options": [
-                    "Oral interview",
-                    "Sign language responses",
-                    "Ignoring their answers",
-                    "Reading aloud in front of the class"
-                ],
-                "answer": "Sign language responses"
-            },
-            {
-                "question": "Learners with Down syndrome typically benefit from:",
-                "options": [
-                    "Strict punishment",
-                    "Long lectures",
-                    "Visual aids and repetition",
-                    "Fast-paced lessons"
-                ],
-                "answer": "Visual aids and repetition"
-            },
-            {
-                "question": "Which of these is an effective classroom practice for inclusion?",
-                "options": [
-                    "Grouping learners by ability",
-                    "Differentiated instruction",
-                    "Assigning the same task to everyone",
-                    "Discouraging peer support"
-                ],
-                "answer": "Differentiated instruction"
-            },
-            {
-                "question": "Which disability involves difficulty in expressing and understanding language?",
-                "options": [
-                    "Hearing impairment",
-                    "Speech and language disorder",
-                    "Visual impairment",
-                    "Physical disability"
-                ],
-                "answer": "Speech and language disorder"
-            },
-            {
-                "question": "The role of an itinerant teacher is to:",
-                "options": [
-                    "Supervise playgrounds",
-                    "Assist learners with disabilities across different schools",
-                    "Manage school finances",
-                    "Prepare school meals"
-                ],
-                "answer": "Assist learners with disabilities across different schools"
-            },
-            {
-                "question": "Which professional helps diagnose and treat speech and language disorders in learners?",
-                "options": [
+                    "Audiologist",
+                    "Speech-language pathologist",
                     "Occupational therapist",
-                    "Audiologist",
-                    "Speech and language therapist",
-                    "Physiotherapist"
+                    "Neurologist"
                 ],
-                "answer": "Speech and language therapist"
+                "answer": "Speech-language pathologist"
             },
             {
-                "question": "A learner who struggles to process and remember information may have:",
+                "question": "What is the recommended distance between teacher and hearing-impaired child during conversation?",
                 "options": [
-                    "An intellectual disability",
-                    "A visual impairment",
-                    "A hearing disorder",
-                    "A physical challenge"
+                    "2 feet",
+                    "4 feet",
+                    "6 feet",
+                    "10 feet"
                 ],
-                "answer": "An intellectual disability"
+                "answer": "6 feet"
             },
             {
-                "question": "Which law in Ghana supports the rights of persons with disabilities?",
+                "question": "What might a child do to compensate for hearing loss when listening?",
                 "options": [
-                    "Children\u2019s Act 1998",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Labour Act",
-                    "Education Act 1961"
+                    "Turn away from the speaker",
+                    "Cup their ear",
+                    "Close their eyes",
+                    "Hum softly"
                 ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
+                "answer": "Cup their ear"
             },
             {
-                "question": "The term 'mainstreaming' in education means:",
+                "question": "Which is NOT a typical symptom of hearing loss?",
                 "options": [
-                    "Placing all learners in special schools",
-                    "Excluding learners with special needs",
-                    "Integrating learners with special needs into regular classrooms",
-                    "Grouping learners by their disabilities"
+                    "Difficulty following conversations",
+                    "Excessive talking",
+                    "Poor memory of spoken instructions",
+                    "Difficulty localizing sounds"
                 ],
-                "answer": "Integrating learners with special needs into regular classrooms"
+                "answer": "Excessive talking"
             },
             {
-                "question": "A common barrier to inclusion in schools is:",
+                "question": "What should a teacher avoid when speaking to a hearing-impaired child?",
                 "options": [
-                    "Lack of appropriate teaching materials",
-                    "Availability of ramps",
-                    "Presence of trained teachers",
-                    "Positive peer attitudes"
+                    "Facing the child",
+                    "Writing on the board while talking",
+                    "Using gestures",
+                    "Speaking clearly"
                 ],
-                "answer": "Lack of appropriate teaching materials"
+                "answer": "Writing on the board while talking"
             },
             {
-                "question": "Which of the following is not a principle of inclusive education?",
+                "question": "Which of these is a postnatal cause of hearing loss?",
                 "options": [
-                    "Segregation of learners",
-                    "Equal access to learning",
-                    "Participation of all learners",
-                    "Support for individual needs"
+                    "Rubella",
+                    "Prematurity",
+                    "Sickle cell",
+                    "Rh incompatibility"
                 ],
-                "answer": "Segregation of learners"
+                "answer": "Sickle cell"
             },
             {
-                "question": "Which tool is helpful for learners with visual impairment?",
+                "question": "A communication cue that may signal hearing loss is:",
                 "options": [
-                    "Hearing aids",
-                    "Braille books",
-                    "Speech therapy tools",
-                    "Crutches"
+                    "Looking down while speaking",
+                    "Lip-reading the speaker",
+                    "Shaking hands often",
+                    "Clapping continuously"
                 ],
-                "answer": "Braille books"
+                "answer": "Lip-reading the speaker"
             },
             {
-                "question": "Learners with Attention Deficit Hyperactivity Disorder (ADHD) may show:",
+                "question": "Which method is recommended to identify hearing impairment?",
                 "options": [
-                    "Poor hearing",
-                    "Aggressive behaviour only",
-                    "High levels of inattention and impulsivity",
-                    "Total loss of vision"
+                    "ABC Method",
+                    "XYZ Analysis",
+                    "Communication Model",
+                    "Hearing Grid"
                 ],
-                "answer": "High levels of inattention and impulsivity"
+                "answer": "ABC Method"
             },
             {
-                "question": "Peer tutoring is an inclusive strategy that involves:",
+                "question": "Which of the following is a social need consideration for children with hearing loss?",
                 "options": [
-                    "Only teachers helping learners",
-                    "Older students teaching younger ones in a different school",
-                    "Students helping each other in learning",
-                    "Parents assisting their children at home"
+                    "Allowing total independence",
+                    "Screaming to get attention",
+                    "Avoiding explanations to peers",
+                    "Preventing ridicule"
                 ],
-                "answer": "Students helping each other in learning"
+                "answer": "Preventing ridicule"
             },
             {
-                "question": "Which of these is an environmental adaptation for inclusive education?",
+                "question": "What device is surgically implanted to help severe hearing loss?",
                 "options": [
-                    "Standard classroom furniture",
-                    "Stairs with no railings",
-                    "Braille signage",
-                    "Bright coloured posters"
+                    "Spectacles",
+                    "Cochlear implant",
+                    "Hearing loop",
+                    "FM radio"
                 ],
-                "answer": "Braille signage"
+                "answer": "Cochlear implant"
             },
             {
-                "question": "Which of the following disabilities may require the use of a mobility aid?",
+                "question": "What does the term 'physical disability' refer to?",
                 "options": [
-                    "Speech impairment",
-                    "Hearing impairment",
-                    "Physical disability",
-                    "Learning disability"
+                    "Mental and emotional disorders",
+                    "Hearing and speech disorders",
+                    "Conditions affecting mobility and motor functions",
+                    "Learning and attention disabilities"
                 ],
-                "answer": "Physical disability"
+                "answer": "Conditions affecting mobility and motor functions"
             },
             {
-                "question": "Which support strategy is most appropriate for a learner with autism spectrum disorder (ASD)?",
+                "question": "Which of the following is NOT listed as a condition under physical disabilities?",
                 "options": [
-                    "Frequent change of routine",
-                    "Bright lights and loud sounds",
-                    "Consistent routines and visual schedules",
-                    "Group punishments"
-                ],
-                "answer": "Consistent routines and visual schedules"
-            },
-            {
-                "question": "Inclusive education promotes which of the following?",
-                "options": [
-                    "Exclusion of learners with challenges",
-                    "Special schools only",
-                    "Equal opportunities for all learners",
-                    "Labelling and segregation"
-                ],
-                "answer": "Equal opportunities for all learners"
-            },
-            {
-                "question": "What is an example of a psychosocial barrier to learning?",
-                "options": [
-                    "Inaccessible classroom",
-                    "Bullying and negative peer attitudes",
-                    "Hearing loss",
-                    "Visual impairment"
-                ],
-                "answer": "Bullying and negative peer attitudes"
-            },
-            {
-                "question": "The goal of early intervention services is to:",
-                "options": [
-                    "Prevent disabilities",
-                    "Help children develop to their full potential",
-                    "Separate children with special needs",
-                    "Diagnose all children"
-                ],
-                "answer": "Help children develop to their full potential"
-            },
-            {
-                "question": "Which document guides the education of a learner with special needs?",
-                "options": [
-                    "School attendance register",
-                    "Individualised Education Plan (IEP)",
-                    "Class timetable",
-                    "Lesson note"
-                ],
-                "answer": "Individualised Education Plan (IEP)"
-            },
-            {
-                "question": "Learners with albinism may require:",
-                "options": [
-                    "Frequent hydration",
-                    "Large print materials and protection from sunlight",
-                    "Crutches",
-                    "Sign language interpreters"
-                ],
-                "answer": "Large print materials and protection from sunlight"
-            },
-            {
-                "question": "Which is a key benefit of inclusive education?",
-                "options": [
-                    "Increased stigma",
-                    "Improved social interactions and understanding",
-                    "Lowered academic performance",
-                    "More work for teachers"
-                ],
-                "answer": "Improved social interactions and understanding"
-            },
-            {
-                "question": "Learners with hearing impairments may benefit most from:",
-                "options": [
-                    "Loud background music",
-                    "Visual aids and sign language",
-                    "Oral-only instructions",
-                    "Textbooks only"
-                ],
-                "answer": "Visual aids and sign language"
-            },
-            {
-                "question": "In the context of special education, the term 'impairment' refers to:",
-                "options": [
-                    "The social challenges faced by individuals",
-                    "The functional limitation resulting from a condition",
-                    "Societal discrimination",
-                    "Environmental inaccessibility"
-                ],
-                "answer": "The functional limitation resulting from a condition"
-            },
-            {
-                "question": "Which of the following professionals provides assessment for hearing impairments?",
-                "options": [
-                    "Speech therapist",
-                    "Audiologist",
-                    "Physiotherapist",
-                    "Psychologist"
-                ],
-                "answer": "Audiologist"
-            },
-            {
-                "question": "What is the primary goal of inclusive education?",
-                "options": [
-                    "To separate learners with disabilities",
-                    "To improve teacher workload",
-                    "To ensure participation and achievement for all learners",
-                    "To test learners more frequently"
-                ],
-                "answer": "To ensure participation and achievement for all learners"
-            },
-            {
-                "question": "Which strategy best supports learners with learning disabilities?",
-                "options": [
-                    "Punishment for low performance",
-                    "Use of multi-sensory teaching approaches",
-                    "Speed tests",
-                    "Ignoring errors"
-                ],
-                "answer": "Use of multi-sensory teaching approaches"
-            },
-            {
-                "question": "Sign language is primarily used by learners with:",
-                "options": [
-                    "Autism",
-                    "Visual impairment",
-                    "Hearing impairment",
-                    "Intellectual disability"
-                ],
-                "answer": "Hearing impairment"
-            },
-            {
-                "question": "The Persons with Disability Act in Ghana aims to:",
-                "options": [
-                    "Encourage segregation",
-                    "Promote equal rights and access for persons with disabilities",
-                    "Limit access to education",
-                    "Create more special schools"
-                ],
-                "answer": "Promote equal rights and access for persons with disabilities"
-            },
-            {
-                "question": "One of the following is an example of an attitudinal barrier to inclusive education:",
-                "options": [
-                    "Lack of ramps",
-                    "Teacher\u2019s negative perception of learners with disabilities",
-                    "No assistive devices",
-                    "Overcrowded classrooms"
-                ],
-                "answer": "Teacher\u2019s negative perception of learners with disabilities"
-            },
-            {
-                "question": "Braille is a system of writing used primarily by people who are:",
-                "options": [
-                    "Physically challenged",
-                    "Intellectually disabled",
-                    "Hearing impaired",
-                    "Visually impaired"
-                ],
-                "answer": "Visually impaired"
-            },
-            {
-                "question": "Learners with Down syndrome may exhibit which of the following characteristics?",
-                "options": [
-                    "High intelligence",
-                    "Aggressive behaviour",
-                    "Delayed cognitive development",
-                    "Total physical disability"
-                ],
-                "answer": "Delayed cognitive development"
-            },
-            {
-                "question": "Which of these is an example of a learning disability?",
-                "options": [
-                    "Dyslexia",
-                    "Deafness",
+                    "Poliomyelitis",
                     "Cerebral palsy",
-                    "Blindness"
+                    "Down syndrome",
+                    "Spinal cord injuries"
                 ],
-                "answer": "Dyslexia"
+                "answer": "Down syndrome"
             },
             {
-                "question": "What is the role of a resource teacher in an inclusive classroom?",
+                "question": "What does 'orthopedic impairment' affect?",
                 "options": [
-                    "To replace the regular teacher",
-                    "To handle discipline only",
-                    "To provide additional support to learners with special needs",
-                    "To administer tests"
+                    "Hearing and vision",
+                    "Skin and hair",
+                    "Skeletal system and associated muscles",
+                    "Respiratory and digestive systems"
                 ],
-                "answer": "To provide additional support to learners with special needs"
+                "answer": "Skeletal system and associated muscles"
             },
             {
-                "question": "Which of these is a common characteristic of learners with intellectual disabilities?",
+                "question": "What does 'quadriplegia' involve?",
                 "options": [
-                    "Exceptional memory",
-                    "Delayed reasoning and problem-solving skills",
-                    "Advanced language development",
-                    "Superior motor coordination"
+                    "One arm and one leg",
+                    "Only the legs",
+                    "Only one side of the body",
+                    "All four limbs"
                 ],
-                "answer": "Delayed reasoning and problem-solving skills"
+                "answer": "All four limbs"
             },
             {
-                "question": "An example of a communication disorder is:",
+                "question": "Which condition involves motor impairments in the lower body or legs?",
                 "options": [
-                    "Deafness",
-                    "Stuttering",
-                    "Blindness",
-                    "Hyperactivity"
+                    "Quadriplegia",
+                    "Paraplegia",
+                    "Triplegia",
+                    "Monoplegia"
                 ],
-                "answer": "Stuttering"
+                "answer": "Paraplegia"
             },
             {
-                "question": "Learners with ADHD may benefit from:",
+                "question": "What is the meaning of 'hemiplegia'?",
                 "options": [
-                    "Punishment-based learning",
-                    "Frequent breaks and structured routines",
-                    "Complete isolation",
-                    "Open-ended lectures"
+                    "Damage to one limb",
+                    "Damage to all limbs",
+                    "Damage to one side of the body",
+                    "Damage to the lower limbs"
                 ],
-                "answer": "Frequent breaks and structured routines"
+                "answer": "Damage to one side of the body"
             },
             {
-                "question": "A major cause of visual impairment in children can be:",
+                "question": "Which form of cerebral palsy is described by a mix of types like spasticity and athetosis?",
                 "options": [
-                    "Autism",
-                    "Malnutrition and infections",
-                    "Dyslexia",
-                    "Speech delay"
+                    "Mixed",
+                    "Ataxia",
+                    "Atonia",
+                    "Tremor"
                 ],
-                "answer": "Malnutrition and infections"
+                "answer": "Mixed"
             },
             {
-                "question": "The primary purpose of assistive technology in education is to:",
+                "question": "Which of the following is true about cerebral palsy?",
                 "options": [
-                    "Entertain learners",
-                    "Replace teachers",
-                    "Support learners with disabilities to access learning",
-                    "Test physical endurance"
+                    "It is contagious",
+                    "It is progressive",
+                    "It is a disease",
+                    "It is not curable"
                 ],
-                "answer": "Support learners with disabilities to access learning"
+                "answer": "It is not curable"
             },
             {
-                "question": "Which professional typically works with learners with speech and language disorders?",
+                "question": "Cerebral palsy is caused by which of the following?",
                 "options": [
-                    "Occupational therapist",
-                    "Audiologist",
-                    "Speech and language therapist",
-                    "Physiotherapist"
+                    "Injury after age 10",
+                    "Injury before or during birth",
+                    "Lack of exercise",
+                    "Poor nutrition"
                 ],
-                "answer": "Speech and language therapist"
+                "answer": "Injury before or during birth"
             },
             {
-                "question": "The principle of normalisation in special education promotes:",
+                "question": "Which of the following is NOT commonly associated with cerebral palsy?",
                 "options": [
-                    "Keeping learners with disabilities at home",
-                    "Maximising the differences between learners",
-                    "Helping learners with disabilities to lead lives similar to their peers",
-                    "Institutionalisation"
+                    "Speech problems",
+                    "Hearing impairments",
+                    "Digestive disorders",
+                    "Visual impairments"
                 ],
-                "answer": "Helping learners with disabilities to lead lives similar to their peers"
+                "answer": "Digestive disorders"
             },
             {
-                "question": "Which of the following is a benefit of early identification of disabilities?",
+                "question": "What type of CP causes involuntary movements?",
                 "options": [
-                    "Stigmatisation",
-                    "Delayed intervention",
-                    "Timely support and improved outcomes",
-                    "Isolation"
+                    "Spasticity",
+                    "Tremor",
+                    "Athetosis",
+                    "Atonia"
                 ],
-                "answer": "Timely support and improved outcomes"
+                "answer": "Athetosis"
             },
             {
-                "question": "Which term describes the reduced ability to perform an activity in the manner considered normal?",
+                "question": "Which of these classroom practices helps prevent injury to children with disabilities?",
                 "options": [
-                    "Disorder",
-                    "Impairment",
-                    "Disability",
-                    "Condition"
+                    "Using competition to motivate",
+                    "Changing desks often",
+                    "Providing suitable writing materials",
+                    "Letting them sit wherever they want"
                 ],
-                "answer": "Disability"
+                "answer": "Providing suitable writing materials"
             },
             {
-                "question": "Which approach is commonly used in inclusive classrooms to meet diverse learning needs?",
+                "question": "Which of the following specialists helps with self-help and recreation activities?",
                 "options": [
-                    "Standardised instruction",
-                    "One-size-fits-all",
-                    "Differentiated instruction",
-                    "Single teaching method"
-                ],
-                "answer": "Differentiated instruction"
-            },
-            {
-                "question": "What does the term 'inclusive education' imply?",
-                "options": [
-                    "Separate schooling for children with disabilities",
-                    "Integrating all learners regardless of their abilities into mainstream schools",
-                    "Creating specialised schools for each type of disability",
-                    "Teaching all learners the same content without support"
-                ],
-                "answer": "Integrating all learners regardless of their abilities into mainstream schools"
-            },
-            {
-                "question": "What is the most appropriate way to assess learners with special educational needs?",
-                "options": [
-                    "Ignore the assessment",
-                    "Use standardised tests only",
-                    "Use adapted and alternative assessments",
-                    "Assess them the same as everyone else"
-                ],
-                "answer": "Use adapted and alternative assessments"
-            },
-            {
-                "question": "A barrier that originates from society\u2019s negative attitude towards disability is called:",
-                "options": [
-                    "Environmental barrier",
-                    "Medical barrier",
-                    "Attitudinal barrier",
-                    "Physical barrier"
-                ],
-                "answer": "Attitudinal barrier"
-            },
-            {
-                "question": "Which of the following is a principle of inclusive education?",
-                "options": [
-                    "Segregation",
-                    "Discrimination",
-                    "Equity and access for all learners",
-                    "Standardisation of learners"
-                ],
-                "answer": "Equity and access for all learners"
-            },
-            {
-                "question": "What does the acronym IEP stand for?",
-                "options": [
-                    "Inclusive Education Programme",
-                    "International Education Policy",
-                    "Individualised Education Plan",
-                    "Institutionalised Education Practice"
-                ],
-                "answer": "Individualised Education Plan"
-            },
-            {
-                "question": "Who plays a key role in advocating for learners with disabilities in school settings?",
-                "options": [
-                    "Peers",
-                    "School cooks",
-                    "Parents and special educators",
-                    "Janitors"
-                ],
-                "answer": "Parents and special educators"
-            },
-            {
-                "question": "Which of the following disabilities is typically characterised by difficulties with reading and spelling?",
-                "options": [
-                    "Dysgraphia",
-                    "Autism",
-                    "Dyslexia",
-                    "ADHD"
-                ],
-                "answer": "Dyslexia"
-            },
-            {
-                "question": "Learners with physical impairments may need:",
-                "options": [
-                    "Counselling only",
-                    "Wheelchairs or other mobility aids",
-                    "Speech therapy only",
-                    "No educational support"
-                ],
-                "answer": "Wheelchairs or other mobility aids"
-            },
-            {
-                "question": "Which of the following professionals is likely to help learners develop daily living skills?",
-                "options": [
-                    "Occupational therapist",
-                    "Audiologist",
-                    "IT specialist",
-                    "Speech pathologist"
+                    "Prosthetist",
+                    "Orthotist",
+                    "Physical therapist",
+                    "Occupational therapist"
                 ],
                 "answer": "Occupational therapist"
             },
             {
-                "question": "Which concept involves removing barriers so that learners with special needs can learn alongside their peers?",
+                "question": "Who is responsible for fitting braces and assistive devices?",
                 "options": [
-                    "Integration",
-                    "Exclusion",
-                    "Inclusive education",
-                    "Specialised education"
+                    "Physician",
+                    "Prosthetist",
+                    "Orthotist",
+                    "Physiotherapist"
                 ],
-                "answer": "Inclusive education"
+                "answer": "Orthotist"
+            },
+            {
+                "question": "Triplegia affects which limbs?",
+                "options": [
+                    "One arm and one leg",
+                    "Two legs and one arm",
+                    "All four limbs",
+                    "Only the trunk"
+                ],
+                "answer": "Two legs and one arm"
+            },
+            {
+                "question": "Which type of CP is marked by lack of coordination?",
+                "options": [
+                    "Spasticity",
+                    "Ataxia",
+                    "Rigidity",
+                    "Atonia"
+                ],
+                "answer": "Ataxia"
+            },
+            {
+                "question": "Which of the following is a visible characteristic in some children with cerebral palsy?",
+                "options": [
+                    "Drooling",
+                    "Rapid blinking",
+                    "Hair loss",
+                    "Trembling voice"
+                ],
+                "answer": "Drooling"
+            },
+            {
+                "question": "Which term refers to damage in only one limb?",
+                "options": [
+                    "Monoplegia",
+                    "Triplegia",
+                    "Paraplegia",
+                    "Hemiplegia"
+                ],
+                "answer": "Monoplegia"
+            },
+            {
+                "question": "Why should competition be discouraged in physical activities for children with disabilities?",
+                "options": [
+                    "It lowers their self-esteem",
+                    "They may become aggressive",
+                    "It may lead to accidents",
+                    "It can cause stress and injury"
+                ],
+                "answer": "It can cause stress and injury"
+            },
+            {
+                "question": "What does the term 'diplegia' imply?",
+                "options": [
+                    "Legs more affected than arms",
+                    "Arms more affected than legs",
+                    "Only one side is paralyzed",
+                    "All limbs equally affected"
+                ],
+                "answer": "Legs more affected than arms"
+            },
+            {
+                "question": "What does Autism Spectrum Disorder (ASD) primarily affect?",
+                "options": [
+                    "Digestive system",
+                    "Social skills and communication",
+                    "Motor coordination",
+                    "Visual processing"
+                ],
+                "answer": "Social skills and communication"
+            },
+            {
+                "question": "Which term describes the repetition of words or phrases over time in children with autism?",
+                "options": [
+                    "Verbal scripting",
+                    "Echolalia",
+                    "Hyperlexia",
+                    "Palilalia"
+                ],
+                "answer": "Echolalia"
+            },
+            {
+                "question": "What is a common sensory characteristic of children with autism?",
+                "options": [
+                    "Perfect pitch",
+                    "Increased taste sensitivity",
+                    "Hyper or hypo sensitivity to sensory input",
+                    "Increased pain threshold"
+                ],
+                "answer": "Hyper or hypo sensitivity to sensory input"
+            },
+            {
+                "question": "What is NOT a typical characteristic of communication impairment in autism?",
+                "options": [
+                    "Speech delays",
+                    "Rich vocabulary",
+                    "Limited speech use",
+                    "Repetitive language"
+                ],
+                "answer": "Rich vocabulary"
+            },
+            {
+                "question": "What type of disorder is autism?",
+                "options": [
+                    "Psychological disorder",
+                    "Emotional disturbance",
+                    "Developmental disability",
+                    "Physical impairment"
+                ],
+                "answer": "Developmental disability"
+            },
+            {
+                "question": "At what age does autism typically become evident?",
+                "options": [
+                    "Before age 3",
+                    "During adolescence",
+                    "At birth",
+                    "After age 10"
+                ],
+                "answer": "Before age 3"
+            },
+            {
+                "question": "Which of the following is a repetitive behaviour seen in autism?",
+                "options": [
+                    "Writing poems",
+                    "Drawing landscapes",
+                    "Hand flapping",
+                    "Excessive sleeping"
+                ],
+                "answer": "Hand flapping"
+            },
+            {
+                "question": "What is a potential cause or risk factor for autism?",
+                "options": [
+                    "Vaccinations",
+                    "Older parental age",
+                    "Low sugar intake",
+                    "Excessive screen time"
+                ],
+                "answer": "Older parental age"
+            },
+            {
+                "question": "Which of these is a professional who may diagnose autism?",
+                "options": [
+                    "Dermatologist",
+                    "Cardiologist",
+                    "Child neurologist",
+                    "Radiologist"
+                ],
+                "answer": "Child neurologist"
+            },
+            {
+                "question": "How is autism diagnosed?",
+                "options": [
+                    "Through a blood test",
+                    "Using an X-ray",
+                    "By observing behavior and development",
+                    "Via a genetic scan"
+                ],
+                "answer": "By observing behavior and development"
+            },
+            {
+                "question": "Which of the following best describes the learning style of many autistic children?",
+                "options": [
+                    "They are naturally social learners",
+                    "They enjoy group discussions",
+                    "They depend heavily on routines",
+                    "They prefer fast-paced instruction"
+                ],
+                "answer": "They depend heavily on routines"
+            },
+            {
+                "question": "What is a key classroom strategy for teaching children with ASD?",
+                "options": [
+                    "Punish rule-breaking",
+                    "Use sarcasm for humor",
+                    "Avoid routines",
+                    "Use clear visual aids"
+                ],
+                "answer": "Use clear visual aids"
+            },
+            {
+                "question": "Which of the following is NOT a sign of social impairment in autism?",
+                "options": [
+                    "Desire for solitude",
+                    "Frequent emotional outbursts",
+                    "Difficulty making friends",
+                    "Unusual eye contact"
+                ],
+                "answer": "Frequent emotional outbursts"
+            },
+            {
+                "question": "Which type of professional helps autistic children with classroom learning?",
+                "options": [
+                    "Special educator",
+                    "Nutritionist",
+                    "Pharmacist",
+                    "Physical therapist"
+                ],
+                "answer": "Special educator"
+            },
+            {
+                "question": "What can repetitive attachment to objects indicate in autistic children?",
+                "options": [
+                    "Hyperactivity",
+                    "Learning disability",
+                    "Social delay",
+                    "Autistic behavior pattern"
+                ],
+                "answer": "Autistic behavior pattern"
+            },
+            {
+                "question": "Which of these behaviours may be self-injurious in children with autism?",
+                "options": [
+                    "Singing loudly",
+                    "Biting self",
+                    "Whispering",
+                    "Spinning toys"
+                ],
+                "answer": "Biting self"
+            },
+            {
+                "question": "What is the significance of 'perseveration' in autistic learning?",
+                "options": [
+                    "Fast learning of new topics",
+                    "Focus on many topics at once",
+                    "Repetitive focus on one subject",
+                    "Consistent memory recall"
+                ],
+                "answer": "Repetitive focus on one subject"
+            },
+            {
+                "question": "What kind of teaching language should be avoided when working with children with ASD?",
+                "options": [
+                    "Simple instructions",
+                    "Slang and idioms",
+                    "Positive reinforcement",
+                    "Visual cues"
+                ],
+                "answer": "Slang and idioms"
+            },
+            {
+                "question": "Which behavior might suggest difficulty with processing sensory input in autism?",
+                "options": [
+                    "Rapid reading",
+                    "Refusal to wear certain clothes",
+                    "Frequent laughter",
+                    "Enjoyment of noisy places"
+                ],
+                "answer": "Refusal to wear certain clothes"
+            },
+            {
+                "question": "Which of these children may have a higher risk of ASD?",
+                "options": [
+                    "Children exposed to TV before age 2",
+                    "Children born to teenage parents",
+                    "Children with genetic conditions like fragile X",
+                    "Children born during summer"
+                ],
+                "answer": "Children with genetic conditions like fragile X"
+            },
+            {
+                "question": "What is the highest expression of giftedness?",
+                "options": [
+                    "Athletic skill",
+                    "Creative thinking",
+                    "Artistic talent",
+                    "Mathematical ability"
+                ],
+                "answer": "Creative thinking"
+            },
+            {
+                "question": "Which of the following is NOT a domain of giftedness?",
+                "options": [
+                    "General intellectual ability",
+                    "Specific academic aptitude",
+                    "Muscle reflexes",
+                    "Visual or performing arts"
+                ],
+                "answer": "Muscle reflexes"
+            },
+            {
+                "question": "Which characteristic is commonly associated with creativity?",
+                "options": [
+                    "Fluency",
+                    "Inflexibility",
+                    "Apathy",
+                    "Routine thinking"
+                ],
+                "answer": "Fluency"
+            },
+            {
+                "question": "What does 'giftedness' typically refer to?",
+                "options": [
+                    "Physical superiority",
+                    "Cognitive superiority",
+                    "Economic advantage",
+                    "Political leadership"
+                ],
+                "answer": "Cognitive superiority"
+            },
+            {
+                "question": "Which trait is commonly seen in gifted children with emotional sensitivity?",
+                "options": [
+                    "Disinterest in others",
+                    "Sense of guilt and responsibility",
+                    "Recklessness",
+                    "Low memory for feelings"
+                ],
+                "answer": "Sense of guilt and responsibility"
+            },
+            {
+                "question": "Which trait is associated with imaginational overexcitability?",
+                "options": [
+                    "Strong physical endurance",
+                    "Magical thinking",
+                    "Sensory overload",
+                    "Repetitive speech"
+                ],
+                "answer": "Magical thinking"
+            },
+            {
+                "question": "Which of the following is an educational approach for gifted students?",
+                "options": [
+                    "Delaying grade progression",
+                    "Acceleration",
+                    "Repetition of content",
+                    "Slower-paced instruction"
+                ],
+                "answer": "Acceleration"
+            },
+            {
+                "question": "What is one way to enrich a gifted child's learning experience?",
+                "options": [
+                    "Remove them from group work",
+                    "Limit their curriculum",
+                    "Use extended reading and field trips",
+                    "Make them repeat basic lessons"
+                ],
+                "answer": "Use extended reading and field trips"
+            },
+            {
+                "question": "Which of the following traits indicates leadership in a gifted child?",
+                "options": [
+                    "Avoids responsibility",
+                    "Persuasive and takes initiative",
+                    "Dislikes group work",
+                    "Rarely expresses opinions"
+                ],
+                "answer": "Persuasive and takes initiative"
+            },
+            {
+                "question": "What emotional trait might be seen in gifted children?",
+                "options": [
+                    "Lack of empathy",
+                    "Concern for others",
+                    "Short attention span",
+                    "Dislike of learning"
+                ],
+                "answer": "Concern for others"
+            },
+            {
+                "question": "What kind of trait is 'visualization' in the context of creativity?",
+                "options": [
+                    "Intellectual trait",
+                    "Sensual trait",
+                    "Creative trait",
+                    "Leadership trait"
+                ],
+                "answer": "Creative trait"
+            },
+            {
+                "question": "What could cause gifted underachievement?",
+                "options": [
+                    "Strong motivation",
+                    "Encouraging environment",
+                    "Boring or unchallenging schoolwork",
+                    "Effective teaching methods"
+                ],
+                "answer": "Boring or unchallenging schoolwork"
+            },
+            {
+                "question": "Which of these is a characteristic of gifted academic learners?",
+                "options": [
+                    "Avoid academic challenges",
+                    "Need external motivation",
+                    "Succeed with little effort",
+                    "Dislike subject variety"
+                ],
+                "answer": "Succeed with little effort"
+            },
+            {
+                "question": "Which classroom strategy supports gifted learners?",
+                "options": [
+                    "Open-ended assignments",
+                    "Strict memorization tasks",
+                    "Factual recall only",
+                    "Group punishment"
+                ],
+                "answer": "Open-ended assignments"
+            },
+            {
+                "question": "What is a goal of mentorship for gifted students?",
+                "options": [
+                    "Provide discipline",
+                    "Assign basic classroom duties",
+                    "Expose students to professional role models",
+                    "Limit extracurricular activity"
+                ],
+                "answer": "Expose students to professional role models"
+            },
+            {
+                "question": "Which is a sign of a gifted child’s early intellectual ability?",
+                "options": [
+                    "Slow vocabulary growth",
+                    "Excellent memory and reasoning skills",
+                    "Avoids problem solving",
+                    "Dislikes reading"
+                ],
+                "answer": "Excellent memory and reasoning skills"
+            },
+            {
+                "question": "Why is identification of gifted children complex?",
+                "options": [
+                    "Only teachers can identify giftedness",
+                    "Giftedness has one universal test",
+                    "Multiple methods are required for proper identification",
+                    "Giftedness does not need identification"
+                ],
+                "answer": "Multiple methods are required for proper identification"
+            },
+            {
+                "question": "What sensual trait is common among gifted children?",
+                "options": [
+                    "Desire for silence",
+                    "Craving for sensory pleasure",
+                    "Disregard for beauty",
+                    "Unawareness of taste or smell"
+                ],
+                "answer": "Craving for sensory pleasure"
+            },
+            {
+                "question": "Which of these is a form of acceleration?",
+                "options": [
+                    "Repeating grades",
+                    "Concurrent enrollment in high school and college",
+                    "Skipping homework",
+                    "Rewriting tests"
+                ],
+                "answer": "Concurrent enrollment in high school and college"
+            },
+            {
+                "question": "What could prevent a gifted child from achieving their potential?",
+                "options": [
+                    "Early schooling",
+                    "Intrinsic motivation",
+                    "Supportive teachers",
+                    "Emotional conflicts or neglect"
+                ],
+                "answer": "Emotional conflicts or neglect"
+            },
+            {
+                "question": "What is the key difference between emotions and behaviours?",
+                "options": [
+                    "Emotions are outward expressions, behaviours are inner feelings",
+                    "Emotions are inner feelings, behaviours are outward expressions",
+                    "Emotions and behaviours are both outward expressions",
+                    "Emotions and behaviours are the same"
+                ],
+                "answer": "Emotions are inner feelings, behaviours are outward expressions"
+            },
+            {
+                "question": "Which of the following is NOT a characteristic of Conduct Disorder (CD)?",
+                "options": [
+                    "Easily angered, annoyed or irritated",
+                    "Frequent temper tantrums",
+                    "Excessive sleeping",
+                    "Being aggressive to animals and other people"
+                ],
+                "answer": "Excessive sleeping"
+            },
+            {
+                "question": "In Attention Deficit Hyperactivity Disorder (ADHD), which of the following is a symptom of inattention?",
+                "options": [
+                    "Moving from one task to another without completing anything",
+                    "Always staying on task",
+                    "Extreme shyness",
+                    "Refusal to follow rules"
+                ],
+                "answer": "Moving from one task to another without completing anything"
+            },
+            {
+                "question": "Which disorder is characterized by extreme irritability, anger, and outbursts?",
+                "options": [
+                    "Disruptive Mood Dysregulation Disorder (DMDD)",
+                    "Obsessive-Compulsive Disorder (OCD)",
+                    "Anorexia Nervosa",
+                    "Separation Anxiety Disorder (SAD)"
+                ],
+                "answer": "Disruptive Mood Dysregulation Disorder (DMDD)"
+            },
+            {
+                "question": "What are delusions?",
+                "options": [
+                    "True beliefs based on strong evidence",
+                    "False beliefs not based in reality",
+                    "Logical conclusions drawn from facts",
+                    "Unrelated answers to questions"
+                ],
+                "answer": "False beliefs not based in reality"
+            },
+            {
+                "question": "Which of the following is an example of internalizing behaviour?",
+                "options": [
+                    "Aggressiveness",
+                    "Vandalizing property",
+                    "Withdrawal and sadness",
+                    "Arguing frequently with adults"
+                ],
+                "answer": "Withdrawal and sadness"
+            },
+            {
+                "question": "Which of the following is a sign of immaturity in children?",
+                "options": [
+                    "Daydreaming",
+                    "Frequent lying",
+                    "Stealing",
+                    "Bullying"
+                ],
+                "answer": "Daydreaming"
+            },
+            {
+                "question": "Which eating disorder involves the craving of non-food substances like clay or soil?",
+                "options": [
+                    "Anorexia Nervosa",
+                    "Bulimia",
+                    "Pica",
+                    "Avoidant/Restrictive Food Intake Disorder"
+                ],
+                "answer": "Pica"
+            },
+            {
+                "question": "What characterizes Obsessive-Compulsive Disorder (OCD) in children?",
+                "options": [
+                    "Extreme laziness",
+                    "Unwanted thoughts and repetitive behaviors",
+                    "Refusal to eat",
+                    "Continuous crying"
+                ],
+                "answer": "Unwanted thoughts and repetitive behaviors"
+            },
+            {
+                "question": "Which disorder is marked by hallucinations, delusions, and disordered thinking?",
+                "options": [
+                    "Bipolar Disorder",
+                    "Tourette Syndrome",
+                    "Childhood Schizophrenia",
+                    "ADHD"
+                ],
+                "answer": "Childhood Schizophrenia"
+            },
+            {
+                "question": "Tourette Syndrome primarily involves which of the following symptoms?",
+                "options": [
+                    "Memory loss",
+                    "Tics and repetitive movements or sounds",
+                    "Weight gain",
+                    "Complete silence"
+                ],
+                "answer": "Tics and repetitive movements or sounds"
+            },
+            {
+                "question": "Which of the following is a warning sign of emotional or behavioural disorders?",
+                "options": [
+                    "Excessive attachments",
+                    "Excellent academic performance",
+                    "Eagerness to socialize",
+                    "Frequent laughter"
+                ],
+                "answer": "Excessive attachments"
+            },
+            {
+                "question": "Which of the following is considered a biological cause of emotional and behavioural disorders?",
+                "options": [
+                    "Broken homes",
+                    "Negative media influences",
+                    "Neurological/Brain disorders",
+                    "Undesirable school conditions"
+                ],
+                "answer": "Neurological/Brain disorders"
+            },
+            {
+                "question": "What does 'A' stand for in the ABC model of behaviour analysis?",
+                "options": [
+                    "Action",
+                    "Antecedent",
+                    "Analysis",
+                    "Activity"
+                ],
+                "answer": "Antecedent"
+            },
+            {
+                "question": "Which management strategy involves promoting a desired behaviour through positive or negative encouragement?",
+                "options": [
+                    "Reinforcement",
+                    "Punishment",
+                    "Tactical Ignoring",
+                    "Time-out"
+                ],
+                "answer": "Reinforcement"
+            },
+            {
+                "question": "Which strategy is best described as engaging a child in a boring task until they calm down?",
+                "options": [
+                    "Punishment",
+                    "Time-out",
+                    "Tactical Ignoring",
+                    "Reinforcement"
+                ],
+                "answer": "Time-out"
+            },
+            {
+                "question": "Which anxiety disorder makes children extremely afraid to talk in public but comfortable at home?",
+                "options": [
+                    "Generalized Anxiety Disorder (GAD)",
+                    "Separation Anxiety Disorder (SAD)",
+                    "Selective Mutism (SM)",
+                    "Social Anxiety Disorder"
+                ],
+                "answer": "Selective Mutism (SM)"
+            },
+            {
+                "question": "Which mood disorder involves alternating periods of depression and elevated mood?",
+                "options": [
+                    "Bipolar Disorder",
+                    "Pica",
+                    "ADHD",
+                    "Tourette Syndrome"
+                ],
+                "answer": "Bipolar Disorder"
+            },
+            {
+                "question": "Which of the following is NOT a pathological family relationship that can cause emotional and behavioural disorders?",
+                "options": [
+                    "Broken homes",
+                    "Divorce",
+                    "Chaotic relationships",
+                    "High academic performance"
+                ],
+                "answer": "High academic performance"
+            },
+            {
+                "question": "What is the aim of using non-verbal signals in managing classroom behaviour?",
+                "options": [
+                    "To punish the child",
+                    "To indicate inappropriate behaviour silently",
+                    "To scare the child",
+                    "To praise the child"
+                ],
+                "answer": "To indicate inappropriate behaviour silently"
+            },
+            {
+                "question": "What does the Normalization Principle emphasize for persons with disabilities?",
+                "options": [
+                    "They should live in isolation for safety",
+                    "They should be provided the same needs as 'normal' people",
+                    "They must be homeschooled exclusively",
+                    "They should avoid social interaction"
+                ],
+                "answer": "They should be provided the same needs as 'normal' people"
+            },
+            {
+                "question": "Integration in education is best described as:",
+                "options": [
+                    "Physical placement of students with extensive needs on general school campuses",
+                    "Total isolation of students with disabilities",
+                    "Special schools only for disabled students",
+                    "Online learning only"
+                ],
+                "answer": "Physical placement of students with extensive needs on general school campuses"
+            },
+            {
+                "question": "Mainstreaming allows children with disabilities to:",
+                "options": [
+                    "Be fully removed from general classes",
+                    "Remain in general education for part of the day and receive special education when needed",
+                    "Study only at home",
+                    "Skip education entirely"
+                ],
+                "answer": "Remain in general education for part of the day and receive special education when needed"
+            },
+            {
+                "question": "The Least Restrictive Environment (LRE) refers to:",
+                "options": [
+                    "Placing all children in separate schools",
+                    "A continuum of placement options from general classrooms to separate settings",
+                    "Enforcing rigid teaching methods",
+                    "Keeping students with disabilities out of regular classrooms"
+                ],
+                "answer": "A continuum of placement options from general classrooms to separate settings"
+            },
+            {
+                "question": "According to the Salamanca Statement, special education now includes:",
+                "options": [
+                    "Only children with physical disabilities",
+                    "Only children with sensory disabilities",
+                    "All children who fail to benefit from school for any reason",
+                    "Only children with intellectual disabilities"
+                ],
+                "answer": "All children who fail to benefit from school for any reason"
+            },
+            {
+                "question": "Inclusive education is based on the idea that:",
+                "options": [
+                    "Only children without disabilities should attend school",
+                    "Children with disabilities need special schools only",
+                    "All children, especially the marginalized, must have their learning needs addressed",
+                    "Separate education systems are best"
+                ],
+                "answer": "All children, especially the marginalized, must have their learning needs addressed"
+            },
+            {
+                "question": "A child's moral right in inclusive education implies:",
+                "options": [
+                    "They should be separated for better results",
+                    "They deserve the same experiences and opportunities as all children",
+                    "They should only learn from home",
+                    "They should avoid mainstream schools"
+                ],
+                "answer": "They deserve the same experiences and opportunities as all children"
+            },
+            {
+                "question": "What is a parental right regarding inclusive education?",
+                "options": [
+                    "Parents have no say in the child's educational setting",
+                    "Parents can choose the least restrictive environment with proper support",
+                    "Parents must accept any school placement",
+                    "Parents should avoid participating in school decisions"
+                ],
+                "answer": "Parents can choose the least restrictive environment with proper support"
+            },
+            {
+                "question": "An ethical right for children with disabilities ensures:",
+                "options": [
+                    "A sense of belonging, value, and worth",
+                    "Separation from their peers",
+                    "Infrequent attendance",
+                    "Limited academic resources"
+                ],
+                "answer": "A sense of belonging, value, and worth"
+            },
+            {
+                "question": "Which of the following is a legal right for children with disabilities in education?",
+                "options": [
+                    "To be educated to the maximum extent with peers without disabilities",
+                    "To study only with other disabled children",
+                    "To avoid standardized assessments",
+                    "To skip education entirely"
+                ],
+                "answer": "To be educated to the maximum extent with peers without disabilities"
+            },
+            {
+                "question": "A major obstacle to inclusion globally is:",
+                "options": [
+                    "Abundant special education teachers",
+                    "Plenty of resources for schools",
+                    "Lack of teacher training",
+                    "Perfect classroom conditions"
+                ],
+                "answer": "Lack of teacher training"
+            },
+            {
+                "question": "In Ghana, which factor is a barrier to inclusive education?",
+                "options": [
+                    "Strict adherence to academic knowledge",
+                    "Unlimited classroom space",
+                    "Excessive community participation",
+                    "Surplus of trained special educators"
+                ],
+                "answer": "Strict adherence to academic knowledge"
+            },
+            {
+                "question": "A key demand for successful inclusion is:",
+                "options": [
+                    "Teacher motivation and training",
+                    "Segregation of students",
+                    "Focus only on academic scores",
+                    "Limiting parental involvement"
+                ],
+                "answer": "Teacher motivation and training"
+            },
+            {
+                "question": "Inclusive education benefits children with special needs by:",
+                "options": [
+                    "Providing a sense of belonging and self-respect",
+                    "Keeping them isolated from peers",
+                    "Excluding them from classroom activities",
+                    "Limiting social interaction"
+                ],
+                "answer": "Providing a sense of belonging and self-respect"
+            },
+            {
+                "question": "Which of the following is a societal benefit of inclusive education?",
+                "options": [
+                    "Promotes civil rights and social equality",
+                    "Increases social exclusion",
+                    "Discourages collaborative skills",
+                    "Encourages competition only"
+                ],
+                "answer": "Promotes civil rights and social equality"
+            },
+            {
+                "question": "For regular classroom teachers, inclusive education creates:",
+                "options": [
+                    "A need for individualized teaching methods",
+                    "Fewer teaching challenges",
+                    "No need to adapt methods",
+                    "Less student diversity"
+                ],
+                "answer": "A need for individualized teaching methods"
+            },
+            {
+                "question": "One challenge of inclusive education for teachers is:",
+                "options": [
+                    "Overlooking differential learning needs",
+                    "Having too many resources",
+                    "Fewer students in class",
+                    "Automatic student success"
+                ],
+                "answer": "Overlooking differential learning needs"
+            },
+            {
+                "question": "Inflexible curriculum and rigid examination demands can:",
+                "options": [
+                    "Help all students succeed",
+                    "Make it hard for children with disabilities to cope academically",
+                    "Encourage special needs participation",
+                    "Reduce the workload of teachers"
+                ],
+                "answer": "Make it hard for children with disabilities to cope academically"
+            },
+            {
+                "question": "One expected change for teachers in inclusive classrooms is:",
+                "options": [
+                    "Use of multi-level instruction",
+                    "Teaching only one standard method",
+                    "Ignoring individual needs",
+                    "Avoiding feedback from students"
+                ],
+                "answer": "Use of multi-level instruction"
+            },
+            {
+                "question": "A key feature of inclusive education is:",
+                "options": [
+                    "Responding to the needs of all learners, including those with disabilities",
+                    "Focusing only on high achievers",
+                    "Separating children by ability",
+                    "Reducing social interactions"
+                ],
+                "answer": "Responding to the needs of all learners, including those with disabilities"
             }
-
         ]
+
+
+
+
+
 
         let currentQuestionIndex = 0;
         let score = 0;
