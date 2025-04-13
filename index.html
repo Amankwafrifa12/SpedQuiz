@@ -208,36 +208,6 @@
         // (You can use an external JSON file and fetch it if needed.)
         const questions = [
             {
-                "question": "Which of the following is a major category of exceptionality in special education?",
-                "options": [
-                    "Environmental factors",
-                    "Physical education",
-                    "Learning disabilities",
-                    "Emotional support"
-                ],
-                "answer": "Learning disabilities"
-            },
-            {
-                "question": "What is the primary aim of special education?",
-                "options": [
-                    "To provide medical care for learners",
-                    "To prepare students for manual labour",
-                    "To cater for the educational needs of learners with disabilities",
-                    "To teach vocational skills"
-                ],
-                "answer": "To cater for the educational needs of learners with disabilities"
-            },
-            {
-                "question": "Who qualifies as a person with special educational needs?",
-                "options": [
-                    "A student with average academic performance",
-                    "A student who attends extra classes",
-                    "A student with a disability or learning difficulty",
-                    "A student who plays sports"
-                ],
-                "answer": "A student with a disability or learning difficulty"
-            },
-            {
                 "question": "Which of the following is an example of an environmental barrier to learning?",
                 "options": [
                     "Hearing loss",
@@ -248,965 +218,496 @@
                 "answer": "Lack of wheelchair access"
             },
             {
-                "question": "What is inclusive education?",
+                "question": "What is the primary focus of inclusive education?",
                 "options": [
-                    "Education only for students with disabilities",
-                    "Separate education for special needs students",
-                    "Education that accommodates all learners in the same environment",
-                    "Education for gifted students only"
+                    "Providing separate schools for disabled students",
+                    "Allowing only high-achieving students in mainstream classrooms",
+                    "Ensuring all learners have access to quality education within regular schools",
+                    "Promoting home-schooling for all children with disabilities"
                 ],
-                "answer": "Education that accommodates all learners in the same environment"
+                "answer": "Ensuring all learners have access to quality education within regular schools"
             },
             {
-                "question": "Which category of disability affects the ability to use limbs or body parts?",
+                "question": "What does the term 'Special Educational Needs' (SEN) refer to?",
                 "options": [
+                    "Educational requirements for teachers",
+                    "Challenges faced by school administrators",
+                    "Learning difficulties or disabilities that make it harder for children to learn",
+                    "Government reforms in mainstream schools"
+                ],
+                "answer": "Learning difficulties or disabilities that make it harder for children to learn"
+            },
+            {
+                "question": "Which of these is NOT a principle of inclusive education?",
+                "options": [
+                    "All children can learn",
+                    "Education should accommodate all children regardless of their physical condition",
+                    "Segregation provides better outcomes",
+                    "Learning needs are best addressed within the regular school system"
+                ],
+                "answer": "Segregation provides better outcomes"
+            },
+            {
+                "question": "The Salamanca Statement (1994) advocates for:",
+                "options": [
+                    "Home-schooling of children with disabilities",
+                    "Education in specialised institutions only",
+                    "Inclusive education within mainstream schools",
+                    "Elimination of compulsory education"
+                ],
+                "answer": "Inclusive education within mainstream schools"
+            },
+            {
+                "question": "Which law in Ghana supports inclusive education?",
+                "options": [
+                    "Labour Act",
+                    "Children\u2019s Act 1998 (Act 560)",
+                    "Electoral Commission Act",
+                    "Immigration Act"
+                ],
+                "answer": "Children\u2019s Act 1998 (Act 560)"
+            },
+            {
+                "question": "Which of the following is a behavioural characteristic of learners with learning disabilities?",
+                "options": [
+                    "Increased attention span",
+                    "Hyperactivity",
+                    "Advanced problem-solving skills",
+                    "Excellent handwriting"
+                ],
+                "answer": "Hyperactivity"
+            },
+            {
+                "question": "One common challenge faced by learners with physical disabilities is:",
+                "options": [
+                    "Lack of interest in learning",
+                    "Difficulty accessing school facilities",
+                    "Difficulty understanding abstract concepts",
+                    "Inability to speak"
+                ],
+                "answer": "Difficulty accessing school facilities"
+            },
+            {
+                "question": "Which of these is considered a developmental disability?",
+                "options": [
+                    "Asthma",
+                    "Cerebral Palsy",
+                    "Tuberculosis",
+                    "Malaria"
+                ],
+                "answer": "Cerebral Palsy"
+            },
+            {
+                "question": "Inclusive education helps reduce:",
+                "options": [
+                    "Peer collaboration",
+                    "Social exclusion",
+                    "Diversity in schools",
+                    "Educational opportunities"
+                ],
+                "answer": "Social exclusion"
+            },
+            {
+                "question": "Learners with speech and language disorders may struggle most with:",
+                "options": [
+                    "Completing physical exercises",
+                    "Following and giving verbal instructions",
+                    "Reading road signs",
+                    "Counting numbers"
+                ],
+                "answer": "Following and giving verbal instructions"
+            },
+            {
+                "question": "Which of the following is an intellectual disability characterised by below-average cognitive ability?",
+                "options": [
+                    "Autism",
+                    "Dyslexia",
+                    "Down Syndrome",
+                    "ADHD"
+                ],
+                "answer": "Down Syndrome"
+            },
+            {
+                "question": "What is a common cause of visual impairment in children?",
+                "options": [
+                    "Poor handwriting",
+                    "Cataracts",
+                    "Hyperactivity",
+                    "Stammering"
+                ],
+                "answer": "Cataracts"
+            },
+            {
+                "question": "Which of these conditions primarily affects social interaction and communication?",
+                "options": [
+                    "Deafness",
+                    "Autism Spectrum Disorder",
+                    "Blindness",
+                    "Epilepsy"
+                ],
+                "answer": "Autism Spectrum Disorder"
+            },
+            {
+                "question": "What type of disability is characterised by challenges in motor function due to brain damage before or during birth?",
+                "options": [
+                    "Autism",
+                    "Cerebral Palsy",
+                    "ADHD",
+                    "Dyscalculia"
+                ],
+                "answer": "Cerebral Palsy"
+            },
+            {
+                "question": "Which of the following is a strategy for teaching learners with hearing impairment?",
+                "options": [
+                    "Speaking very fast",
+                    "Using sign language or visual aids",
+                    "Assigning more homework",
+                    "Making phone calls frequently"
+                ],
+                "answer": "Using sign language or visual aids"
+            },
+            {
+                "question": "What is the main focus of special education?",
+                "options": [
+                    "To isolate learners with disabilities",
+                    "To provide unique teaching approaches suited to diverse needs",
+                    "To build more specialised schools",
+                    "To improve school infrastructure"
+                ],
+                "answer": "To provide unique teaching approaches suited to diverse needs"
+            },
+            {
+                "question": "What is an example of an instructional barrier to learning?",
+                "options": [
+                    "Poor ventilation in classrooms",
+                    "Use of complex language not suited to learner\u2019s level",
+                    "Noise pollution",
+                    "Inadequate furniture"
+                ],
+                "answer": "Use of complex language not suited to learner\u2019s level"
+            },
+            {
+                "question": "Inclusive education is based on which key principle?",
+                "options": [
+                    "Segregation is necessary for progress",
+                    "Only children without disabilities should attend public schools",
+                    "All children, regardless of differences, should learn together",
+                    "Learners with disabilities require minimal supervision"
+                ],
+                "answer": "All children, regardless of differences, should learn together"
+            },
+            {
+                "question": "Which of these learning difficulties is associated with reading and language processing?",
+                "options": [
+                    "Dysgraphia",
+                    "Dyscalculia",
+                    "Dyslexia",
+                    "Hyperlexia"
+                ],
+                "answer": "Dyslexia"
+            },
+            {
+                "question": "What is the most appropriate teaching strategy for learners with intellectual disabilities?",
+                "options": [
+                    "Fast-paced instruction",
+                    "Use of abstract materials",
+                    "Step-by-step guidance and repetition",
+                    "Lengthy theoretical discussions"
+                ],
+                "answer": "Step-by-step guidance and repetition"
+            },
+            {
+                "question": "Which of the following may be a cause of hearing impairment?",
+                "options": [
+                    "Excessive talking",
+                    "Brain tumour",
+                    "Prenatal infections such as rubella",
+                    "Too much sunlight"
+                ],
+                "answer": "Prenatal infections such as rubella"
+            },
+            {
+                "question": "The Individuals with Disabilities Education Act (IDEA) emphasises:",
+                "options": [
+                    "Medical treatment for children with disabilities",
+                    "Inclusion of learners with disabilities in mainstream education",
+                    "Funding for special schools only",
+                    "Creating more diagnostic centres"
+                ],
+                "answer": "Inclusion of learners with disabilities in mainstream education"
+            },
+            {
+                "question": "Which of these is a sign of emotional and behavioural disorders?",
+                "options": [
+                    "Consistent positive behaviour",
+                    "Difficulty expressing emotions appropriately",
+                    "Sharp memory",
+                    "Good coordination"
+                ],
+                "answer": "Difficulty expressing emotions appropriately"
+            },
+            {
+                "question": "One of the key goals of inclusive education is to:",
+                "options": [
+                    "Separate learners based on ability",
+                    "Create competition among learners",
+                    "Promote equity and acceptance",
+                    "Establish strict discipline policies"
+                ],
+                "answer": "Promote equity and acceptance"
+            },
+            {
+                "question": "What is an appropriate adaptation for a visually impaired learner?",
+                "options": [
+                    "Written instructions only",
+                    "Use of diagrams",
+                    "Braille or audio materials",
+                    "Video demonstrations without sound"
+                ],
+                "answer": "Braille or audio materials"
+            },
+            {
+                "question": "Which type of disability is characterised by difficulties in mathematics?",
+                "options": [
+                    "Dyslexia",
+                    "Dyscalculia",
+                    "Dysgraphia",
+                    "Autism"
+                ],
+                "answer": "Dyscalculia"
+            },
+            {
+                "question": "What is the most common barrier to inclusive education?",
+                "options": [
+                    "Lack of learners",
+                    "Lack of government laws",
+                    "Negative attitudes and lack of awareness",
+                    "Too many resources"
+                ],
+                "answer": "Negative attitudes and lack of awareness"
+            },
+            {
+                "question": "A learner who finds it difficult to hold a pencil likely has:",
+                "options": [
+                    "A hearing impairment",
+                    "A speech delay",
+                    "A fine motor difficulty",
+                    "A behavioural disorder"
+                ],
+                "answer": "A fine motor difficulty"
+            },
+            {
+                "question": "Which of these professionals supports inclusive education the most in schools?",
+                "options": [
+                    "Security guards",
+                    "Special education teachers",
+                    "Cafeteria workers",
+                    "Construction workers"
+                ],
+                "answer": "Special education teachers"
+            },
+            {
+                "question": "Which of the following is a common characteristic of learners with autism?",
+                "options": [
+                    "Consistent eye contact",
+                    "Strong interest in socialising",
+                    "Repetitive behaviours",
+                    "Clear verbal communication"
+                ],
+                "answer": "Repetitive behaviours"
+            },
+            {
+                "question": "The use of ramps and lifts in school buildings is to support learners with:",
+                "options": [
+                    "Speech impairment",
+                    "Hearing impairment",
+                    "Physical disabilities",
+                    "Visual impairment"
+                ],
+                "answer": "Physical disabilities"
+            },
+            {
+                "question": "Which type of learner might benefit most from enlarged text materials?",
+                "options": [
+                    "Learners with speech delay",
+                    "Learners with hearing impairment",
+                    "Learners with visual impairment",
+                    "Learners with autism"
+                ],
+                "answer": "Learners with visual impairment"
+            },
+            {
+                "question": "Which of the following best describes the philosophy of inclusive education?",
+                "options": [
+                    "Educating all learners in the same classroom regardless of abilities",
+                    "Creating separate schools for learners with disabilities",
+                    "Training only special education teachers",
+                    "Using identical methods for all learners"
+                ],
+                "answer": "Educating all learners in the same classroom regardless of abilities"
+            },
+            {
+                "question": "Which of these is an appropriate assessment method for learners with special needs?",
+                "options": [
+                    "One-size-fits-all testing",
+                    "Observation and practical tasks",
+                    "Ignoring their performance",
+                    "Group punishment"
+                ],
+                "answer": "Observation and practical tasks"
+            },
+            {
+                "question": "What is the major purpose of assistive technology in education?",
+                "options": [
+                    "To distract learners",
+                    "To replace teachers",
+                    "To support learners with disabilities to access the curriculum",
+                    "To reduce teacher workload"
+                ],
+                "answer": "To support learners with disabilities to access the curriculum"
+            },
+            {
+                "question": "Braille is primarily used by individuals with:",
+                "options": [
+                    "Speech disorders",
                     "Hearing impairment",
                     "Visual impairment",
-                    "Physical disability",
-                    "Speech impairment"
+                    "Physical disabilities"
                 ],
-                "answer": "Physical disability"
+                "answer": "Visual impairment"
             },
             {
-                "question": "Which of the following is an example of a congenital cause of disability?",
+                "question": "One common cause of intellectual disability is:",
                 "options": [
-                    "Malaria",
-                    "Spinal cord injury",
-                    "Cerebral palsy",
-                    "Accidents"
+                    "Frequent crying",
+                    "Genetic conditions such as Down syndrome",
+                    "Late language development",
+                    "Increased appetite"
                 ],
-                "answer": "Cerebral palsy"
+                "answer": "Genetic conditions such as Down syndrome"
             },
             {
-                "question": "Which term refers to the ability to interact effectively with individuals who have disabilities?",
+                "question": "An inclusive classroom should provide which of the following?",
                 "options": [
-                    "Cognitive awareness",
-                    "Inclusive behaviour",
-                    "Disability etiquette",
-                    "Social sensitivity"
+                    "Fixed seating arrangement",
+                    "Uniform teaching methods",
+                    "Equal opportunities and modified resources",
+                    "Only visual learning aids"
                 ],
-                "answer": "Disability etiquette"
+                "answer": "Equal opportunities and modified resources"
             },
             {
-                "question": "Which law in Ghana protects the rights of persons with disability?",
+                "question": "Which of the following is considered a behavioural disorder?",
                 "options": [
-                    "Children\u2019s Act",
-                    "Labour Act",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Education Act"
+                    "Asthma",
+                    "Hyperactivity and aggression",
+                    "Cataract",
+                    "Stammering"
                 ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
+                "answer": "Hyperactivity and aggression"
             },
             {
-                "question": "What is the role of the Special Education Division (SPED) of GES?",
+                "question": "What is the purpose of using sign language in inclusive education?",
                 "options": [
-                    "Training doctors for disability care",
-                    "Managing curriculum development",
-                    "Coordinating education for persons with special needs",
-                    "Supervising teacher promotion"
+                    "To entertain learners",
+                    "To replace reading and writing",
+                    "To aid communication for learners with hearing impairment",
+                    "To help learners with visual impairment"
                 ],
-                "answer": "Coordinating education for persons with special needs"
+                "answer": "To aid communication for learners with hearing impairment"
             },
             {
-                "question": "Which of the following is a major category of exceptionality in special education? (Q11)",
+                "question": "Which approach best supports learners with learning disabilities?",
                 "options": [
-                    "Environmental factors",
-                    "Physical education",
-                    "Learning disabilities",
-                    "Emotional support"
+                    "Ignoring their difficulties",
+                    "Punishing slow learners",
+                    "Providing individualised instruction",
+                    "Giving extra homework"
                 ],
-                "answer": "Learning disabilities"
+                "answer": "Providing individualised instruction"
             },
             {
-                "question": "What is the primary aim of special education? (Q12)",
+                "question": "What is the most appropriate seating position for a learner with a hearing impairment?",
                 "options": [
-                    "To provide medical care for learners",
-                    "To prepare students for manual labour",
-                    "To cater for the educational needs of learners with disabilities",
-                    "To teach vocational skills"
+                    "Back row of the classroom",
+                    "Next to the window",
+                    "Front row facing the teacher",
+                    "Near the classroom door"
                 ],
-                "answer": "To cater for the educational needs of learners with disabilities"
+                "answer": "Front row facing the teacher"
             },
             {
-                "question": "Who qualifies as a person with special educational needs? (Q13)",
+                "question": "Which of the following is a cognitive impairment?",
                 "options": [
-                    "A student with average academic performance",
-                    "A student who attends extra classes",
-                    "A student with a disability or learning difficulty",
-                    "A student who plays sports"
+                    "Visual impairment",
+                    "Dyslexia",
+                    "Deafness",
+                    "Paralysis"
                 ],
-                "answer": "A student with a disability or learning difficulty"
+                "answer": "Dyslexia"
             },
             {
-                "question": "Which of the following is an example of an environmental barrier to learning? (Q14)",
+                "question": "The term 'special education' refers to:",
                 "options": [
-                    "Hearing loss",
-                    "Lack of wheelchair access",
-                    "Memory difficulty",
-                    "Poor vision"
+                    "An exclusive school system for the gifted",
+                    "Education tailored to meet individual needs of learners with disabilities",
+                    "Extracurricular activities",
+                    "Only therapy-based learning"
                 ],
-                "answer": "Lack of wheelchair access"
+                "answer": "Education tailored to meet individual needs of learners with disabilities"
             },
             {
-                "question": "What is inclusive education? (Q15)",
+                "question": "Which of these is a method for assessing a learner with speech difficulties?",
                 "options": [
-                    "Education only for students with disabilities",
-                    "Separate education for special needs students",
-                    "Education that accommodates all learners in the same environment",
-                    "Education for gifted students only"
+                    "Oral interview",
+                    "Sign language responses",
+                    "Ignoring their answers",
+                    "Reading aloud in front of the class"
                 ],
-                "answer": "Education that accommodates all learners in the same environment"
+                "answer": "Sign language responses"
             },
             {
-                "question": "Which category of disability affects the ability to use limbs or body parts? (Q16)",
+                "question": "Learners with Down syndrome typically benefit from:",
+                "options": [
+                    "Strict punishment",
+                    "Long lectures",
+                    "Visual aids and repetition",
+                    "Fast-paced lessons"
+                ],
+                "answer": "Visual aids and repetition"
+            },
+            {
+                "question": "Which of these is an effective classroom practice for inclusion?",
+                "options": [
+                    "Grouping learners by ability",
+                    "Differentiated instruction",
+                    "Assigning the same task to everyone",
+                    "Discouraging peer support"
+                ],
+                "answer": "Differentiated instruction"
+            },
+            {
+                "question": "Which disability involves difficulty in expressing and understanding language?",
                 "options": [
                     "Hearing impairment",
+                    "Speech and language disorder",
                     "Visual impairment",
-                    "Physical disability",
-                    "Speech impairment"
+                    "Physical disability"
                 ],
-                "answer": "Physical disability"
+                "answer": "Speech and language disorder"
             },
             {
-                "question": "Which of the following is an example of a congenital cause of disability? (Q17)",
+                "question": "The role of an itinerant teacher is to:",
                 "options": [
-                    "Malaria",
-                    "Spinal cord injury",
-                    "Cerebral palsy",
-                    "Accidents"
+                    "Supervise playgrounds",
+                    "Assist learners with disabilities across different schools",
+                    "Manage school finances",
+                    "Prepare school meals"
                 ],
-                "answer": "Cerebral palsy"
-            },
-            {
-                "question": "Which term refers to the ability to interact effectively with individuals who have disabilities? (Q18)",
-                "options": [
-                    "Cognitive awareness",
-                    "Inclusive behaviour",
-                    "Disability etiquette",
-                    "Social sensitivity"
-                ],
-                "answer": "Disability etiquette"
-            },
-            {
-                "question": "Which law in Ghana protects the rights of persons with disability? (Q19)",
-                "options": [
-                    "Children\u2019s Act",
-                    "Labour Act",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Education Act"
-                ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
-            },
-            {
-                "question": "What is the role of the Special Education Division (SPED) of GES? (Q20)",
-                "options": [
-                    "Training doctors for disability care",
-                    "Managing curriculum development",
-                    "Coordinating education for persons with special needs",
-                    "Supervising teacher promotion"
-                ],
-                "answer": "Coordinating education for persons with special needs"
-            },
-            {
-                "question": "Which of the following is a major category of exceptionality in special education? (Q21)",
-                "options": [
-                    "Environmental factors",
-                    "Physical education",
-                    "Learning disabilities",
-                    "Emotional support"
-                ],
-                "answer": "Learning disabilities"
-            },
-            {
-                "question": "What is the primary aim of special education? (Q22)",
-                "options": [
-                    "To provide medical care for learners",
-                    "To prepare students for manual labour",
-                    "To cater for the educational needs of learners with disabilities",
-                    "To teach vocational skills"
-                ],
-                "answer": "To cater for the educational needs of learners with disabilities"
-            },
-            {
-                "question": "Who qualifies as a person with special educational needs? (Q23)",
-                "options": [
-                    "A student with average academic performance",
-                    "A student who attends extra classes",
-                    "A student with a disability or learning difficulty",
-                    "A student who plays sports"
-                ],
-                "answer": "A student with a disability or learning difficulty"
-            },
-            {
-                "question": "Which of the following is an example of an environmental barrier to learning? (Q24)",
-                "options": [
-                    "Hearing loss",
-                    "Lack of wheelchair access",
-                    "Memory difficulty",
-                    "Poor vision"
-                ],
-                "answer": "Lack of wheelchair access"
-            },
-            {
-                "question": "What is inclusive education? (Q25)",
-                "options": [
-                    "Education only for students with disabilities",
-                    "Separate education for special needs students",
-                    "Education that accommodates all learners in the same environment",
-                    "Education for gifted students only"
-                ],
-                "answer": "Education that accommodates all learners in the same environment"
-            },
-            {
-                "question": "Which category of disability affects the ability to use limbs or body parts? (Q26)",
-                "options": [
-                    "Hearing impairment",
-                    "Visual impairment",
-                    "Physical disability",
-                    "Speech impairment"
-                ],
-                "answer": "Physical disability"
-            },
-            {
-                "question": "Which of the following is an example of a congenital cause of disability? (Q27)",
-                "options": [
-                    "Malaria",
-                    "Spinal cord injury",
-                    "Cerebral palsy",
-                    "Accidents"
-                ],
-                "answer": "Cerebral palsy"
-            },
-            {
-                "question": "Which term refers to the ability to interact effectively with individuals who have disabilities? (Q28)",
-                "options": [
-                    "Cognitive awareness",
-                    "Inclusive behaviour",
-                    "Disability etiquette",
-                    "Social sensitivity"
-                ],
-                "answer": "Disability etiquette"
-            },
-            {
-                "question": "Which law in Ghana protects the rights of persons with disability? (Q29)",
-                "options": [
-                    "Children\u2019s Act",
-                    "Labour Act",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Education Act"
-                ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
-            },
-            {
-                "question": "What is the role of the Special Education Division (SPED) of GES? (Q30)",
-                "options": [
-                    "Training doctors for disability care",
-                    "Managing curriculum development",
-                    "Coordinating education for persons with special needs",
-                    "Supervising teacher promotion"
-                ],
-                "answer": "Coordinating education for persons with special needs"
-            },
-            {
-                "question": "Which of the following is a major category of exceptionality in special education? (Q31)",
-                "options": [
-                    "Environmental factors",
-                    "Physical education",
-                    "Learning disabilities",
-                    "Emotional support"
-                ],
-                "answer": "Learning disabilities"
-            },
-            {
-                "question": "What is the primary aim of special education? (Q32)",
-                "options": [
-                    "To provide medical care for learners",
-                    "To prepare students for manual labour",
-                    "To cater for the educational needs of learners with disabilities",
-                    "To teach vocational skills"
-                ],
-                "answer": "To cater for the educational needs of learners with disabilities"
-            },
-            {
-                "question": "Who qualifies as a person with special educational needs? (Q33)",
-                "options": [
-                    "A student with average academic performance",
-                    "A student who attends extra classes",
-                    "A student with a disability or learning difficulty",
-                    "A student who plays sports"
-                ],
-                "answer": "A student with a disability or learning difficulty"
-            },
-            {
-                "question": "Which of the following is an example of an environmental barrier to learning? (Q34)",
-                "options": [
-                    "Hearing loss",
-                    "Lack of wheelchair access",
-                    "Memory difficulty",
-                    "Poor vision"
-                ],
-                "answer": "Lack of wheelchair access"
-            },
-            {
-                "question": "What is inclusive education? (Q35)",
-                "options": [
-                    "Education only for students with disabilities",
-                    "Separate education for special needs students",
-                    "Education that accommodates all learners in the same environment",
-                    "Education for gifted students only"
-                ],
-                "answer": "Education that accommodates all learners in the same environment"
-            },
-            {
-                "question": "Which category of disability affects the ability to use limbs or body parts? (Q36)",
-                "options": [
-                    "Hearing impairment",
-                    "Visual impairment",
-                    "Physical disability",
-                    "Speech impairment"
-                ],
-                "answer": "Physical disability"
-            },
-            {
-                "question": "Which of the following is an example of a congenital cause of disability? (Q37)",
-                "options": [
-                    "Malaria",
-                    "Spinal cord injury",
-                    "Cerebral palsy",
-                    "Accidents"
-                ],
-                "answer": "Cerebral palsy"
-            },
-            {
-                "question": "Which term refers to the ability to interact effectively with individuals who have disabilities? (Q38)",
-                "options": [
-                    "Cognitive awareness",
-                    "Inclusive behaviour",
-                    "Disability etiquette",
-                    "Social sensitivity"
-                ],
-                "answer": "Disability etiquette"
-            },
-            {
-                "question": "Which law in Ghana protects the rights of persons with disability? (Q39)",
-                "options": [
-                    "Children\u2019s Act",
-                    "Labour Act",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Education Act"
-                ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
-            },
-            {
-                "question": "What is the role of the Special Education Division (SPED) of GES? (Q40)",
-                "options": [
-                    "Training doctors for disability care",
-                    "Managing curriculum development",
-                    "Coordinating education for persons with special needs",
-                    "Supervising teacher promotion"
-                ],
-                "answer": "Coordinating education for persons with special needs"
-            },
-            {
-                "question": "Which of the following is a major category of exceptionality in special education? (Q41)",
-                "options": [
-                    "Environmental factors",
-                    "Physical education",
-                    "Learning disabilities",
-                    "Emotional support"
-                ],
-                "answer": "Learning disabilities"
-            },
-            {
-                "question": "What is the primary aim of special education? (Q42)",
-                "options": [
-                    "To provide medical care for learners",
-                    "To prepare students for manual labour",
-                    "To cater for the educational needs of learners with disabilities",
-                    "To teach vocational skills"
-                ],
-                "answer": "To cater for the educational needs of learners with disabilities"
-            },
-            {
-                "question": "Who qualifies as a person with special educational needs? (Q43)",
-                "options": [
-                    "A student with average academic performance",
-                    "A student who attends extra classes",
-                    "A student with a disability or learning difficulty",
-                    "A student who plays sports"
-                ],
-                "answer": "A student with a disability or learning difficulty"
-            },
-            {
-                "question": "Which of the following is an example of an environmental barrier to learning? (Q44)",
-                "options": [
-                    "Hearing loss",
-                    "Lack of wheelchair access",
-                    "Memory difficulty",
-                    "Poor vision"
-                ],
-                "answer": "Lack of wheelchair access"
-            },
-            {
-                "question": "What is inclusive education? (Q45)",
-                "options": [
-                    "Education only for students with disabilities",
-                    "Separate education for special needs students",
-                    "Education that accommodates all learners in the same environment",
-                    "Education for gifted students only"
-                ],
-                "answer": "Education that accommodates all learners in the same environment"
-            },
-            {
-                "question": "Which category of disability affects the ability to use limbs or body parts? (Q46)",
-                "options": [
-                    "Hearing impairment",
-                    "Visual impairment",
-                    "Physical disability",
-                    "Speech impairment"
-                ],
-                "answer": "Physical disability"
-            },
-            {
-                "question": "Which of the following is an example of a congenital cause of disability? (Q47)",
-                "options": [
-                    "Malaria",
-                    "Spinal cord injury",
-                    "Cerebral palsy",
-                    "Accidents"
-                ],
-                "answer": "Cerebral palsy"
-            },
-            {
-                "question": "Which term refers to the ability to interact effectively with individuals who have disabilities? (Q48)",
-                "options": [
-                    "Cognitive awareness",
-                    "Inclusive behaviour",
-                    "Disability etiquette",
-                    "Social sensitivity"
-                ],
-                "answer": "Disability etiquette"
-            },
-            {
-                "question": "Which law in Ghana protects the rights of persons with disability? (Q49)",
-                "options": [
-                    "Children\u2019s Act",
-                    "Labour Act",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Education Act"
-                ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
-            },
-            {
-                "question": "What is the role of the Special Education Division (SPED) of GES? (Q50)",
-                "options": [
-                    "Training doctors for disability care",
-                    "Managing curriculum development",
-                    "Coordinating education for persons with special needs",
-                    "Supervising teacher promotion"
-                ],
-                "answer": "Coordinating education for persons with special needs"
-            },
-            {
-                "question": "Which of the following is a major category of exceptionality in special education? (Q51)",
-                "options": [
-                    "Environmental factors",
-                    "Physical education",
-                    "Learning disabilities",
-                    "Emotional support"
-                ],
-                "answer": "Learning disabilities"
-            },
-            {
-                "question": "What is the primary aim of special education? (Q52)",
-                "options": [
-                    "To provide medical care for learners",
-                    "To prepare students for manual labour",
-                    "To cater for the educational needs of learners with disabilities",
-                    "To teach vocational skills"
-                ],
-                "answer": "To cater for the educational needs of learners with disabilities"
-            },
-            {
-                "question": "Who qualifies as a person with special educational needs? (Q53)",
-                "options": [
-                    "A student with average academic performance",
-                    "A student who attends extra classes",
-                    "A student with a disability or learning difficulty",
-                    "A student who plays sports"
-                ],
-                "answer": "A student with a disability or learning difficulty"
-            },
-            {
-                "question": "Which of the following is an example of an environmental barrier to learning? (Q54)",
-                "options": [
-                    "Hearing loss",
-                    "Lack of wheelchair access",
-                    "Memory difficulty",
-                    "Poor vision"
-                ],
-                "answer": "Lack of wheelchair access"
-            },
-            {
-                "question": "What is inclusive education? (Q55)",
-                "options": [
-                    "Education only for students with disabilities",
-                    "Separate education for special needs students",
-                    "Education that accommodates all learners in the same environment",
-                    "Education for gifted students only"
-                ],
-                "answer": "Education that accommodates all learners in the same environment"
-            },
-            {
-                "question": "Which category of disability affects the ability to use limbs or body parts? (Q56)",
-                "options": [
-                    "Hearing impairment",
-                    "Visual impairment",
-                    "Physical disability",
-                    "Speech impairment"
-                ],
-                "answer": "Physical disability"
-            },
-            {
-                "question": "Which of the following is an example of a congenital cause of disability? (Q57)",
-                "options": [
-                    "Malaria",
-                    "Spinal cord injury",
-                    "Cerebral palsy",
-                    "Accidents"
-                ],
-                "answer": "Cerebral palsy"
-            },
-            {
-                "question": "Which term refers to the ability to interact effectively with individuals who have disabilities? (Q58)",
-                "options": [
-                    "Cognitive awareness",
-                    "Inclusive behaviour",
-                    "Disability etiquette",
-                    "Social sensitivity"
-                ],
-                "answer": "Disability etiquette"
-            },
-            {
-                "question": "Which law in Ghana protects the rights of persons with disability? (Q59)",
-                "options": [
-                    "Children\u2019s Act",
-                    "Labour Act",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Education Act"
-                ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
-            },
-            {
-                "question": "What is the role of the Special Education Division (SPED) of GES? (Q60)",
-                "options": [
-                    "Training doctors for disability care",
-                    "Managing curriculum development",
-                    "Coordinating education for persons with special needs",
-                    "Supervising teacher promotion"
-                ],
-                "answer": "Coordinating education for persons with special needs"
-            },
-            {
-                "question": "Which of the following is a major category of exceptionality in special education? (Q61)",
-                "options": [
-                    "Environmental factors",
-                    "Physical education",
-                    "Learning disabilities",
-                    "Emotional support"
-                ],
-                "answer": "Learning disabilities"
-            },
-            {
-                "question": "What is the primary aim of special education? (Q62)",
-                "options": [
-                    "To provide medical care for learners",
-                    "To prepare students for manual labour",
-                    "To cater for the educational needs of learners with disabilities",
-                    "To teach vocational skills"
-                ],
-                "answer": "To cater for the educational needs of learners with disabilities"
-            },
-            {
-                "question": "Who qualifies as a person with special educational needs? (Q63)",
-                "options": [
-                    "A student with average academic performance",
-                    "A student who attends extra classes",
-                    "A student with a disability or learning difficulty",
-                    "A student who plays sports"
-                ],
-                "answer": "A student with a disability or learning difficulty"
-            },
-            {
-                "question": "Which of the following is an example of an environmental barrier to learning? (Q64)",
-                "options": [
-                    "Hearing loss",
-                    "Lack of wheelchair access",
-                    "Memory difficulty",
-                    "Poor vision"
-                ],
-                "answer": "Lack of wheelchair access"
-            },
-            {
-                "question": "What is inclusive education? (Q65)",
-                "options": [
-                    "Education only for students with disabilities",
-                    "Separate education for special needs students",
-                    "Education that accommodates all learners in the same environment",
-                    "Education for gifted students only"
-                ],
-                "answer": "Education that accommodates all learners in the same environment"
-            },
-            {
-                "question": "Which category of disability affects the ability to use limbs or body parts? (Q66)",
-                "options": [
-                    "Hearing impairment",
-                    "Visual impairment",
-                    "Physical disability",
-                    "Speech impairment"
-                ],
-                "answer": "Physical disability"
-            },
-            {
-                "question": "Which of the following is an example of a congenital cause of disability? (Q67)",
-                "options": [
-                    "Malaria",
-                    "Spinal cord injury",
-                    "Cerebral palsy",
-                    "Accidents"
-                ],
-                "answer": "Cerebral palsy"
-            },
-            {
-                "question": "Which term refers to the ability to interact effectively with individuals who have disabilities? (Q68)",
-                "options": [
-                    "Cognitive awareness",
-                    "Inclusive behaviour",
-                    "Disability etiquette",
-                    "Social sensitivity"
-                ],
-                "answer": "Disability etiquette"
-            },
-            {
-                "question": "Which law in Ghana protects the rights of persons with disability? (Q69)",
-                "options": [
-                    "Children\u2019s Act",
-                    "Labour Act",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Education Act"
-                ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
-            },
-            {
-                "question": "What is the role of the Special Education Division (SPED) of GES? (Q70)",
-                "options": [
-                    "Training doctors for disability care",
-                    "Managing curriculum development",
-                    "Coordinating education for persons with special needs",
-                    "Supervising teacher promotion"
-                ],
-                "answer": "Coordinating education for persons with special needs"
-            },
-            {
-                "question": "Which of the following is a major category of exceptionality in special education? (Q71)",
-                "options": [
-                    "Environmental factors",
-                    "Physical education",
-                    "Learning disabilities",
-                    "Emotional support"
-                ],
-                "answer": "Learning disabilities"
-            },
-            {
-                "question": "What is the primary aim of special education? (Q72)",
-                "options": [
-                    "To provide medical care for learners",
-                    "To prepare students for manual labour",
-                    "To cater for the educational needs of learners with disabilities",
-                    "To teach vocational skills"
-                ],
-                "answer": "To cater for the educational needs of learners with disabilities"
-            },
-            {
-                "question": "Who qualifies as a person with special educational needs? (Q73)",
-                "options": [
-                    "A student with average academic performance",
-                    "A student who attends extra classes",
-                    "A student with a disability or learning difficulty",
-                    "A student who plays sports"
-                ],
-                "answer": "A student with a disability or learning difficulty"
-            },
-            {
-                "question": "Which of the following is an example of an environmental barrier to learning? (Q74)",
-                "options": [
-                    "Hearing loss",
-                    "Lack of wheelchair access",
-                    "Memory difficulty",
-                    "Poor vision"
-                ],
-                "answer": "Lack of wheelchair access"
-            },
-            {
-                "question": "What is inclusive education? (Q75)",
-                "options": [
-                    "Education only for students with disabilities",
-                    "Separate education for special needs students",
-                    "Education that accommodates all learners in the same environment",
-                    "Education for gifted students only"
-                ],
-                "answer": "Education that accommodates all learners in the same environment"
-            },
-            {
-                "question": "Which category of disability affects the ability to use limbs or body parts? (Q76)",
-                "options": [
-                    "Hearing impairment",
-                    "Visual impairment",
-                    "Physical disability",
-                    "Speech impairment"
-                ],
-                "answer": "Physical disability"
-            },
-            {
-                "question": "Which of the following is an example of a congenital cause of disability? (Q77)",
-                "options": [
-                    "Malaria",
-                    "Spinal cord injury",
-                    "Cerebral palsy",
-                    "Accidents"
-                ],
-                "answer": "Cerebral palsy"
-            },
-            {
-                "question": "Which term refers to the ability to interact effectively with individuals who have disabilities? (Q78)",
-                "options": [
-                    "Cognitive awareness",
-                    "Inclusive behaviour",
-                    "Disability etiquette",
-                    "Social sensitivity"
-                ],
-                "answer": "Disability etiquette"
-            },
-            {
-                "question": "Which law in Ghana protects the rights of persons with disability? (Q79)",
-                "options": [
-                    "Children\u2019s Act",
-                    "Labour Act",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Education Act"
-                ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
-            },
-            {
-                "question": "What is the role of the Special Education Division (SPED) of GES? (Q80)",
-                "options": [
-                    "Training doctors for disability care",
-                    "Managing curriculum development",
-                    "Coordinating education for persons with special needs",
-                    "Supervising teacher promotion"
-                ],
-                "answer": "Coordinating education for persons with special needs"
-            },
-            {
-                "question": "Which of the following is a major category of exceptionality in special education? (Q81)",
-                "options": [
-                    "Environmental factors",
-                    "Physical education",
-                    "Learning disabilities",
-                    "Emotional support"
-                ],
-                "answer": "Learning disabilities"
-            },
-            {
-                "question": "What is the primary aim of special education? (Q82)",
-                "options": [
-                    "To provide medical care for learners",
-                    "To prepare students for manual labour",
-                    "To cater for the educational needs of learners with disabilities",
-                    "To teach vocational skills"
-                ],
-                "answer": "To cater for the educational needs of learners with disabilities"
-            },
-            {
-                "question": "Who qualifies as a person with special educational needs? (Q83)",
-                "options": [
-                    "A student with average academic performance",
-                    "A student who attends extra classes",
-                    "A student with a disability or learning difficulty",
-                    "A student who plays sports"
-                ],
-                "answer": "A student with a disability or learning difficulty"
-            },
-            {
-                "question": "Which of the following is an example of an environmental barrier to learning? (Q84)",
-                "options": [
-                    "Hearing loss",
-                    "Lack of wheelchair access",
-                    "Memory difficulty",
-                    "Poor vision"
-                ],
-                "answer": "Lack of wheelchair access"
-            },
-            {
-                "question": "What is inclusive education? (Q85)",
-                "options": [
-                    "Education only for students with disabilities",
-                    "Separate education for special needs students",
-                    "Education that accommodates all learners in the same environment",
-                    "Education for gifted students only"
-                ],
-                "answer": "Education that accommodates all learners in the same environment"
-            },
-            {
-                "question": "Which category of disability affects the ability to use limbs or body parts? (Q86)",
-                "options": [
-                    "Hearing impairment",
-                    "Visual impairment",
-                    "Physical disability",
-                    "Speech impairment"
-                ],
-                "answer": "Physical disability"
-            },
-            {
-                "question": "Which of the following is an example of a congenital cause of disability? (Q87)",
-                "options": [
-                    "Malaria",
-                    "Spinal cord injury",
-                    "Cerebral palsy",
-                    "Accidents"
-                ],
-                "answer": "Cerebral palsy"
-            },
-            {
-                "question": "Which term refers to the ability to interact effectively with individuals who have disabilities? (Q88)",
-                "options": [
-                    "Cognitive awareness",
-                    "Inclusive behaviour",
-                    "Disability etiquette",
-                    "Social sensitivity"
-                ],
-                "answer": "Disability etiquette"
-            },
-            {
-                "question": "Which law in Ghana protects the rights of persons with disability? (Q89)",
-                "options": [
-                    "Children\u2019s Act",
-                    "Labour Act",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Education Act"
-                ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
-            },
-            {
-                "question": "What is the role of the Special Education Division (SPED) of GES? (Q90)",
-                "options": [
-                    "Training doctors for disability care",
-                    "Managing curriculum development",
-                    "Coordinating education for persons with special needs",
-                    "Supervising teacher promotion"
-                ],
-                "answer": "Coordinating education for persons with special needs"
-            },
-            {
-                "question": "Which of the following is a major category of exceptionality in special education? (Q91)",
-                "options": [
-                    "Environmental factors",
-                    "Physical education",
-                    "Learning disabilities",
-                    "Emotional support"
-                ],
-                "answer": "Learning disabilities"
-            },
-            {
-                "question": "What is the primary aim of special education? (Q92)",
-                "options": [
-                    "To provide medical care for learners",
-                    "To prepare students for manual labour",
-                    "To cater for the educational needs of learners with disabilities",
-                    "To teach vocational skills"
-                ],
-                "answer": "To cater for the educational needs of learners with disabilities"
-            },
-            {
-                "question": "Who qualifies as a person with special educational needs? (Q93)",
-                "options": [
-                    "A student with average academic performance",
-                    "A student who attends extra classes",
-                    "A student with a disability or learning difficulty",
-                    "A student who plays sports"
-                ],
-                "answer": "A student with a disability or learning difficulty"
-            },
-            {
-                "question": "Which of the following is an example of an environmental barrier to learning? (Q94)",
-                "options": [
-                    "Hearing loss",
-                    "Lack of wheelchair access",
-                    "Memory difficulty",
-                    "Poor vision"
-                ],
-                "answer": "Lack of wheelchair access"
-            },
-            {
-                "question": "What is inclusive education? (Q95)",
-                "options": [
-                    "Education only for students with disabilities",
-                    "Separate education for special needs students",
-                    "Education that accommodates all learners in the same environment",
-                    "Education for gifted students only"
-                ],
-                "answer": "Education that accommodates all learners in the same environment"
-            },
-            {
-                "question": "Which category of disability affects the ability to use limbs or body parts? (Q96)",
-                "options": [
-                    "Hearing impairment",
-                    "Visual impairment",
-                    "Physical disability",
-                    "Speech impairment"
-                ],
-                "answer": "Physical disability"
-            },
-            {
-                "question": "Which of the following is an example of a congenital cause of disability? (Q97)",
-                "options": [
-                    "Malaria",
-                    "Spinal cord injury",
-                    "Cerebral palsy",
-                    "Accidents"
-                ],
-                "answer": "Cerebral palsy"
-            },
-            {
-                "question": "Which term refers to the ability to interact effectively with individuals who have disabilities? (Q98)",
-                "options": [
-                    "Cognitive awareness",
-                    "Inclusive behaviour",
-                    "Disability etiquette",
-                    "Social sensitivity"
-                ],
-                "answer": "Disability etiquette"
-            },
-            {
-                "question": "Which law in Ghana protects the rights of persons with disability? (Q99)",
-                "options": [
-                    "Children\u2019s Act",
-                    "Labour Act",
-                    "Persons with Disability Act, 2006 (Act 715)",
-                    "Education Act"
-                ],
-                "answer": "Persons with Disability Act, 2006 (Act 715)"
-            },
-            {
-                "question": "What is the role of the Special Education Division (SPED) of GES? (Q100)",
-                "options": [
-                    "Training doctors for disability care",
-                    "Managing curriculum development",
-                    "Coordinating education for persons with special needs",
-                    "Supervising teacher promotion"
-                ],
-                "answer": "Coordinating education for persons with special needs"
+                "answer": "Assist learners with disabilities across different schools"
             }
+
         ]
 
         let currentQuestionIndex = 0;
